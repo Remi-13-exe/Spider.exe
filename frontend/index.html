@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Spider.exe</title>
+    <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/carousel.css">
+<link rel="stylesheet" href="css/navbar.css">
+
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">Spiderexe</div>
+    <nav>
+      <a href="#">Accueil</a>
+      <a href="#">Personnages</a>
+      <a href="#">Contact</a>
+      <a href="#">À propos</a>
+  <div class="search-box">
+  <input 
+    type="search" 
+    id="site-search"
+    placeholder="Rechercher un personnage..."
+    aria-label="Recherche"
+  >
+  <span class="search-icon">🔍</span>
+</div>
+
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-overlay">
+      <h1>Connaissez chaque heros, chaque masque, chaque legende.</h1>
+      <button id="discoverBtn">Decouvrir les personnages</button>
+    </div>
+  </section>
+
+  <!-- ACTUALITÉS -->
+  <section class="news">
+    <h2> Actualites</h2>
+    <div id="news-container"></div>
+  </section>
+
+  <!-- POURQUOI CE SITE -->
+  <section class="about">
+    <div class="about-text">
+      <h2>Pourquoi ce site ?</h2>
+      <p>
+      Ce site est une encyclopédie dédiée à l’univers de Spider-Man. Il regroupe tous les personnages emblématiques, les films, les séries, les jeux vidéo et les actualités autour du héros. À travers une navigation claire et une interface dynamique, le visiteur peut explorer le multivers de Spider-Man, découvrir chaque version du héros, ses alliés, ses ennemis et les différentes adaptations qui ont marqué l’histoire. L’objectif est d’offrir une plateforme complète, accessible et immersive pour tous les fans, qu’ils soient novices ou passionnés de longue date.
+      </p>
+    </div>
+    <div class="about-image">
+      <img src="assets/images/spiderman.png" alt="Spider-Man">
+    </div>
+  </section>
+
+  <!-- CARROUSEL -->
+  <section class="carousel-section">
+   <div class="carousel" id="carousel"></div>
+  </section>
+
+  <script src="js/news.js"></script>
+  <script src="js/carousel.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

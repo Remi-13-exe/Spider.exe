@@ -1,0 +1,53 @@
+/* =========================
+   FONTS
+========================= */
+
+@font-face {
+  font-family: 'Comeback Home';
+  src: url('../assets/fonts/comback-home-font/CombackHomeRegular-jEMd9.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Badaboom BB';
+  src: url('../assets/fonts/badaboom_bb/BadaboomBB.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Anime Ace';
+  src: url('../assets/fonts/anime_ace_bb/animeace2bb_tt/animeace2_ital.ttf') format('truetype');
+}
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root {
+  --bg-main: #F5E6CB;
+  --text-main: #000000;
+  --text-outline: #F5E6CB;
+}
+
+/* =========================
+   BASE
+========================= */
+/* FONTS + VARIABLES + BASE */
+
+body {
+  background-color: var(--bg-main);
+  margin: 0;
+  color: var(--text-main);
+  
+}
+
+h1, h2, h3 {
+  font-family: 'Badaboom BB', cursive;
+}
+
+p, .news article, .about-text p {
+  font-family: 'Anime Ace', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 900;
+  line-height: 1.6;
+  letter-spacing: 0.5px; /* léger espacement pour lisibilité */
+  color: var(--text-main);
+}

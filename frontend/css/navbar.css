@@ -1,0 +1,52 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+
+  background-color: #E31E1E; /* couleur fusionnée des 3 rouges */
+  border: 3px solid #000;     /* contour noir */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* LOGO */
+.navbar .logo {
+  font-family: 'Comeback Home', sans-serif;
+  font-size: 2rem;
+  color: var(--text-main); /* noir */
+  cursor: pointer;
+}
+
+/* NAVIGATION PRINCIPALE */
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* LIENS */
+.navbar nav a {
+  font-family: 'Anime Ace', sans-serif;
+  color: var(--text-main);
+  -webkit-text-stroke: 1px var(--text-outline); /* contour beige */
+  text-decoration: none;
+  padding: 5px 8px;
+  transition: all 0.3s ease;
+}
+
+.navbar nav a:hover {
+  text-decoration: underline;
+  color: #FFF;
+}
+
+/* RECHERCHE */
+.navbar nav input[type="search"] {
+  padding: 5px 10px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  font-family: 'Anime Ace', sans-serif;
+  font-size: 0.9rem;
+  color: #000;
+}
