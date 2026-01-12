@@ -4,49 +4,128 @@
   align-items: center;
   padding: 15px 40px;
 
-  background-color: #E31E1E; /* couleur fusionnée des 3 rouges */
-  border: 3px solid #000;     /* contour noir */
+  height: 40px; /* ← fixe la hauteur */
+  background-color: #E31E1E;
+  border: 3px solid #000;
   position: sticky;
   top: 0;
   z-index: 100;
+  overflow: hidden; /* coupe tout dépassement */
 }
 
 /* LOGO */
 .navbar .logo {
   font-family: 'Comeback Home', sans-serif;
-  font-size: 2rem;
-  color: var(--text-main); /* noir */
-  cursor: pointer;
+  font-size: 3.4rem;              /* agrandi */
+  font-weight: normal;
+  color: var(--text-main);        /* noir */
+  margin: 0;
+
+  /* CONTOUR BEIGE COMME LES LIENS */
+  text-shadow:
+    -1px -1px 0 var(--text-outline),
+     1px -1px 0 var(--text-outline),
+    -1px  1px 0 var(--text-outline),
+     1px  1px 0 var(--text-outline);
 }
+
+
 
 /* NAVIGATION PRINCIPALE */
 .navbar nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 70px;
+  margin-right: 10px; /* ← ajuste ici */
+    position: relative; /* permet de positionner la search plus facilement */
+
 }
+
 
 /* LIENS */
 .navbar nav a {
-  font-family: 'Anime Ace', sans-serif;
+  font-family: 'Anime Ace 2.0 BB', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 900;
   color: var(--text-main);
-  -webkit-text-stroke: 1px var(--text-outline); /* contour beige */
   text-decoration: none;
-  padding: 5px 8px;
+  padding: 2px 6px;
+  margin-top: 10px;
   transition: all 0.3s ease;
+  text-rendering: geometricPrecision;
+
+
+  text-shadow:
+    -0.7px -0.7px 0 var(--text-outline),
+     0.7px -0.7px 0 var(--text-outline),
+    -0.7px  0.7px 0 var(--text-outline),
+     0.7px  0.7px 0 var(--text-outline);
 }
 
+
 .navbar nav a:hover {
-  text-decoration: underline;
+  text-decoration: none;
   color: #FFF;
 }
 
-/* RECHERCHE */
+/* Input search */
 .navbar nav input[type="search"] {
-  padding: 5px 10px;
+  padding: 6px 6px;               /* padding vertical + horizontal */
+  font-size: 0.35rem;             /* ajuste légèrement la taille du texte */
+  font-family: 'Anime Ace 2.0 BB', sans-serif;
+  font-weight: 900;
+
   border: 2px solid #000;
   border-radius: 5px;
-  font-family: 'Anime Ace', sans-serif;
-  font-size: 0.9rem;
+
   color: #000;
+  width: 170px;                   /* largeur fixe */
+  height: 30px;                   /* hauteur verticale */
+  line-height: 1;                  /* pour aligner le texte verticalement */
+  text-align: left;
+
+  margin-left: 50px;     
+  margin-top: 10px;
+}
+
+/* CONTENEUR RECHERCHE */
+.search-box {
+  position: relative;
+  margin-left: 50px;  /* espace par rapport aux liens */
+}
+
+/* INPUT */
+.search-box {
+  position: relative;
+  margin-left: 50px;
+}
+
+/* INPUT */
+.search-box input[type="search"] {
+  padding: 6px 28px 6px 8px;   /* padding-right plus grand pour le PNG */
+  font-size: 0.35rem;
+  font-family: 'Anime Ace 2.0 BB', sans-serif;
+  font-weight: 900;
+
+  border: 2px solid #000;
+  border-radius: 5px;
+
+  color: #000;
+  width: 120px;
+  height: 30px;
+  line-height: 1;
+
+  text-align: left;
+  box-sizing: border-box;
+}
+
+/* ICÔNE PNG */
+.search-box .search-icon {
+  position: absolute;
+  right: 12px;              /* distance du bord droit */
+  top: 63%;
+  transform: translateY(-50%);
+  pointer-events: none;     /* clique passe à travers l'icône */
+  width: 10px;              /* ajuste selon ton PNG */
+  height: 10px;
 }

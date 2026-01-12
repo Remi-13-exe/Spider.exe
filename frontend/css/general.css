@@ -13,8 +13,8 @@
 }
 
 @font-face {
-  font-family: 'Anime Ace';
-  src: url('../assets/fonts/anime_ace_bb/animeace2bb_tt/animeace2_ital.ttf') format('truetype');
+    font-family: 'Anime Ace 2.0 BB';
+  src: url('../assets/fonts/anime_ace_bb/animeace2bb_tt/animeace2_reg.ttf') format('truetype');
 }
 
 /* =========================
@@ -41,10 +41,12 @@ body {
 
 h1, h2, h3 {
   font-family: 'Badaboom BB', cursive;
+  letter-spacing: 0.03em;
 }
 
+
 p, .news article, .about-text p {
-  font-family: 'Anime Ace', sans-serif;
+  font-family: 'Anime Ace 2.0 BB', sans-serif;
   font-size: 0.7rem;
   font-weight: 900;
   line-height: 1.6;
