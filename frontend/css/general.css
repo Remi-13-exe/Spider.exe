@@ -42,8 +42,6 @@ body {
 h1, h2, h3 {
   font-family: 'Badaboom BB', cursive;
   letter-spacing: 0.03em;
-  font-weight: 400;
-
 }
 
 
@@ -54,17 +52,4 @@ p, .news article, .about-text p {
   line-height: 1.6;
   letter-spacing: 0.5px; /* léger espacement pour lisibilité */
   color: var(--text-main);
-}
-
-/* =========================
-   STYLES GLOBAUX BOUTONS
-========================= */
-button {
-  font-family: 'Badaboom BB', cursive;
-  font-weight: 400;      /* assure un rendu uniforme */
-  font-style: normal;    /* évite les lettres étirées */
-  letter-spacing: 0.5px; /* léger espacement comics */
-  cursor: pointer;
-
-  /* couleur, padding, border, taille, background seront définis individuellement */
 }

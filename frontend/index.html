@@ -44,73 +44,80 @@
 </section>
 
 
-  <!-- ACTUALITÉS -->
-  <section class="news">
-    <h2> Actualites</h2>
-      <div class="comic-bar"></div>
-
-<section class="news">
-  <h2>Actualités</h2>
+  <!-- ACTUALITÉS --><section class="news">
+  <h2>Actualites</h2>
   <div class="comic-bar"></div>
 
-  <div class="newspaper">
+<div class="book">
 
-    <!-- COUVERTURE -->
-    <div class="cover">
-      <h3 class="paper-title">DAILY BUGLE</h3>
-      <div class="cover-band"></div>
-      <img src="assets/images/news/cover-generic.jpg" alt="Une ville sous tension">
-      <p class="cover-subtitle">New York sous surveillance</p>
+  <!-- PAGE 1 — Couverture -->
+  <div class="page">
+    <div class="front cover">
+      <h1>Daily Bugle</h1>
+      <p>Édition spéciale<br>Spider‑Man</p>
     </div>
-
-    <!-- DOUBLE PAGE 1 -->
-    <div class="double-page">
-      <article class="article">
-        <h4>Spider-Man 4 : la date de sortie enfin dévoilée</h4>
-        <img src="assets/images/news/movie-generic.jpg" alt="Film super-héros générique">
-        <p>
-          Marvel Studios a officiellement annoncé la sortie de Spider-Man 4.
-          Le film jouera un rôle clé dans la timeline du multivers et marquera
-          un tournant stratégique pour l’avenir du justicier urbain.
-        </p>
-      </article>
-
-      <article class="article">
-        <h4>Tom Holland blessé : tournage suspendu</h4>
-        <img src="assets/images/news/actor-generic.jpg" alt="Acteur blessé sur un plateau">
-        <p>
-          Une cascade ratée aurait provoqué une commotion cérébrale légère.
-          Le tournage est temporairement suspendu par mesure de sécurité.
-        </p>
-      </article>
+    <div class="back">
+      <h2>🕷️ Spider‑Man 4 : la date de sortie enfin dévoilée</h2>
+      <p>
+        Marvel et Sony ont officialisé la sortie de Spider‑Man 4 avec Tom Holland.<br><br>
+        Le film sera réalisé par Destin Daniel Cretton (Shang‑Chi) et jouera un rôle stratégique
+        dans la future timeline des Avengers.<br><br>
+        Il est présenté comme un chapitre majeur qui prépare les prochains grands films du MCU.<br><br>
+        <em>Source : ÉcranLarge</em>
+      </p>
     </div>
-
-    <!-- DOUBLE PAGE 2 -->
-    <div class="double-page">
-      <article class="article">
-        <h4>Mort de Danny Seagren, le premier Spider-Man filmé</h4>
-        <img src="assets/images/news/vintage-actor.jpg" alt="Acteur vintage années 70">
-        <p>
-          L’acteur Danny Seagren, connu pour son rôle dans Spidey Super Stories,
-          s’est éteint à l’âge de 75 ans. Un hommage est rendu à cette icône oubliée.
-        </p>
-      </article>
-
-      <article class="article">
-        <h4>Spider-Man 2 (PS5) : énorme mise à jour avec New Game+</h4>
-        <img src="assets/images/news/game-generic.jpg" alt="Jeu d’action urbain">
-        <p>
-          La mise à jour ajoute le New Game+, de nouveaux costumes,
-          des améliorations graphiques et une meilleure fluidité en combat.
-        </p>
-      </article>
-    </div>
-
   </div>
-</section>
 
-   
-  </section>
+  <!-- PAGE 2 -->
+  <div class="page">
+    <div class="front">
+      <h2>🕷️ Tom Holland blessé : tournage suspendu</h2>
+      <p>
+        Lors du tournage de Spider‑Man: Brand New Day, Tom Holland a subi une commotion cérébrale
+        après une cascade ratée.<br><br>
+        Le tournage est à l’arrêt depuis le 19 septembre, et Sony/Marvel doivent décider de la suite.<br><br>
+        Cet incident pourrait provoquer un retard dans la production du film.<br><br>
+        <em>Source : RTL</em>
+      </p>
+    </div>
+    <div class="back">
+      <h2>🕷️ Mort de Danny Seagren</h2>
+      <p>
+        Danny Seagren, acteur des années 1970, est décédé à 81 ans.<br><br>
+        Il incarnait Spider‑Man dans l’émission <strong>Spidey Super Stories</strong> (1974–1977).<br><br>
+        Il est considéré comme le premier acteur à avoir porté le costume de Spider‑Man à l’écran,
+        bien avant les adaptations modernes.<br><br>
+        <em>Source : Le Figaro</em>
+      </p>
+    </div>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="page">
+    <div class="front">
+      <h2>🕷️ Spider‑Man 2 (PS5) : énorme mise à jour</h2>
+      <p>
+        Insomniac Games a publié une mise à jour majeure pour Spider‑Man 2 sur PS5.<br><br>
+        Elle inclut :<br>
+        • le New Game+<br>
+        • de nouveaux costumes<br>
+        • des améliorations graphiques<br>
+        • plus d’options d’accessibilité<br>
+        • une rejouabilité renforcée<br><br>
+        C’est la plus grosse update depuis la sortie du jeu.<br><br>
+        <em>Source : Actualités jeux vidéo (20 Minutes / JV)</em>
+      </p>
+    </div>
+    <div class="back cover">
+      <h3>Fin de l’édition</h3>
+      <p>Merci d’avoir consulté les dernières actualités Spider‑Man.</p>
+    </div>
+  </div>
+
+</div>
+</section>
+  
+
 
   <!-- POURQUOI CE SITE -->
   <section class="about">
@@ -130,8 +137,16 @@
    <div class="carousel" id="carousel"></div>
   </section>
 
-  <script src="js/news.js"></script>
-  <script src="js/carousel.js"></script>
-  <script src="js/main.js"></script>
+  
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+
+<!-- TES SCRIPTS -->
+<script src="js/news.js"></script>
+<script src="js/carousel.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

@@ -1,21 +1,12 @@
-const nextBtn = document.querySelector('.turn-page.next');
-const prevBtn = document.querySelector('.turn-page.prev');
-const doublePages = document.querySelectorAll('.journal-double-page');
-let currentIndex = 0;
+const flipBook = (elBook) => {
+  elBook.style.setProperty("--c", 0);
+  elBook.querySelectorAll(".page").forEach((page, idx) => {
+    page.style.setProperty("--i", idx);
+    page.addEventListener("click", (evt) => {
+      const curr = evt.target.closest(".back") ? idx : idx + 1;
+      elBook.style.setProperty("--c", curr);
+    });
+  });
+};
 
-nextBtn.addEventListener('click', () => {
-  if (currentIndex < doublePages.length) {
-    const rightPage = doublePages[currentIndex].querySelector('.journal-page.right');
-    rightPage.style.transform = 'rotateY(-180deg)';
-    rightPage.style.zIndex = doublePages.length - currentIndex;
-    currentIndex++;
-  }
-});
-
-prevBtn.addEventListener('click', () => {
-  if (currentIndex > 0) {
-    currentIndex--;
-    const rightPage = doublePages[currentIndex].querySelector('.journal-page.right');
-    rightPage.style.transform = 'rotateY(0deg)';
-  }
-});
+document.querySelectorAll(".book").forEach(flipBook);
