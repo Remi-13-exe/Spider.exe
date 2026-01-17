@@ -87,11 +87,7 @@
   }
   
   &::after {
-    position: absolute;
-    bottom: 1em;
-    counter-increment: page;
-    content: counter(page) ".";
-    font-size: 0.8em;
+content: none;
   }
 }
 .cover {
@@ -115,17 +111,87 @@
 }
 
 .cover {
-  background-image: url("../assets/images/dailybugle couverture.png");
-  background-size: cover;      /* Remplit 100% */
-  background-position: center; /* Centrage parfait */
-  background-repeat: no-repeat;
-
+  position: relative;
   width: 100%;
-  height: 100%;                /* IMPORTANT : occupe toute la page */
+  height: 100%;
+  overflow: hidden;
 
-  color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  color: #fff;
+}
+
+.cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    #11110d
+    url("../assets/images/Couverture Daily Bugle Spider-Man.png")
+    center / auto 89% no-repeat;
+
+  z-index: 0;
+}
+
+.cover-black {
+  background: #000;
+  color: #000;          /* sécurité */
+}
+
+.cover-black::before {
+  display: none;        /* supprime toute image éventuelle */
+}
+
+
+/* Images des actualités dans le journal */
+.book .page .front .news-img,
+.book .page .back .news-img {
+  width: 100%;         /* occupe toute la largeur disponible */
+  max-height: 400px;   /* limite la hauteur */
+  object-fit: contain; /* image entière visible, pas de déformation */
+  margin: 10px 0;      /* espace au-dessus et en dessous */
+  display: block;      /* s'assure qu'elle prend toute la largeur */
+  float: left;         /* aligne l'image à gauche */
+}
+
+/* Paragraphes dans le journal */
+/* Paragraphes dans le journal */
+.book .page p {
+  text-align: left;    /* reste aligné à gauche */
+  margin-top: 5px;
+  margin-left: 15px;  /* espace vers la gauche */
+  margin-right: 10px; /* petit espace à droite aussi */
+  line-height: 1.4;
+}
+
+
+/* Titre des actualités dans le journal seulement */
+.book .page .back h2,
+.book .page .front h2 {
+  font-size: 1.2rem;  /* plus petit que le h2 global */
+  margin-bottom: 8px; /* petit espace sous le titre */
+}
+
+
+.book .page p em {
+    font-family: 'Badaboom BB', cursive; /* police comics pour les italiques */               /* très gras */
+  font-style: normal;                /* pas d’italique */
+  letter-spacing: 1.5px;
+  display: inline-block;             /* assure que margin-left fonctionne */
 }
