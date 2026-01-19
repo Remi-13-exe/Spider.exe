@@ -78,7 +78,7 @@
   font-weight: 900;
 
   border: 2px solid #000;
-  border-radius: 20px;
+  border-radius: 5px;
 
   color: #000;
   width: 170px;                   /* largeur fixe */
@@ -104,6 +104,7 @@
 
 /* INPUT */
 .search-box input[type="search"] {
+    border-radius: 34px; /* 🔥 enfin visible */
 
   padding: 6px 28px 6px 8px;   /* padding-right plus grand pour le PNG */
   font-size: 0.35rem;

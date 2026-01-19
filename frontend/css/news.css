@@ -1,3 +1,7 @@
+/* ------------------------------------------------------ */
+/* BASE                                                   */
+/* ------------------------------------------------------ */
+
 .news,
 .news * {
   box-sizing: border-box;
@@ -7,24 +11,20 @@
   position: relative;
   display: flex;
   margin: auto;
-  width: 40cqmin;
-  /*1* let pointer event go trough pages of lower Z than .book */
+  width: 70cqmin;
   pointer-events: none;
   transform-style: preserve-3d;
   transition: translate 1s;
   translate: calc(min(var(--c), 1) * 50%) 0%;
-  /* Incline on the X axis for pages preview */
   rotate: 1 0 0 30deg;
 }
 
 .page {
-  /* PS: Don't go below thickness 0.5 or the pages might transpare */
   --thickness: 4;
   flex: none;
   display: flex;
   width: 100%;
   font-size: 2cqmin;
-  /*1* allow pointer events on pages */
   pointer-events: all;
   user-select: none;
   transform-style: preserve-3d;
@@ -33,7 +33,7 @@
     transform 1s,
     rotate 1s ease-in calc((min(var(--i), var(--c)) - max(var(--i), var(--c))) * 50ms);
   translate: calc(var(--i) * -100%) 0px 0px;
-  transform: translateZ( calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * .23cqmin)));
+  transform: translateZ(calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * .23cqmin)));
   rotate: 0 1 0 calc(clamp(0, var(--c) - var(--i), 1) * -180deg);
 }
 
@@ -45,8 +45,11 @@
   backface-visibility: hidden;
   overflow: hidden;
   background-color: #fff;
-  /* Fix backface visibility Firefox: */
   translate: 0px;
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  border: 1px solid #0002;
 }
 
 .back {
@@ -54,81 +57,15 @@
   rotate: 0 1 0 180deg;
 }
 
-
-/* That's it. Your FlipBook customization styles: */
-
-.book {
-  counter-reset: page -1;
-  & a {
-    color: inherit;
-  }
-}
-
-.page {
-  box-shadow: 0em .5em 1em -.2em #00000020;
-}
-
-.front,
-.back {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-between;
-  padding: 2em;
-  border: 1px solid #0002;
-  
-  &:has(img) {
-    padding: 0;
-  }
-  
-  & img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  &::after {
-content: none;
-  }
-}
-.cover {
-  &::after {
-    content: "";
-  }
-}
-.front {
-  &::after {
-    right: 1em;
-  }
-  background: linear-gradient(to left, #f7f7f7 80%, #eee 100%);
-  border-radius: .1em .5em .5em .1em;
-}
-.back {
-  &::after {
-    left: 1em;
-  }
-  background-image: linear-gradient(to right, #f7f7f7 80%, #eee 100%);
-  border-radius: .5em .1em .1em .5em;
-}
+/* ------------------------------------------------------ */
+/* COUVERTURE                                             */
+/* ------------------------------------------------------ */
 
 .cover {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-}
-
-.cover {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -140,58 +77,77 @@ content: none;
   content: "";
   position: absolute;
   inset: 0;
-
   background:
     #11110d
     url("../assets/images/Couverture Daily Bugle Spider-Man.png")
     center / auto 89% no-repeat;
-
   z-index: 0;
 }
 
 .cover-black {
   background: #000;
-  color: #000;          /* sécurité */
+  color: #000;
 }
 
 .cover-black::before {
-  display: none;        /* supprime toute image éventuelle */
+  display: none;
 }
 
+/* ------------------------------------------------------ */
+/* IMAGES DES ACTUALITÉS                                 */
+/* ------------------------------------------------------ */
 
-/* Images des actualités dans le journal */
 .book .page .front .news-img,
 .book .page .back .news-img {
-  width: 100%;         /* occupe toute la largeur disponible */
-  max-height: 400px;   /* limite la hauteur */
-  object-fit: contain; /* image entière visible, pas de déformation */
-  margin: 10px 0;      /* espace au-dessus et en dessous */
-  display: block;      /* s'assure qu'elle prend toute la largeur */
-  float: left;         /* aligne l'image à gauche */
+  width: 75%;
+  height: 360px;
+  object-fit: cover;
+  object-position: center;
+
+  display: block;
+  margin: 40px auto 40px; /* espace au-dessus et en dessous */
+  border-radius: 6px;
+
+  flex-shrink: 0;
 }
 
-/* Paragraphes dans le journal */
-/* Paragraphes dans le journal */
+/* ------------------------------------------------------ */
+/* TITRES                                                 */
+/* ------------------------------------------------------ */
+
+.book .page .front h2,
+.book .page .back h2 {
+  font-size: 2rem;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* ------------------------------------------------------ */
+/* PARAGRAPHES                                            */
+/* ------------------------------------------------------ */
+
 .book .page p {
-  text-align: left;    /* reste aligné à gauche */
-  margin-top: 5px;
-  margin-left: 15px;  /* espace vers la gauche */
-  margin-right: 10px; /* petit espace à droite aussi */
-  line-height: 1.4;
+  text-align: left;
+  margin: 15px 25px;
+  font-size: 1.2cqmin;
+  line-height: 1.6cqmin;
+  max-width: 90%;
+  flex-shrink: 0;
 }
 
-
-/* Titre des actualités dans le journal seulement */
-.book .page .back h2,
-.book .page .front h2 {
-  font-size: 1.2rem;  /* plus petit que le h2 global */
-  margin-bottom: 8px; /* petit espace sous le titre */
-}
-
-
+/* Style de la source */
 .book .page p em {
-    font-family: 'Badaboom BB', cursive; /* police comics pour les italiques */               /* très gras */
-  font-style: normal;                /* pas d’italique */
+  font-family: 'Badaboom BB', cursive;
+  font-style: normal;
   letter-spacing: 1.5px;
-  display: inline-block;             /* assure que margin-left fonctionne */
+  display: inline-block;
+    margin-top: 30px;
+}
+
+
+/* Le dernier paragraphe (la source) collé en bas de la page */
+.book .page .front p:last-of-type,
+.book .page .back p:last-of-type {
+  margin-top: auto;
 }
