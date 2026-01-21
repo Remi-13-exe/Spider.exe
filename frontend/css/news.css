@@ -85,8 +85,8 @@
 }
 
 .cover-black {
-  background: #000;
-  color: #000;
+  background: #11110d;
+  color: #11110d;
 }
 
 .cover-black::before {
@@ -120,7 +120,7 @@
   font-size: 2rem;
   margin-top: 40px;
   margin-bottom: 10px;
-  text-align: left;
+  text-align: center;
 }
 
 /* ------------------------------------------------------ */
@@ -151,3 +151,31 @@
 .book .page .back p:last-of-type {
   margin-top: auto;
 }
+
+
+
+
+
+/* TITRE PLUS GRAND, SANS MARGE */
+.back.cover-black .end-message h2 {
+  font-size: 3rem;   /* vraiment grand */
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: #fff;
+  text-align: center;
+}
+
+.back.cover-black .end-message p {
+  font-size: 0.3  rem; /* paragraphe agrandi */
+  margin: 0;
+  color: #fff;
+  text-align: center;
+}
+
+/* GIF */
+.end-gif {
+  width: 40%;
+  margin-right: 40px;
+  max-width: 300px;
+  border-radius: 6px;
+  object-fit: cover;}
