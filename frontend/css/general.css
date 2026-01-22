@@ -21,6 +21,15 @@
    VARIABLES
 ========================= */
 
+/* Empêche le scroll horizontal */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* <-- désactive le scroll horizontal */
+}
+
+
 :root {
   --bg-main: #F5E6CB;
   --text-main: #000000;
@@ -52,4 +61,39 @@ p, .news article, .about-text p {
   line-height: 1.6;
   letter-spacing: 0.5px; /* léger espacement pour lisibilité */
   color: var(--text-main);
+}
+
+
+/* Scrollbar personnalisée pour Chrome, Edge et Safari */
+/* Scrollbar pour Chrome, Edge et Safari */
+::-webkit-scrollbar {
+  width: 12px;               /* largeur de la scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #111;           /* fond sombre derrière la barre */
+  border: 2px solid #900;    /* contour rouge (stroke) */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E31E1E;       /* couleur rouge Spider-Man */
+  border-radius: 10px;
+  border: 2px solid #000;    /* petit contour noir pour "pop" */
+}
+
+/* Hover pour thumb (optionnel mais plus interactif) */
+::-webkit-scrollbar-thumb:hover {
+  background: #FF2D2D;
+}
+
+/* Pour Firefox */
+* {
+  scrollbar-width: thin;       /* fine scrollbar */
+  scrollbar-color: #E31E1E #111; /* thumb / track */
+}
+
+/* Smooth scrolling global */
+html {
+  scroll-behavior: smooth;
 }

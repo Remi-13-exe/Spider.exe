@@ -10,14 +10,16 @@
 .book {
   position: relative;
   display: flex;
-  margin: auto;
-  width: 70cqmin;
+  bottom: 80px;            /* décale le flipbook vers le bas pour éviter le rectangle */
+  margin: 0 auto;        /* centrage horizontal seulement */
+  width: 65cqmin;
   pointer-events: none;
   transform-style: preserve-3d;
   transition: translate 1s;
   translate: calc(min(var(--c), 1) * 50%) 0%;
   rotate: 1 0 0 30deg;
 }
+
 
 .page {
   --thickness: 4;
