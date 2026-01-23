@@ -1,10 +1,23 @@
-.carousel {
-  display: flex;
-  overflow: hidden;
+.characters-carousel {
   width: 100%;
-  gap: 20px;
+  overflow: hidden;
+  padding: 40px 0;
 }
 
+/* PISTE QUI DEFILE */
+.carousel-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  display: inline-flex;
+  gap: 20px;
+  white-space: nowrap;
+  animation: carousel-scroll 25s linear infinite;
+}
+
+/* TES STYLES EXISTANTS */
 .carousel-slide {
   flex: 0 0 auto;
   width: 200px;
@@ -32,4 +45,14 @@
 .carousel-universe {
   font-size: 0.9rem;
   color: #E31E1E;
+}
+
+/* ANIMATION INFINIE */
+@keyframes carousel-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
