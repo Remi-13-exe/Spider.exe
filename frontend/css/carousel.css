@@ -1,23 +1,27 @@
+/* CONTAINER GLOBAL */
 .characters-carousel {
   width: 100%;
   overflow: hidden;
   padding: 40px 0;
 }
 
-/* PISTE QUI DEFILE */
+/* WRAPPER */
 .carousel-wrapper {
   width: 100%;
   overflow: hidden;
 }
 
+/* CAROUSEL INFINI */
 .carousel {
   display: inline-flex;
   gap: 20px;
   white-space: nowrap;
-  animation: carousel-scroll 25s linear infinite;
+  animation: carousel-scroll 12s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
-/* TES STYLES EXISTANTS */
+/* SLIDE DE BASE */
 .carousel-slide {
   flex: 0 0 auto;
   width: 200px;
@@ -27,8 +31,20 @@
   border-radius: 10px;
   padding: 10px;
   box-shadow: 4px 4px 0 #000;
+  cursor: pointer;
+
+  /* IMPORTANT : pas de transform ici → sinon conflit avec le zoom JS */
+  transform-style: preserve-3d;
+  perspective: 800px;
 }
 
+/* CONTENU INTERNE POUR LA 3D */
+.slide-inner {
+  transition: transform 0.25s ease;
+  transform-style: preserve-3d;
+}
+
+/* IMAGE */
 .carousel-img {
   width: 100%;
   height: 250px;
@@ -37,6 +53,7 @@
   border-radius: 6px;
 }
 
+/* TEXTE */
 .carousel-name {
   font-family: 'Badaboom BB', cursive;
   margin: 10px 0 5px 0;
@@ -44,15 +61,26 @@
 
 .carousel-universe {
   font-size: 0.9rem;
-  color: #E31E1E;
+  color: #1A75CF;
+}
+
+/* 🎯 EFFET 3D AU SURVOL */
+.carousel-slide:hover .slide-inner {
+  transform: rotateY(12deg) rotateX(6deg) scale(1.12);
+}
+
+.carousel-slide:hover {
+  box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.35);
+  z-index: 999;
+}
+
+/* 🎯 PAUSE DU CAROUSEL AU SURVOL */
+.carousel:hover {
+  animation-play-state: paused;
 }
 
 /* ANIMATION INFINIE */
 @keyframes carousel-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
