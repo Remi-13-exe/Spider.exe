@@ -1,48 +1,95 @@
-/* CONTAINER GLOBAL */
+/* ------------------------------------------------------ */
+/* CONTAINER GLOBAL                                      */
+/* ------------------------------------------------------ */
 .characters-carousel {
   width: 100%;
-  overflow: hidden;
-  padding: 40px 0;
+  overflow-x: hidden;       /* bloque la scrollbar horizontal */
+  overflow-y: visible;      /* autorise rotation verticale complète */
+  padding: 120px 0 40px;    /* 🔥 plus d’espace en haut pour la rotation */
 }
 
 /* WRAPPER */
 .carousel-wrapper {
   width: 100%;
-  overflow: hidden;
+  position: relative;
+  overflow-x: hidden;       /* bloque la scrollbar horizontal */
+  overflow-y: visible;
+  padding-top: 50px;        /* 🔒 espace vertical supplémentaire */
 }
 
-/* CAROUSEL INFINI */
+/* ------------------------------------------------------ */
+/* CAROUSEL INFINI                                       */
+/* ------------------------------------------------------ */
 .carousel {
   display: inline-flex;
   gap: 20px;
   white-space: nowrap;
-  animation: carousel-scroll 12s linear infinite;
   will-change: transform;
   transform: translateZ(0);
+
+  transform-style: preserve-3d;
+  contain: paint;           /* empêche overflow fantôme */
+  padding-top: 40px;        /* sécurité anti-coupe */
 }
 
 /* SLIDE DE BASE */
 .carousel-slide {
   flex: 0 0 auto;
   width: 200px;
-  text-align: center;
-  border: 2px solid #000;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------ */
+/* WRAPPER 3D                                            */
+/* ------------------------------------------------------ */
+.slide-3d-wrapper {
+  position: relative;
   background: #fff;
+  border: 2px solid #000;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 4px 4px 0 #000;
-  cursor: pointer;
 
-  /* IMPORTANT : pas de transform ici → sinon conflit avec le zoom JS */
-  transform-style: preserve-3d;
   perspective: 800px;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease;
+  will-change: transform;
+  margin-top: 20px;          /* 🔒 encore plus de place pour osciller */
 }
 
-/* CONTENU INTERNE POUR LA 3D */
-.slide-inner {
-  transition: transform 0.25s ease;
-  transform-style: preserve-3d;
+/* FLASH EFFECT */
+.slide-3d-wrapper::after {
+  content: "";
+  position: absolute;
+  top: -120%;
+  left: -60%;
+  width: 70%;
+  height: 320%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.4) 42%,
+    rgba(255,255,255,1) 50%,
+    rgba(255,255,255,0.4) 58%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  opacity: 0;
+  pointer-events: none;
 }
+
+.slide-3d-wrapper.flash::after {
+  animation: card-flash 0.35s ease-out forwards;
+}
+
+@keyframes card-flash {
+  0% { opacity: 0; transform: translateX(-140%) rotate(25deg); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(240%) rotate(25deg); }
+}
+
+/* CONTENU INTERNE */
+.slide-inner { transform-style: preserve-3d; }
 
 /* IMAGE */
 .carousel-img {
@@ -57,30 +104,23 @@
 .carousel-name {
   font-family: 'Badaboom BB', cursive;
   margin: 10px 0 5px 0;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .carousel-universe {
   font-size: 0.9rem;
   color: #1A75CF;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* 🎯 EFFET 3D AU SURVOL */
-.carousel-slide:hover .slide-inner {
-  transform: rotateY(12deg) rotateX(6deg) scale(1.12);
-}
-
-.carousel-slide:hover {
-  box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.35);
+/* HOVER */
+.carousel-slide:hover .slide-3d-wrapper {
+  box-shadow: 14px 14px 24px rgba(0, 0, 0, 0.35);
   z-index: 999;
-}
-
-/* 🎯 PAUSE DU CAROUSEL AU SURVOL */
-.carousel:hover {
-  animation-play-state: paused;
-}
-
-/* ANIMATION INFINIE */
-@keyframes carousel-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
 }

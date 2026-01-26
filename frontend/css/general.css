@@ -45,6 +45,7 @@ body {
   background-color: var(--bg-main);
   margin: 0;
   color: var(--text-main);
+    overflow-x: hidden;
   
 }
 
@@ -97,3 +98,4 @@ p, .news article, .about-text p {
 html {
   scroll-behavior: smooth;
 }
+
