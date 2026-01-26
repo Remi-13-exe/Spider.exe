@@ -1,47 +1,35 @@
 /* ------------------------------------------------------ */
-/* CONTAINER GLOBAL                                      */
-/* ------------------------------------------------------ */
+/* CARROUSEL */
 .characters-carousel {
   width: 100%;
-  overflow-x: hidden;       /* bloque la scrollbar horizontal */
-  overflow-y: visible;      /* autorise rotation verticale complète */
-  padding: 120px 0 40px;    /* 🔥 plus d’espace en haut pour la rotation */
+  padding: 100px 0 100px 0; /* plus d'espace top/bottom pour l'oscillation */
+  overflow: visible; /* 🔥 visible pour osciller librement */
 }
 
-/* WRAPPER */
 .carousel-wrapper {
   width: 100%;
   position: relative;
-  overflow-x: hidden;       /* bloque la scrollbar horizontal */
-  overflow-y: visible;
-  padding-top: 50px;        /* 🔒 espace vertical supplémentaire */
+  overflow: visible; /* 🔥 important */
 }
 
-/* ------------------------------------------------------ */
-/* CAROUSEL INFINI                                       */
-/* ------------------------------------------------------ */
 .carousel {
   display: inline-flex;
   gap: 20px;
   white-space: nowrap;
   will-change: transform;
   transform: translateZ(0);
-
   transform-style: preserve-3d;
-  contain: paint;           /* empêche overflow fantôme */
-  padding-top: 40px;        /* sécurité anti-coupe */
+  padding-top: 50px;   /* espace supplémentaire */
+  padding-bottom: 50px;/* espace supplémentaire */
 }
 
-/* SLIDE DE BASE */
+/* SLIDE */
 .carousel-slide {
   flex: 0 0 auto;
   width: 200px;
   cursor: pointer;
 }
 
-/* ------------------------------------------------------ */
-/* WRAPPER 3D                                            */
-/* ------------------------------------------------------ */
 .slide-3d-wrapper {
   position: relative;
   background: #fff;
@@ -52,9 +40,10 @@
 
   perspective: 800px;
   transform-style: preserve-3d;
-  transition: transform 0.15s ease;
+  transition: transform 0.2s ease;
   will-change: transform;
-  margin-top: 20px;          /* 🔒 encore plus de place pour osciller */
+
+  overflow: visible; /* 🔥 laisse passer rotations */
 }
 
 /* FLASH EFFECT */
@@ -68,9 +57,9 @@
   background: linear-gradient(
     120deg,
     transparent 0%,
-    rgba(255,255,255,0.4) 42%,
-    rgba(255,255,255,1) 50%,
-    rgba(255,255,255,0.4) 58%,
+    rgba(255,255,255,0.35) 42%,
+    rgba(255,255,255,0.95) 50%,
+    rgba(255,255,255,0.35) 58%,
     transparent 100%
   );
   transform: rotate(25deg);
@@ -83,15 +72,16 @@
 }
 
 @keyframes card-flash {
-  0% { opacity: 0; transform: translateX(-140%) rotate(25deg); }
+  0% { opacity: 0; transform: translateX(-120%) rotate(25deg); }
   30% { opacity: 1; }
-  100% { opacity: 0; transform: translateX(240%) rotate(25deg); }
+  100% { opacity: 0; transform: translateX(220%) rotate(25deg); }
 }
 
-/* CONTENU INTERNE */
-.slide-inner { transform-style: preserve-3d; }
+/* CONTENU */
+.slide-inner {
+  transform-style: preserve-3d;
+}
 
-/* IMAGE */
 .carousel-img {
   width: 100%;
   height: 250px;
@@ -100,27 +90,137 @@
   border-radius: 6px;
 }
 
-/* TEXTE */
-.carousel-name {
-  font-family: 'Badaboom BB', cursive;
-  margin: 10px 0 5px 0;
+.carousel-name, .carousel-universe {
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.carousel-universe {
-  font-size: 0.9rem;
-  color: #1A75CF;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* HOVER */
 .carousel-slide:hover .slide-3d-wrapper {
-  box-shadow: 14px 14px 24px rgba(0, 0, 0, 0.35);
+  box-shadow: 12px 12px 20px rgba(0,0,0,0.35);
   z-index: 999;
+  transition: transform 0.1s ease;
+}
+
+
+
+
+/* ------------------------------ */
+/* TABLETTE (max-width: 1024px)  */
+/* ------------------------------ */
+@media (max-width: 1024px) {
+
+  /* HERO */
+  .hero {
+    height: 70vh;
+  }
+  .hero-overlay {
+    padding: 30px 40px;
+  }
+  .hero-overlay h1 {
+    font-size: 2.5rem;
+  }
+  #discoverBtn {
+    font-size: 1.2rem;
+    padding: 20px 15px;
+  }
+
+  /* ABOUT */
+  .about {
+    flex-direction: column; /* empile image et texte */
+    gap: 40px;
+    padding: 30px;
+  }
+  .about-text {
+    margin-top: 0;
+    max-width: 90%;
+  }
+  .about-text p {
+    max-width: 100%;
+  }
+  .about-image img {
+    width: 280px;
+    transform: rotate(6deg);
+  }
+
+  /* NEWS BAR */
+  .comic-bar {
+    margin: 10px 0 150px 0;
+  }
+
+  /* CAROUSEL */
+  .characters-carousel {
+    padding: 80px 0;
+  }
+  .carousel-slide {
+    width: 160px;
+  }
+  .carousel-img {
+    height: 200px;
+  }
+}
+
+/* ------------------------------ */
+/* MOBILE (max-width: 768px)      */
+/* ------------------------------ */
+@media (max-width: 768px) {
+
+  /* HERO */
+  .hero {
+    height: 60vh;
+  }
+  .hero-overlay {
+    padding: 20px 25px;
+  }
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+  #discoverBtn {
+    font-size: 1rem;
+    padding: 15px 12px;
+  }
+
+  /* ABOUT */
+  .about {
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+  }
+  .about-text h2 {
+    font-size: 2rem;
+  }
+  .about-text p {
+    max-width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .about-image img {
+    width: 220px;
+    transform: rotate(6deg);
+  }
+
+  /* NEWS BAR */
+  .comic-bar {
+    margin: 10px 0 100px 0;
+  }
+
+  /* CAROUSEL */
+  .characters-carousel {
+    padding: 60px 0;
+  }
+  .carousel-slide {
+    width: 140px;
+  }
+  .carousel-img {
+    height: 160px;
+  }
+
+  /* Texte carousel */
+  .carousel-name {
+    font-size: 0.9rem;
+  }
+  .carousel-universe {
+    font-size: 0.8rem;
+  }
 }

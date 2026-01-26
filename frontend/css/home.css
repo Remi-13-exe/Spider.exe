@@ -1,38 +1,33 @@
-/* HERO */
-/* HERO */
+/* ------------------------------------------------------ */
+/* HERO                                                  */
+/* ------------------------------------------------------ */
 .hero {
-  height: 90vh; /* un peu moins haut */
+  min-height: 75vh; /* moins haut pour que les sections suivantes arrivent plus vite */
   background-image: url('../assets/images/fond-spiderman.png');
-  background-size: 100%; /* réduit l'image à 90% de sa taille naturelle */
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   display: flex;
-  align-items: center;
+  align-items: flex-end; /* titre plus bas pour libérer l’espace visuel */
   justify-content: center;
-
   position: relative;
 }
 
-
-/* OVERLAY CONTENU */
 .hero-overlay {
-  background-color: rgba(0, 0, 0, 0.6); /* noir transparent */
-  padding: 40px 60px;
-
+  background-color: rgba(0, 0, 0, 0.5); /* noir transparent */
+  padding: 30px 40px;
+  border-radius: 10px;
   text-align: center;
   max-width: 800px;
 }
 
-/* TITRE HERO */
 .hero-overlay h1 {
   font-family: 'Badaboom BB', cursive;
   font-size: 3rem;
   color: #F5E6CB;
-
   letter-spacing: 2px;
-  margin-bottom: 30px;
-
+  margin-bottom: 25px;
   text-shadow:
     -1.5px -1.5px 0 #000,
      0   -1.5px 0 #000,
@@ -44,30 +39,19 @@
      1.5px  1.5px 0 #000;
 }
 
-
-/* BOUTON */
-/* BOUTON "Découvrir les personnages" */
+/* BOUTON HERO */
 #discoverBtn {
-  font-family: 'Badaboom BB', cursive;   /* police corrigée */
+  font-family: 'Badaboom BB', cursive;
   font-size: 1.4rem;
-  font-weight: 400;                     /* force un poids normal */
-  font-style: normal;                   /* évite italique déformé */
-
-  color: #F5E6CB;                       /* texte beige */
-  background: #E31E1E;                  /* rouge Spider-Man */
+  color: #F5E6CB;
+  background: #E31E1E;
   border: 3px solid #000;
-
-  padding: 25px 20px;
+  padding: 20px 25px;
   cursor: pointer;
-
   letter-spacing: 0.5px;
-
-  /* effet comics */
-  text-shadow:
-    1px 1px 0 #000,
-    -1px -1px 0 #000;
-
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: pulse 2s ease-in-out infinite alternate;
 }
 
 #discoverBtn:hover {
@@ -75,54 +59,67 @@
   box-shadow: 4px 4px 0 #000;
 }
 
+@keyframes pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
 
-/* CENTRER LE TITRE ACTUALITÉS */
+/* GIF FLOTTANT HERO */
+.hero-sub-img img {
+  width: 250px;
+  display: block;
+  margin: -50px auto 20px auto;
+  position: relative;
+  animation: float 3s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-15px); }
+}
+
+/* ------------------------------------------------------ */
+/* ACTUALITÉS                                           */
+/* ------------------------------------------------------ */
 .news h2 {
   text-align: center;
   font-size: 56px;
-position: relative; /* nécessaire pour la barre */
-  margin-bottom: 30px;
-
+  margin-bottom: 20px;
 }
-/* BARRE HORIZONTALE COMICS RÉUTILISABLE */
+
 .comic-bar {
-  width: 100vw;               /* largeur totale de la page */
-  height: 6px;                 /* épaisseur de la barre */
-  background-color: #E31E1E;  /* rouge Spider-Man */
-  border: 2px solid #000;      /* contour noir */
-  margin: 10px 0 200px 0;       /* espace au-dessus et en-dessous */
+  width: 100vw;
+  height: 6px;
+  background-color: #E31E1E;
+  border: 2px solid #000;
+  margin: 20px 0 40px 0;
   box-sizing: border-box;
 }
 
-/* SECTION ABOUT */
-/* SECTION ABOUT */
+/* ------------------------------------------------------ */
+/* SECTION ABOUT                                        */
+/* ------------------------------------------------------ */
 .about {
   display: flex;
-  align-items: flex-start; /* alignement en haut */
+  align-items: flex-start;
   justify-content: center;
-  gap: 60px;
-  padding: 40px;
-  margin-bottom: 120px;
+  gap: 40px;
+  padding: 20px 40px;
+  margin-bottom: 60px;
 }
 
-/* TEXTE VERTICAL SANS FOND */
 .about-text {
-  
   min-height: 360px;
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
-  margin-top: -55px; /* remonte le texte */
+  margin-top: -30px;
 }
 
-
-/* TITRE AGRANDI */
 .about-text h2 {
   font-size: 3rem;
-  text-align: left;      /* plus naturel */
-  margin-bottom: 20px;
+  text-align: left;
+  margin-bottom: 15px;
 }
 
 .about-text p {
@@ -133,17 +130,10 @@ position: relative; /* nécessaire pour la barre */
   text-justify: inter-word;
 }
 
-
-
-
-/* IMAGE REDUITE + PENCHEE DANS L'AUTRE SENS */
 .about-image img {
   width: 320px;
-  transform: rotate(6deg);   /* penche dans l’autre sens */
+  transform: rotate(6deg);
   border-radius: 10px;
   border: 3px solid #000;
-
 }
-
-
 

@@ -181,3 +181,90 @@
   max-width: 300px;
   border-radius: 6px;
   object-fit: cover;}
+
+
+/* ------------------------------ */
+/* TABLETTE (max-width: 1024px)  */
+/* ------------------------------ */
+@media (max-width: 1024px) {
+  .book {
+    width: 50cqmin;
+    bottom: 60px;
+  }
+
+  .book .page .front h2,
+  .book .page .back h2 {
+    font-size: 2.4rem;  /* beaucoup plus gros */
+    margin-top: 40px;    /* plus d’espace au dessus */
+    margin-bottom: 15px; /* plus d’espace sous le titre */
+  }
+
+  .book .page p {
+    font-size: 1.6cqmin;   /* paragraphe plus gros */
+    line-height: 1.8cqmin; /* plus de hauteur pour lire */
+    margin: 20px 25px;     /* marges plus grandes */
+  }
+
+  /* Images des actualités */
+  .book .page .front .news-img,
+  .book .page .back .news-img {
+    width: 80%;
+    height: auto;
+    margin: 50px auto;   /* plus d’espace autour de l’image */
+  }
+
+  /* Couverture */
+   .cover::before {
+    background-size: 85% auto;
+    background-position: center;
+  }
+}
+
+
+/* ------------------------------ */
+/* MOBILE (max-width: 768px)      */
+/* ------------------------------ */
+@media (max-width: 768px) {
+  .book {
+    width: 45cqmin;
+    bottom: 20px;
+  }
+
+  .book .page .front h2,
+  .book .page .back h2 {
+    font-size: 2rem;     /* titre plus grand */
+    margin-top: 35px;
+    margin-bottom: 12px;
+  }
+
+  .book .page p {
+    font-size: 1.4cqmin;  /* paragraphe plus gros */
+    line-height: 1.6cqmin;
+    margin: 15px 20px;
+  }
+
+  /* Images des actualités */
+  .book .page .front .news-img,
+  .book .page .back .news-img {
+    width: 90%;
+    height: auto;
+    margin: 40px auto;
+  }
+
+  /* Couverture */
+  .cover::before {
+    background-size: 85% auto;
+    background-position: center;
+  }
+}
+/* CONTENEUR FIXE POUR CHAQUE IMAGE */
+.book .page .front .news-img,
+.book .page .back .news-img {
+  width: 100%;
+  aspect-ratio: 4/3;      /* force toutes les images à avoir le même ratio */
+  object-fit: cover;      /* coupe si nécessaire, mais garde le centre */
+  object-position: center;
+  display: block;
+  margin: 20px auto;      /* centrage vertical et horizontal */
+  border-radius: 6px;
+}
