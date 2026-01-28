@@ -1,29 +1,29 @@
+/* =========================
+   NAVBAR
+========================= */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 40px;
-
   background-color: #E31E1E;
   border: 3px solid #000;
   position: sticky;
   top: 0;
   z-index: 100;
 
-  height: auto;        /* ← clé */
   min-height: 60px;
-  overflow: visible;  /* ← clé */
+  overflow: visible;
+  box-sizing: border-box; /* 🔥 important */
 }
 
 /* LOGO */
 .navbar .logo {
   font-family: 'Comeback Home', sans-serif;
-  font-size: 3.4rem;              /* agrandi */
+  font-size: 3.4rem;
   font-weight: normal;
-  color: var(--text-main);        /* noir */
+  color: var(--text-main);
   margin: 0;
-
-  /* CONTOUR BEIGE COMME LES LIENS */
   text-shadow:
     -1px -1px 0 var(--text-outline),
      1px -1px 0 var(--text-outline),
@@ -31,18 +31,15 @@
      1px  1px 0 var(--text-outline);
 }
 
-
-
 /* NAVIGATION PRINCIPALE */
 .navbar nav {
   display: flex;
   align-items: center;
-  gap: 70px;
-  margin-right: 10px; /* ← ajuste ici */
-    position: relative; /* permet de positionner la search plus facilement */
-
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
-
 
 /* LIENS */
 .navbar nav a {
@@ -52,11 +49,7 @@
   color: var(--text-main);
   text-decoration: none;
   padding: 2px 6px;
-  margin-top: 10px;
-  transition: all 0.3s ease;
   text-rendering: geometricPrecision;
-
-
   text-shadow:
     -0.7px -0.7px 0 var(--text-outline),
      0.7px -0.7px 0 var(--text-outline),
@@ -64,183 +57,90 @@
      0.7px  0.7px 0 var(--text-outline);
 }
 
-
 .navbar nav a:hover {
-  text-decoration: none;
   color: #FFF;
 }
 
-/* Input search */
-.navbar nav input[type="search"] {
-  padding: 6px 6px;               /* padding vertical + horizontal */
-  font-size: 0.35rem;             /* ajuste légèrement la taille du texte */
-  font-family: 'Anime Ace 2.0 BB', sans-serif;
-  font-weight: 900;
-
-  border: 2px solid #000;
-  border-radius: 5px;
-
-  color: #000;
-  width: 170px;                   /* largeur fixe */
-  height: 30px;                   /* hauteur verticale */
-  line-height: 1;                  /* pour aligner le texte verticalement */
-  text-align: left;
-
-  margin-left: 50px;     
-  margin-top: 10px;
-}
-
-/* CONTENEUR RECHERCHE */
+/* SEARCH BOX */
 .search-box {
   position: relative;
-  margin-left: 50px;  /* espace par rapport aux liens */
+  margin-left: 20px; /* 🔥 réduit l’espace pour coller au burger */
 }
 
-/* INPUT */
-.search-box {
-  position: relative;
-  margin-left: 50px;
-}
-
-/* INPUT */
 .search-box input[type="search"] {
-    border-radius: 34px; /* 🔥 enfin visible */
-
-  padding: 6px 28px 6px 8px;   /* padding-right plus grand pour le PNG */
+  border-radius: 34px;
+  padding: 6px 28px 6px 8px;
   font-size: 0.35rem;
   font-family: 'Anime Ace 2.0 BB', sans-serif;
   font-weight: 900;
-
   border: 2px solid #000;
-
-  color: #000;
   width: 120px;
   height: 30px;
   line-height: 1;
-
-  text-align: left;
   box-sizing: border-box;
 }
 
-/* ICÔNE PNG */
 .search-box .search-icon {
   position: absolute;
-  right: 12px;              /* distance du bord droit */
-  top: 63%;
+  right: 12px;
+  top: 50%;
   transform: translateY(-50%);
-  pointer-events: none;     /* clique passe à travers l'icône */
-  width: 10px;              /* ajuste selon ton PNG */
+  pointer-events: none;
+  width: 10px;
   height: 10px;
 }
-/* ------------------------------------------------------ */
-/* CARROUSEL                                           */
-/* ------------------------------------------------------ */
-.characters-carousel {
-  width: 100%;
-  overflow: hidden;
-  padding: 20px 0;
-}
 
-.carousel-wrapper {
-  width: 100%;
-  position: relative;
-  overflow: hidden; /* 🔥 empêche la barre de scroll */
-}
-
-.carousel {
-  display: inline-flex;
-  gap: 20px;
-  white-space: nowrap;
-  will-change: transform;
-  transform: translateZ(0);
-  transform-style: preserve-3d;
-  contain: layout paint; /* empêche overflow fantôme */
-}
-
-.carousel-slide {
-  flex: 0 0 auto;
-  width: 200px;
+/* =========================
+   BURGER MENU
+========================= */
+/* ------------------------------ */
+/* BURGER MENU                    */
+/* ------------------------------ */
+.burger {
+  display: none;             /* caché par défaut */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
   cursor: pointer;
 }
 
-.slide-3d-wrapper {
-  position: relative;
-  background: #fff;
-  border: 2px solid #000;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 4px 4px 0 #000;
-  perspective: 800px;
-  transform-style: preserve-3d;
-  transition: transform 0.2s ease;
-  will-change: transform;
+.burger span {
+  display: block;
+  height: 3px;
+  background-color: #000;
+  border-radius: 2px;
 }
 
-/* FLASH EFFECT */
-.slide-3d-wrapper::after {
-  content: "";
-  position: absolute;
-  top: -120%;
-  left: -60%;
-  width: 70%;
-  height: 320%;
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(255,255,255,0.35) 42%,
-    rgba(255,255,255,0.95) 50%, /* plus blanc */
-    rgba(255,255,255,0.35) 58%,
-    transparent 100%
-  );
-  transform: rotate(25deg);
-  opacity: 0;
-  pointer-events: none;
-}
+/* ------------------------------ */
+/* RESPONSIVE NAVBAR              */
+/* ------------------------------ */
+@media (max-width: 1024px) {
+  .navbar nav {
+    display: none;             /* on cache les liens */
+    position: absolute;
+    top: 60px;                 /* juste en dessous de la navbar */
+    right: 0;
+    width: 200px;
+    background-color: #E31E1E;
+    border: 3px solid #000;
+    border-radius: 6px;
+    flex-direction: column;
+    gap: 0;
+    padding: 10px;
+    z-index: 99;
+  }
 
-.slide-3d-wrapper.flash::after {
-  animation: card-flash 0.35s ease-out forwards;
-}
+  .navbar nav.active {
+    display: flex;             /* affiché quand burger cliqué */
+  }
 
-@keyframes card-flash {
-  0% { opacity: 0; transform: translateX(-120%) rotate(25deg); }
-  30% { opacity: 1; }
-  100% { opacity: 0; transform: translateX(220%) rotate(25deg); }
-}
+  .burger {
+    display: flex;             /* burger visible sur tablette / mobile */
+    margin-left: auto;         /* pousse à droite */
+  }
 
-/* CONTENU CARROUSEL */
-.slide-inner {
-  transform-style: preserve-3d;
-}
-
-.carousel-img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border: 1px solid #000;
-  border-radius: 6px;
-}
-
-.carousel-name {
-  font-family: 'Badaboom BB', cursive;
-  margin: 10px 0 5px 0;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.carousel-universe {
-  font-size: 0.9rem;
-  color: #1A75CF;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* HOVER CARROUSEL */
-.carousel-slide:hover .slide-3d-wrapper {
-  box-shadow: 12px 12px 20px rgba(0,0,0,0.35);
-  z-index: 999;
-  transition: transform 0.1s ease;
+  .search-box {
+    margin-left: 0;            /* supprime l’espace fantôme */
+  }
 }
