@@ -42,3 +42,19 @@ document.addEventListener('click', (e) => {
     nav.classList.remove('active');
   }
 });
+
+const input = document.getElementById('site-search');
+const placeholderText = "Rechercher un personnage... ";
+let i = 0;
+
+function animatePlaceholder() {
+  if (!input.value) { // seulement si l'utilisateur n'a rien écrit
+    input.placeholder = placeholderText.slice(i) + placeholderText.slice(0, i);
+    i = (i + 1) % placeholderText.length;
+  }
+  setTimeout(animatePlaceholder, 100); // 🔥 vitesse plus rapide et fluide
+}
+
+animatePlaceholder();
+
+

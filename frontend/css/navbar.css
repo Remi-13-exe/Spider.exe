@@ -11,19 +11,16 @@
   position: sticky;
   top: 0;
   z-index: 100;
-
   min-height: 60px;
-  overflow: visible;
-  box-sizing: border-box; /* 🔥 important */
+  box-sizing: border-box;
 }
 
 /* LOGO */
 .navbar .logo {
   font-family: 'Comeback Home', sans-serif;
   font-size: 3.4rem;
-  font-weight: normal;
-  color: var(--text-main);
   margin: 0;
+  color: var(--text-main);
   text-shadow:
     -1px -1px 0 var(--text-outline),
      1px -1px 0 var(--text-outline),
@@ -31,13 +28,11 @@
      1px  1px 0 var(--text-outline);
 }
 
-/* NAVIGATION PRINCIPALE */
+/* NAV */
 .navbar nav {
   display: flex;
   align-items: center;
   gap: 40px;
-  margin: 0;
-  padding: 0;
   position: relative;
 }
 
@@ -49,7 +44,6 @@
   color: var(--text-main);
   text-decoration: none;
   padding: 2px 6px;
-  text-rendering: geometricPrecision;
   text-shadow:
     -0.7px -0.7px 0 var(--text-outline),
      0.7px -0.7px 0 var(--text-outline),
@@ -61,86 +55,129 @@
   color: #FFF;
 }
 
-/* SEARCH BOX */
+/* =========================
+   SEARCH BOX
+========================= */
 .search-box {
   position: relative;
-  margin-left: 20px; /* 🔥 réduit l’espace pour coller au burger */
+  margin-left: 15px;
+  overflow: hidden;  display: flex;
+
 }
 
 .search-box input[type="search"] {
-  border-radius: 34px;
-  padding: 6px 28px 6px 8px;
-  font-size: 0.35rem;
+  width: 90px;
+  height: 28px;
+  border-radius: 30px;
+  padding: 5px 10px 5px 8px;
+  font-size: 0.32rem;
   font-family: 'Anime Ace 2.0 BB', sans-serif;
   font-weight: 900;
   border: 2px solid #000;
-  width: 120px;
-  height: 30px;
-  line-height: 1;
   box-sizing: border-box;
+}
+
+.search-box input::placeholder {
+  color: #000;
+  opacity: 0.6;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  left: 120px;
 }
 
 .search-box .search-icon {
   position: absolute;
-  right: 12px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
+  width: 9px;
+  height: 9px;
   pointer-events: none;
-  width: 10px;
-  height: 10px;
 }
 
 /* =========================
-   BURGER MENU
+   BURGER
 ========================= */
-/* ------------------------------ */
-/* BURGER MENU                    */
-/* ------------------------------ */
 .burger {
-  display: none;             /* caché par défaut */
+  display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 30px;
-  height: 21px;
+  width: 28px;
+  height: 20px;
   cursor: pointer;
 }
 
 .burger span {
-  display: block;
   height: 3px;
   background-color: #000;
   border-radius: 2px;
 }
 
-/* ------------------------------ */
-/* RESPONSIVE NAVBAR              */
-/* ------------------------------ */
+/* =========================
+   RESPONSIVE NAVBAR
+========================= */
 @media (max-width: 1024px) {
+
+  /* MENU BURGER HIDDEN PAR DÉFAUT */
   .navbar nav {
-    display: none;             /* on cache les liens */
     position: absolute;
-    top: 60px;                 /* juste en dessous de la navbar */
+    top: calc(100% + 6px); /* petit espace sous la navbar */
     right: 0;
-    width: 200px;
+    width: 150px;
     background-color: #E31E1E;
     border: 3px solid #000;
-    border-radius: 6px;
+    border-radius: 0 0 6px 6px;
     flex-direction: column;
-    gap: 0;
-    padding: 10px;
+    gap: 8px;
+    padding: 10px 8px;
     z-index: 99;
+
+    transform: translateX(110%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.25s ease;
   }
 
+  /* MENU BURGER VISIBLE */
   .navbar nav.active {
-    display: flex;             /* affiché quand burger cliqué */
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+    animation: burger-pop 0.35s ease;
   }
 
-  .burger {
-    display: flex;             /* burger visible sur tablette / mobile */
-    margin-left: auto;         /* pousse à droite */
+  .navbar nav a {
+    font-size: 0.65rem;
+    padding: 6px 0;
+    text-align: center;
   }
 
+  /* SEARCH BOX RESPONSIVE */
   .search-box {
-    margin-left: 0;            /* supprime l’espace fantôme */
+    margin: 8px auto 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
+
+  .search-box input[type="search"] {
+    width: 85px;
+  }
+
+  /* BURGER */
+  .burger {
+    display: flex;
+    margin-left: auto;
+    margin-top: 4px; /* 🔥 espace sous le stroke du haut */
+  }
+}
+
+/* =========================
+   ANIMATION BURGER
+========================= */
+@keyframes burger-pop {
+  0%   { transform: translateX(110%) scale(0.95); }
+  70%  { transform: translateX(-5%) scale(1.03); }
+  100% { transform: translateX(0) scale(1); }
 }

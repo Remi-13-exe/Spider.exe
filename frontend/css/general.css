@@ -97,3 +97,29 @@ p, .news article, .about-text p {
 html {
   scroll-behavior: smooth;
 }
+
+
+/* =========================
+   HIDE SCROLLBAR - RESPONSIVE
+========================= */
+/* =========================
+   HIDE SCROLLBAR - RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  /* Chrome, Edge, Safari */
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: none;
+  }
+
+  /* IE / old Edge */
+  body {
+    -ms-overflow-style: none;
+  }
+}
+
