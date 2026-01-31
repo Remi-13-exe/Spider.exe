@@ -5,11 +5,10 @@
   padding: 100px 0 100px 0; /* plus d'espace top/bottom pour l'oscillation */
   overflow: visible; /* 🔥 visible pour osciller librement */
 }
-
 .carousel-wrapper {
   width: 100%;
+  overflow: hidden; /* 👈 empêche scrollbar */
   position: relative;
-  overflow: visible; /* 🔥 important */
 }
 
 .carousel {

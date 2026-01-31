@@ -1,25 +1,76 @@
 /* ------------------------------------------------------ */
+/* ANIMATIONS GLOBALES                                   */
+/* ------------------------------------------------------ */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-15px); }
+}
+
+/* ------------------------------------------------------ */
 /* HERO                                                  */
 /* ------------------------------------------------------ */
+
 .hero {
-  min-height: 75vh; /* moins haut pour que les sections suivantes arrivent plus vite */
+  min-height: 75vh;
   background-image: url('../assets/images/fond-spiderman.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   display: flex;
-  align-items: flex-end; /* titre plus bas pour libérer l’espace visuel */
+  align-items: flex-end;
   justify-content: center;
   position: relative;
+  overflow: hidden;
 }
 
 .hero-overlay {
-  background-color: rgba(0, 0, 0, 0.5); /* noir transparent */
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 30px 40px;
   border-radius: 10px;
   text-align: center;
   max-width: 800px;
+
+  animation: fadeUp 1s ease forwards;
 }
 
 .hero-overlay h1 {
@@ -28,6 +79,7 @@
   color: #F5E6CB;
   letter-spacing: 2px;
   margin-bottom: 25px;
+
   text-shadow:
     -1.5px -1.5px 0 #000,
      0   -1.5px 0 #000,
@@ -40,6 +92,7 @@
 }
 
 /* BOUTON HERO */
+
 #discoverBtn {
   font-family: 'Badaboom BB', cursive;
   font-size: 1.4rem;
@@ -49,38 +102,34 @@
   padding: 20px 25px;
   cursor: pointer;
   letter-spacing: 0.5px;
+
   text-shadow: 1px 1px 0 #000, -1px -1px 0 #000;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   animation: pulse 2s ease-in-out infinite alternate;
 }
 
 #discoverBtn:hover {
-  transform: translateY(-3px);
-  box-shadow: 4px 4px 0 #000;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 6px 6px 0 #000;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.05); }
-}
+/* IMAGE / GIF HERO */
 
-/* GIF FLOTTANT HERO */
 .hero-sub-img img {
   width: 250px;
   display: block;
   margin: -50px auto 20px auto;
-  position: relative;
   animation: float 3s ease-in-out infinite alternate;
-}
-
-@keyframes float {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-15px); }
 }
 
 /* ------------------------------------------------------ */
 /* ACTUALITÉS                                           */
 /* ------------------------------------------------------ */
+
+.news {
+  animation: fadeUp 1s ease forwards;
+}
+
 .news h2 {
   text-align: center;
   font-size: 56px;
@@ -94,11 +143,14 @@
   border: 2px solid #000;
   margin: 20px 0 40px 0;
   box-sizing: border-box;
+
+  animation: fadeLeft 1s ease forwards;
 }
 
 /* ------------------------------------------------------ */
 /* SECTION ABOUT                                        */
 /* ------------------------------------------------------ */
+
 .about {
   display: flex;
   align-items: flex-start;
@@ -114,6 +166,8 @@
   flex-direction: column;
   justify-content: flex-start;
   margin-top: -30px;
+
+  animation: fadeLeft 1s ease forwards;
 }
 
 .about-text h2 {
@@ -130,11 +184,33 @@
   text-justify: inter-word;
 }
 
+.about-image {
+  animation: fadeRight 1s ease forwards;
+}
+
 .about-image img {
   width: 320px;
   transform: rotate(6deg);
   border-radius: 10px;
   border: 3px solid #000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.about-image img:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 10px 10px 0 #000;
+}
 
+/* ------------------------------------------------------ */
+/* MICRO-INTERACTIONS GLOBALES                           */
+/* ------------------------------------------------------ */
+
+button,
+a {
+  transition: transform 0.2s ease;
+}
+
+button:hover,
+a:hover {
+  transform: translateY(-2px);
+}

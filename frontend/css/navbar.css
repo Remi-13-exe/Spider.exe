@@ -3,47 +3,51 @@
 ========================= */
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* logo à gauche, nav au centre, search à droite */
   align-items: center;
-  padding: 10px 40px;
-  background-color: #E31E1E;
+  padding: 5px 40px;   /* réduit le padding vertical */
+  background-color: #E31E1E; /* fond rouge */
   border: 3px solid #000;
   position: sticky;
   top: 0;
   z-index: 100;
-  min-height: 60px;
+  min-height: 40px;    /* réduit la hauteur verticale */
   box-sizing: border-box;
 }
 
 /* LOGO */
 .navbar .logo {
   font-family: 'Comeback Home', sans-serif;
-  font-size: 3.4rem;
-  margin: 0;
+  font-size: 4.4rem;  /* légèrement réduit */
   color: var(--text-main);
   text-shadow:
     -1px -1px 0 var(--text-outline),
      1px -1px 0 var(--text-outline),
     -1px  1px 0 var(--text-outline),
      1px  1px 0 var(--text-outline);
+  line-height: 1; /* aligne mieux verticalement */
+    padding-top: 10px;
+
 }
 
 /* NAV */
 .navbar nav {
   display: flex;
   align-items: center;
-  gap: 40px;
-  position: relative;
+  gap: 100px; /* espace entre les liens */
+  justify-content: center;
+  padding-top: 15px;
+
 }
 
 /* LIENS */
 .navbar nav a {
   font-family: 'Anime Ace 2.0 BB', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.9rem;  /* légèrement réduit verticalement */
   font-weight: 900;
   color: var(--text-main);
   text-decoration: none;
-  padding: 2px 6px;
+  padding: 1px 6px;   /* réduit padding vertical */
   text-shadow:
     -0.7px -0.7px 0 var(--text-outline),
      0.7px -0.7px 0 var(--text-outline),
@@ -60,17 +64,24 @@
 ========================= */
 .search-box {
   position: relative;
-  margin-left: 15px;
-  overflow: hidden;  display: flex;
+  margin-left: 15rem; /* ajuste l’espace à droite */
+  display: flex;
+  align-items: center; /* aligne verticalement avec nav */
+}
 
+/* Enlever la croix par défaut */
+.search-box input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
 }
 
 .search-box input[type="search"] {
-  width: 90px;
-  height: 28px;
-  border-radius: 30px;
+  width: 200px;  /* un peu plus petit pour compacter */
+  height: 40px;  /* réduit la hauteur */
+  border-radius: 25px;
   padding: 5px 10px 5px 8px;
-  font-size: 0.32rem;
+  font-size: 0.55rem;
   font-family: 'Anime Ace 2.0 BB', sans-serif;
   font-weight: 900;
   border: 2px solid #000;
@@ -80,10 +91,6 @@
 .search-box input::placeholder {
   color: #000;
   opacity: 0.6;
-  white-space: nowrap;
-  overflow: hidden;
-  display: inline-block;
-  left: 120px;
 }
 
 .search-box .search-icon {
@@ -118,60 +125,58 @@
    RESPONSIVE NAVBAR
 ========================= */
 @media (max-width: 1024px) {
+  .navbar .logo {
+    font-size: 2.6rem; /* réduit logo */
+  }
 
-  /* MENU BURGER HIDDEN PAR DÉFAUT */
   .navbar nav {
     position: absolute;
-    top: calc(100% + 6px); /* petit espace sous la navbar */
+    top: 40px;           /* réduit verticalement sous navbar */
     right: 0;
     width: 150px;
     background-color: #E31E1E;
     border: 3px solid #000;
     border-radius: 0 0 6px 6px;
     flex-direction: column;
-    gap: 8px;
-    padding: 10px 8px;
-    z-index: 99;
-
-    transform: translateX(110%);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.3s ease, opacity 0.25s ease;
+    gap: 6px;
+    padding: 8px 8px;
+    z-index: 200;
+    display: none;
   }
 
-  /* MENU BURGER VISIBLE */
   .navbar nav.active {
-    transform: translateX(0);
-    opacity: 1;
-    pointer-events: auto;
-    animation: burger-pop 0.35s ease;
+    display: flex;
   }
 
   .navbar nav a {
-    font-size: 0.65rem;
-    padding: 6px 0;
+    font-size: 0.8rem;
+    padding: 5px 0;
     text-align: center;
   }
 
-  /* SEARCH BOX RESPONSIVE */
+  /* search box centrée sous menu */
   .search-box {
-    margin: 8px auto 0;
-    width: 100%;
-    display: flex;
+    margin: 6px auto 8px auto;
+    width: 90%;
     justify-content: center;
   }
 
   .search-box input[type="search"] {
-    width: 85px;
+    width: 110px;
+    height: 30px;
   }
 
-  /* BURGER */
   .burger {
     display: flex;
-    margin-left: auto;
-    margin-top: 4px; /* 🔥 espace sous le stroke du haut */
+    margin-left: auto; /* burger tout à droite */
+  }
+  .search-icon {
+    right: 20px;
   }
 }
+
+
+
 
 /* =========================
    ANIMATION BURGER

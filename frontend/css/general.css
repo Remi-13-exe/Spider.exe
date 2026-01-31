@@ -13,23 +13,27 @@
 }
 
 @font-face {
-    font-family: 'Anime Ace 2.0 BB';
+  font-family: 'Anime Ace 2.0 BB';
   src: url('../assets/fonts/anime_ace_bb/animeace2bb_tt/animeace2_reg.ttf') format('truetype');
 }
 
 /* =========================
    VARIABLES
 ========================= */
-
-/* Empêche le scroll horizontal */
 html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden; /* <-- désactive le scroll horizontal */
+  overflow: hidden; /* plus de scroll global */
+  height: 100%;
 }
 
+.main-content {
+  position: relative;
+  overflow-y: auto;
+  max-height: calc(100vh - 60px); /* hauteur totale - navbar */
+}
 
+/* =========================
+   COULEURS & ROOT
+========================= */
 :root {
   --bg-main: #F5E6CB;
   --text-main: #000000;
@@ -39,13 +43,10 @@ html, body {
 /* =========================
    BASE
 ========================= */
-/* FONTS + VARIABLES + BASE */
-
 body {
   background-color: var(--bg-main);
   margin: 0;
   color: var(--text-main);
-  
 }
 
 h1, h2, h3 {
@@ -53,44 +54,41 @@ h1, h2, h3 {
   letter-spacing: 0.03em;
 }
 
-
 p, .news article, .about-text p {
   font-family: 'Anime Ace 2.0 BB', sans-serif;
   font-size: 0.7rem;
   font-weight: 900;
   line-height: 1.6;
-  letter-spacing: 0.5px; /* léger espacement pour lisibilité */
+  letter-spacing: 0.5px;
   color: var(--text-main);
 }
 
-
-/* Scrollbar personnalisée pour Chrome, Edge et Safari */
-/* Scrollbar pour Chrome, Edge et Safari */
-::-webkit-scrollbar {
-  width: 12px;               /* largeur de la scrollbar */
+/* =========================
+   SCROLLBAR MAIN-CONTENT
+========================= */
+.main-content::-webkit-scrollbar {
+  width: 12px;
 }
 
-::-webkit-scrollbar-track {
-  background: #111;           /* fond sombre derrière la barre */
-  border: 2px solid #900;    /* contour rouge (stroke) */
+.main-content::-webkit-scrollbar-track {
+  background: #000; /* fond noir */
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #E31E1E;       /* couleur rouge Spider-Man */
+.main-content::-webkit-scrollbar-thumb {
+  background: #E31E1E; /* rouge Spider-Man */
   border-radius: 10px;
-  border: 2px solid #000;    /* petit contour noir pour "pop" */
+  border: 2px solid #000; /* contour noir */
 }
 
-/* Hover pour thumb (optionnel mais plus interactif) */
-::-webkit-scrollbar-thumb:hover {
-  background: #FF2D2D;
+.main-content::-webkit-scrollbar-thumb:hover {
+  background: #FF2D2D; /* rouge clair au hover */
 }
 
-/* Pour Firefox */
-* {
-  scrollbar-width: thin;       /* fine scrollbar */
-  scrollbar-color: #E31E1E #111; /* thumb / track */
+/* Firefox */
+.main-content {
+  scrollbar-width: thin;
+  scrollbar-color: #E31E1E #000; /* thumb / track */
 }
 
 /* Smooth scrolling global */
@@ -98,28 +96,17 @@ html {
   scroll-behavior: smooth;
 }
 
-
-/* =========================
-   HIDE SCROLLBAR - RESPONSIVE
-========================= */
 /* =========================
    HIDE SCROLLBAR - RESPONSIVE
 ========================= */
 @media (max-width: 1024px) {
-  /* Chrome, Edge, Safari */
-  ::-webkit-scrollbar {
+  .main-content::-webkit-scrollbar {
     width: 0;
     height: 0;
   }
 
-  /* Firefox */
-  * {
-    scrollbar-width: none;
-  }
-
-  /* IE / old Edge */
-  body {
-    -ms-overflow-style: none;
+  .main-content {
+    scrollbar-width: none;      /* Firefox */
+    -ms-overflow-style: none;   /* IE / old Edge */
   }
 }
-
