@@ -3,51 +3,49 @@
 ========================= */
 .navbar {
   display: flex;
-  justify-content: space-between; /* logo à gauche, nav au centre, search à droite */
+  justify-content: space-between;
   align-items: center;
-  padding: 5px 40px;   /* réduit le padding vertical */
-  background-color: #E31E1E; /* fond rouge */
+  padding: 5px 40px;
+  background-color: #E31E1E;
   border: 3px solid #000;
   position: sticky;
   top: 0;
   z-index: 100;
-  min-height: 40px;    /* réduit la hauteur verticale */
+  min-height: 40px;
   box-sizing: border-box;
 }
 
 /* LOGO */
 .navbar .logo {
   font-family: 'Comeback Home', sans-serif;
-  font-size: 4.4rem;  /* légèrement réduit */
+  font-size: 4.4rem;
   color: var(--text-main);
   text-shadow:
     -1px -1px 0 var(--text-outline),
      1px -1px 0 var(--text-outline),
     -1px  1px 0 var(--text-outline),
      1px  1px 0 var(--text-outline);
-  line-height: 1; /* aligne mieux verticalement */
-    padding-top: 10px;
-
+  line-height: 1;
+  padding-top: 10px;
 }
 
 /* NAV */
 .navbar nav {
   display: flex;
   align-items: center;
-  gap: 100px; /* espace entre les liens */
+  gap: 100px;
   justify-content: center;
   padding-top: 15px;
-
 }
 
 /* LIENS */
 .navbar nav a {
   font-family: 'Anime Ace 2.0 BB', sans-serif;
-  font-size: 0.9rem;  /* légèrement réduit verticalement */
+  font-size: 0.9rem;
   font-weight: 900;
   color: var(--text-main);
   text-decoration: none;
-  padding: 1px 6px;   /* réduit padding vertical */
+  padding: 1px 6px;
   text-shadow:
     -0.7px -0.7px 0 var(--text-outline),
      0.7px -0.7px 0 var(--text-outline),
@@ -64,12 +62,11 @@
 ========================= */
 .search-box {
   position: relative;
-  margin-left: 15rem; /* ajuste l’espace à droite */
+  margin-left: 15rem;
   display: flex;
-  align-items: center; /* aligne verticalement avec nav */
+  align-items: center;
 }
 
-/* Enlever la croix par défaut */
 .search-box input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
   appearance: none;
@@ -77,11 +74,11 @@
 }
 
 .search-box input[type="search"] {
-  width: 200px;  /* un peu plus petit pour compacter */
-  height: 40px;  /* réduit la hauteur */
+  width: 200px;
+  height: 40px;
   border-radius: 25px;
   padding: 5px 10px 5px 8px;
-  font-size: 0.55rem;
+  font-size: 0.45rem;
   font-family: 'Anime Ace 2.0 BB', sans-serif;
   font-weight: 900;
   border: 2px solid #000;
@@ -119,19 +116,33 @@
   height: 3px;
   background-color: #000;
   border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* 🔥 Animation burger en croix */
+.burger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* =========================
-   RESPONSIVE NAVBAR
+   RESPONSIVE NAVBAR TABLETTE
 ========================= */
 @media (max-width: 1024px) {
   .navbar .logo {
-    font-size: 2.6rem; /* réduit logo */
+    font-size: 2.6rem;
   }
 
   .navbar nav {
     position: absolute;
-    top: 40px;           /* réduit verticalement sous navbar */
+    top: 40px;
     right: 0;
     width: 150px;
     background-color: #E31E1E;
@@ -139,9 +150,14 @@
     border-radius: 0 0 6px 6px;
     flex-direction: column;
     gap: 6px;
-    padding: 8px 8px;
     z-index: 200;
     display: none;
+    animation: menu-drop 0.3s ease forwards;
+  }
+
+  @keyframes menu-drop {
+    from { transform: translateY(-10px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
   }
 
   .navbar nav.active {
@@ -154,7 +170,6 @@
     text-align: center;
   }
 
-  /* search box centrée sous menu */
   .search-box {
     margin: 6px auto 8px auto;
     width: 90%;
@@ -168,18 +183,60 @@
 
   .burger {
     display: flex;
-    margin-left: auto; /* burger tout à droite */
+    margin-left: auto;
   }
+
   .search-icon {
-    right: 20px;
+    left: 110px;
   }
 }
 
-
-
-
 /* =========================
-   ANIMATION BURGER
+   RESPONSIVE TÉLÉPHONE
+========================= */
+/* =========================
+   RESPONSIVE TÉLÉPHONE
+========================= */
+@media (max-width: 600px) {
+  .search-box {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .search-box input[type="search"] {
+    width: 100px;
+    height: 32px;
+    font-size: 0.45rem;
+  }
+
+  .search-icon {
+    left: 95px;
+  }
+
+  /* 👇 Police plus petite que tablette */
+  .navbar nav a {
+    font-size: 0.65rem; /* tablette = 0.8rem, téléphone = plus petit */
+  }
+
+
+.navbar nav {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 120px;
+    background-color: #E31E1E;
+    border: 3px solid #000;
+    border-radius: 0 0 6px 6px;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 200;
+    display: none;
+    animation: menu-drop 0.3s ease forwards;
+  }
+
+   }
+/* =========================
+   ANIMATION BURGER POP
 ========================= */
 @keyframes burger-pop {
   0%   { transform: translateX(110%) scale(0.95); }
