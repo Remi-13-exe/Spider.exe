@@ -1,0 +1,19 @@
+.footer {
+  background: #E31E1E;
+  color: #000;
+  border-top: 4px solid #000;
+  margin-top: 4rem;
+}
+
+.logo {
+ font-family: 'Comeback Home', sans-serif;
+  font-size: 4.4rem;
+  color: var(--text-main);
+  text-shadow:
+    -1px -1px 0 var(--text-outline),
+     1px -1px 0 var(--text-outline),
+    -1px  1px 0 var(--text-outline),
+     1px  1px 0 var(--text-outline);
+  line-height: 1;
+  padding-top: 10px;
+}
