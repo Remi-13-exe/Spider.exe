@@ -1,8 +1,16 @@
+
+
+
+
 .footer {
   background: #E31E1E;
   color: #000;
   border-top: 4px solid #000;
   margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .logo {
@@ -15,5 +23,104 @@
     -1px  1px 0 var(--text-outline),
      1px  1px 0 var(--text-outline);
   line-height: 1;
-  padding-top: 10px;
+  padding-top: 1rem;
+}
+
+
+.footer__socials {
+  
+  display: flex;
+  gap: 2.5rem;               /* espace entre les liens */
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+}
+
+.footer__socials a {
+  text-decoration: none;     /* enlève le soulignement */
+  font-family: 'Anime Ace 2.0 BB', sans-serif;
+  font-weight: 900;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  text-shadow:
+    -0.7px -0.7px 0 var(--text-outline),
+     0.7px -0.7px 0 var(--text-outline),
+    -0.7px  0.7px 0 var(--text-outline),
+     0.7px  0.7px 0 var(--text-outline);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer__socials a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.footer__legal {
+  max-width: 900px;
+  margin: 2rem auto 3rem;
+  text-align: center;
+}
+
+.footer__legal p {
+  font-family: 'Anime Ace 2.0 BB', sans-serif;
+  font-weight: 900;
+
+  color: var(--text-main);
+  text-shadow:
+    -0.7px -0.7px 0 var(--text-outline),
+     0.7px -0.7px 0 var(--text-outline),
+    -0.7px  0.7px 0 var(--text-outline),
+     0.7px  0.7px 0 var(--text-outline);
+ 
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 1024px) {
+
+  .logo {
+    font-size: 3.6rem;
+  }
+
+  .footer__socials {
+    gap: 2rem;
+  }
+
+  .footer__legal p {
+    font-size: 0.7rem;
+  }
+}
+
+
+
+
+
+@media (max-width: 600px) {
+
+  /* Logo un peu plus respirant */
+  .logo {
+    font-size: 3rem;
+    padding-top: 1.5rem;
+  }
+
+  /* Réseaux sociaux en grille 2x2 */
+  .footer__socials {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2rem; /* vertical / horizontal */
+    margin: 2rem 0;
+  }
+
+  .footer__socials a {
+    font-size: 0.85rem;
+  }
+
+  /* Mentions légales lisibles sur mobile */
+  .footer__legal {
+    padding: 0 1.2rem;
+  }
+
+  .footer__legal p {
+    font-size: 0.65rem;
+    line-height: 1.6;
+  }
 }
