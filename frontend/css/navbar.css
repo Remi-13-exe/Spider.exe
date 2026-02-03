@@ -51,10 +51,13 @@
      0.7px -0.7px 0 var(--text-outline),
     -0.7px  0.7px 0 var(--text-outline),
      0.7px  0.7px 0 var(--text-outline);
+       transition: color 0.2s ease, transform 0.2s ease;
+
 }
 
 .navbar nav a:hover {
-  color: #FFF;
+  color: #fff;
+  transform: translateY(-2px);
 }
 
 /* =========================

@@ -1,0 +1,74 @@
+.filters-container {
+  display: flex;
+  justify-content: center;   /* centre le bouton */
+  margin: 2rem 0;            /* espace vertical autour */
+}
+
+#filterBtn {
+  font-family: 'Badaboom BB', sans-serif; /* style comics */
+  font-size: 2.2rem;
+  padding: 2rem 5rem 2rem 1rem;
+  background: #E31E1E;
+  color: #FFF4DD;
+  border: 3px solid #000;
+  border-radius: 12px;
+  cursor: pointer;
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#filterBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+/* Conteneur popup des filtres en horizontal */
+.filters-popup {
+  display: none; /* caché par défaut */
+  flex-direction: row; /* horizontal */
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; /* espace entre les boutons */
+  margin: 1rem 0 2rem;
+}
+
+/* Les boutons de filtre */
+.filter-option {
+  display: flex;
+  flex-direction: column; /* empile texte et flèche verticalement */
+  align-items: center;    /* centre horizontalement */
+  justify-content: center;
+  font-family: 'Badaboom BB', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.2rem 1rem;
+  background: #1A75CF;
+  color: #FFF4DD;
+  border: 3px solid #000;
+  border-radius: 10px;
+  cursor: pointer;
+  text-shadow:
+    -0.7px -0.7px 0 #000,
+     0.7px -0.7px 0 #000,
+    -0.7px  0.7px 0 #000,
+     0.7px  0.7px 0 #000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.08rem;
+}
+
+/* Flèche en bas du texte */
+.filter-option::after {
+  content: "▼";
+  margin-top: 0.2rem;  /* espace entre texte et flèche */
+  font-size: 0.8rem;
+}
+
+/* Hover */
+.filter-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+
