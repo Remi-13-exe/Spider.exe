@@ -27,8 +27,8 @@ html, body {
 
 .main-content {
   position: relative;
-  overflow-y: auto;
-  max-height: calc(100vh - 60px); /* hauteur totale - navbar */
+  overflow-y: scroll; /* scrollbar toujours visible */
+  max-height: calc(100vh - 60px);
 }
 
 /* =========================

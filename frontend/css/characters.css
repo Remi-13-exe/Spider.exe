@@ -2,6 +2,9 @@
    FILTRES
 ========================= */
 
+
+
+
 .filters-container {
   display: flex;
   justify-content: center;
@@ -85,10 +88,13 @@
 .characters-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 2.5rem;
-  margin-top: 3rem;
+  column-gap: 2.5rem; /* espace horizontal */
+  row-gap: 7rem;    /* 🔥 espace vertical propre */
+  margin-top: 8rem;
   justify-items: center;
+  
 }
+
 
 /* =========================
    CARTE PERSONNAGE
@@ -97,7 +103,7 @@
   position: relative;
   width: 80%;  
   height: 100%;    /* 🔒 largeur fixe */
-
+  
   background: #fff;
   border: 2px solid #000;
   border-radius: 10px;
@@ -115,12 +121,16 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   will-change: transform;
 }
-
+.character-card::after { content: ""; position: absolute; top: -120%; left: -60%; width: 70%; height: 320%; background: linear-gradient( 120deg, transparent 0%, rgba(255,255,255,0.35) 42%, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.35) 58%, transparent 100% ); transform: rotate(25deg); opacity: 0; pointer-events: none; } .character-card.flash::after { animation: card-flash 0.35s ease-out forwards; } @keyframes card-flash { 0% { opacity: 0; transform: translateX(-120%) rotate(25deg); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateX(220%) rotate(25deg); } }
 
 .character-card:hover {
   transform: translateY(-6px) scale(1.04);
   box-shadow: 10px 10px 20px rgba(0,0,0,0.35);
 }
+
+
+
+
 
 /* =========================
    IMAGE
@@ -170,4 +180,11 @@
   padding: 0.3rem 0.7rem;
   color: #000000;
 font-weight: 900;
+}
+
+
+.main {
+ 
+  margin: 0 auto;
+  padding: 1rem; /* petit padding propre */
 }
