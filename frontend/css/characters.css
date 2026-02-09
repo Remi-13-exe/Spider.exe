@@ -182,9 +182,76 @@
 font-weight: 900;
 }
 
+  .characters-main {
+  max-width: 1600px;   /* largeur max du contenu */
+  margin: 0 auto;      /* centre la page */
+  padding: 0 2rem;     /* 🔥 espace à gauche et à droite */
+}
 
-.main {
- 
-  margin: 0 auto;
-  padding: 1rem; /* petit padding propre */
+
+/* =========================
+   BOUTONS D'UNIVERS (VERTICAUX)
+========================= */
+/* =========================
+   MENU DEROULE UNIVERSES
+========================= */
+
+/* Le conteneur du bouton doit être position: relative pour que le dropdown s'affiche juste en dessous */
+/* Container relatif pour dropdown */
+/* =========================
+   BOUTONS D'UNIVERS (VERTICAUX)
+========================= */
+
+/* Conteneur relatif pour dropdown */
+.filters-popup {
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start; /* pour que le dropdown s'aligne correctement */
+  gap: 2rem;
+  margin: 1.5rem 0 2.5rem;
+  position: relative; /* 🔥 essentiel pour dropdown */
+}
+
+/* Menu déroulant univers */
+#universe-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0.3rem 0;  /* réduit l'espacement vertical */
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 8px;
+  position: absolute; /* pour dropdown */
+  left: 0;
+  z-index: 100;
+  min-width: 130px;   /* plus compact */
+  box-shadow: 3px 3px 0 #000;
+  font-family: 'Anime Ace 2.0 BB', sans-serif;
+}
+
+/* Chaque item du menu */
+#universe-menu li {
+  padding: 0.5rem 1rem;  /* plus compact */
+  cursor: pointer;
+  color: #000;
+  border-bottom: 1px solid #000;
+  font-size: 0.9rem;    /* un peu plus petit */
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Dernier item sans bord */
+#universe-menu li:last-child {
+  border-bottom: none;
+}
+
+/* Hover style comics */
+#universe-menu li:hover {
+  background: #1A75CF;
+  color: #FFF4DD;
+}
+
+/* S'assure que le menu ne dépasse pas du bouton */
+.filters-popup button.filter-option {
+  position: relative;
+  z-index: 101;
 }

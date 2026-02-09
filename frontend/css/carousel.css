@@ -223,3 +223,37 @@
     font-size: 0.8rem;
   }
 }
+
+/* =========================
+   MENU DEROULANT UNIVERS
+========================= */
+.universe-menu {
+  position: absolute; /* flottant sous le bouton */
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.universe-btn {
+  font-family: 'Anime Ace 2.0 BB', sans-serif;
+  font-size: 1rem;
+  color: #000;
+  background: #fff;
+  border: none;
+  padding: 0.8rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.universe-btn:hover {
+  background: #1A75CF;
+  color: #FFF4DD;
+}
