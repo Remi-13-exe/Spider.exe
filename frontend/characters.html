@@ -47,14 +47,27 @@
     <section class="characters-section">
       <h1>personnages</h1>
      
-      <div class="filters-container">
-        <button id="filterBtn">Filtres</button>
-      </div>
+    <div class="filters-container">
+  <!-- Bouton filtres principal -->
+  <button id="filterBtn">Filtres</button>
+</div>
 
-      <div class="filters-popup" id="filtersPopup">
-        <button class="filter-option" id="filterType">Appartenance</button>
-        <button class="filter-option" id="filterUniverse">Univers</button>
-      </div>
+<!-- Popup filtres -->
+<div class="filters-popup" id="filtersPopup">
+  
+  <!-- Bouton Appartenance -->
+  <button class="filter-option" id="filterType">
+    Appartenance
+    <ul id="appartenance-menu"></ul> <!-- Menu déroulant rempli par JS -->
+  </button>
+
+  <!-- Bouton Univers -->
+  <button class="filter-option" id="filterUniverse">
+    Univers
+    <ul id="universe-menu"></ul> <!-- Menu déroulant rempli par JS -->
+  </button>
+
+</div>
 
       <!-- Grille des personnages -->
       <div class="characters-grid" id="characters-grid">

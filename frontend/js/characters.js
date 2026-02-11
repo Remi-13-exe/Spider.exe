@@ -4,10 +4,11 @@
 const filterBtn = document.getElementById("filterBtn");
 const filtersPopup = document.getElementById("filtersPopup");
 const filterUniverseBtn = document.getElementById("filterUniverse");
+const filterTypeBtn = document.getElementById("filterType");
 
-let allCharacters = []; // Stockage global des personnages
+let allCharacters = [];
 
-// Afficher / masquer les filtres
+// Toggle popup filtres
 filterBtn.addEventListener("click", () => {
   filtersPopup.style.display =
     filtersPopup.style.display === "flex" ? "none" : "flex";
@@ -18,24 +19,21 @@ filterBtn.addEventListener("click", () => {
 // ============================
 document.addEventListener("DOMContentLoaded", async () => {
   const grid = document.getElementById("characters-grid");
-
-  if (!grid) {
-    console.error("❌ characters-grid introuvable");
-    return;
-  }
+  if (!grid) return;
 
   try {
     const res = await fetch("http://localhost:3000/api/characters");
-    allCharacters = await res.json(); // sauvegarde globale
-    displayCharacters(allCharacters);  // affichage initial
+    allCharacters = await res.json();
+    displayCharacters(allCharacters);
   } catch (err) {
-    console.error("🔥 Erreur API :", err);
-    grid.innerHTML = `<p class="error">Erreur de chargement des personnages 🕷️</p>`;
+    console.error(err);
+    grid.innerHTML =
+      `<p class="error">Erreur de chargement des personnages 🕷️</p>`;
   }
 });
 
 // ============================
-// FONCTION D'AFFICHAGE DES PERSONNAGES
+// AFFICHAGE DES PERSONNAGES
 // ============================
 function displayCharacters(characters) {
   const grid = document.getElementById("characters-grid");
@@ -58,18 +56,66 @@ function displayCharacters(characters) {
     grid.appendChild(card);
   });
 
-  initCardEffects(); // réactive effets sur nouvelles cartes
+  initCardEffects(); // applique les effets sur toutes les cartes
 }
 
 // ============================
-// EFFETS MARVEL RIVALS (FIXÉS)
+// MENU DÉROULANT UNIVERS (API)
+// ============================
+filterUniverseBtn.addEventListener("click", (e) => {
+  e.stopPropagation(); // empêche la fermeture immédiate
+
+  // Supprime ancien menu si existant
+  const existing = document.getElementById("universe-menu");
+  if (existing) {
+    existing.remove();
+    return;
+  }
+
+  // Crée menu ul
+  const ul = document.createElement("ul");
+  ul.id = "universe-menu";
+
+  // Item "Tous"
+  const liAll = document.createElement("li");
+  liAll.textContent = "Tous";
+  liAll.addEventListener("click", () => {
+    displayCharacters(allCharacters);
+    ul.remove();
+  });
+  ul.appendChild(liAll);
+
+  // Univers uniques depuis API
+  const universList = [...new Set(allCharacters.map(c => c.universe))];
+  universList.forEach(univ => {
+    const li = document.createElement("li");
+    li.textContent = univ;
+    li.addEventListener("click", () => {
+      const filtered = allCharacters.filter(c => c.universe === univ);
+      displayCharacters(filtered);
+      ul.remove();
+    });
+    ul.appendChild(li);
+  });
+
+  // Affiche le menu sous le bouton
+  filterUniverseBtn.appendChild(ul);
+});
+
+// Ferme le menu si clic ailleurs
+document.addEventListener("click", () => {
+  const menu = document.getElementById("universe-menu");
+  if (menu) menu.remove();
+});
+
+
+// ============================
+// EFFETS CARTES (Marvel Rivals)
 // ============================
 function initCardEffects() {
   document.querySelectorAll(".character-card").forEach(card => {
-
     let isHovering = false;
 
-    // ENTRÉE
     card.addEventListener("mouseenter", () => {
       isHovering = true;
       card.classList.add("flash");
@@ -79,13 +125,12 @@ function initCardEffects() {
 
       setTimeout(() => {
         if (!isHovering) return;
-        card.style.transform = "scale(1.1) rotateX(0deg) rotateY(0deg)";
+        card.style.transform = "scale(1.1)";
       }, 90);
 
       setTimeout(() => card.classList.remove("flash"), 350);
     });
 
-    // TILT DYNAMIQUE
     card.addEventListener("mousemove", e => {
       if (!isHovering) return;
 
@@ -93,57 +138,59 @@ function initCardEffects() {
       const x = (e.clientX - rect.left) / rect.width;
       const y = (e.clientY - rect.top) / rect.height;
 
-      const rotateY = (x - 0.5) * 50;
-      const rotateX = (0.5 - y) * 40;
+      const rotateY = (x - 0.5) * 40;
+      const rotateX = (0.5 - y) * 30;
 
       card.style.transform =
         `rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(1.1)`;
     });
 
-    // SORTIE
     card.addEventListener("mouseleave", () => {
       isHovering = false;
-
-      card.style.transition = "none";
-      card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-
-      requestAnimationFrame(() => {
-        card.style.transition = "transform 0.25s ease, box-shadow 0.25s ease";
-      });
+      card.style.transition = "transform 0.25s ease";
+      card.style.transform = "scale(1)";
     });
   });
 }
-
+  
 // ============================
-// MENU DÉROULANT UNIVERS
+// MENU DÉROULANT APPARTENANCE
 // ============================
-filterUniverseBtn.addEventListener("click", () => {
-  // Supprimer ancien menu
-  const existing = document.getElementById("universe-menu");
-  if (existing) existing.remove();
 
-  // Créer menu ul
+filterTypeBtn.addEventListener("click", () => {
+
+  // Supprime ancien menu si existe
+  const existing = document.getElementById("type-menu");
+  if (existing) {
+    existing.remove();
+    return;
+  }
+
   const ul = document.createElement("ul");
-  ul.id = "universe-menu";
+  ul.id = "type-menu";
 
-  // Tous les univers
+  // Bouton Tous
   const liAll = document.createElement("li");
   liAll.textContent = "Tous";
-  liAll.addEventListener("click", () => displayCharacters(allCharacters));
+  liAll.addEventListener("click", () => {
+    displayCharacters(allCharacters);
+    ul.remove();
+  });
   ul.appendChild(liAll);
 
-  // Univers uniques
-  const universList = [...new Set(allCharacters.map(c => c.universe))];
-  universList.forEach(univ => {
+  // Types uniques
+  const typeList = [...new Set(allCharacters.map(c => c.type))];
+
+  typeList.forEach(type => {
     const li = document.createElement("li");
-    li.textContent = univ;
+    li.textContent = type;
     li.addEventListener("click", () => {
-      const filtered = allCharacters.filter(c => c.universe === univ);
+      const filtered = allCharacters.filter(c => c.type === type);
       displayCharacters(filtered);
+      ul.remove();
     });
     ul.appendChild(li);
   });
 
-  // Ajouter le menu après le bouton Univers
-  filterUniverseBtn.parentElement.appendChild(ul);
+  filterTypeBtn.appendChild(ul);
 });

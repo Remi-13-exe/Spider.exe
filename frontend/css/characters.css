@@ -2,9 +2,6 @@
    FILTRES
 ========================= */
 
-
-
-
 .filters-container {
   display: flex;
   justify-content: center;
@@ -34,18 +31,26 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* Popup filtres */
+/* =========================
+   POPUP FILTRES
+========================= */
+
 .filters-popup {
   display: none;
-  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 2rem;
   margin: 1.5rem 0 2.5rem;
+  position: relative; /* base du dropdown */
+  z-index: 10;
 }
 
-/* Boutons filtres */
+/* =========================
+   BOUTONS FILTRES
+========================= */
+
 .filter-option {
+  position: relative; /* référence pour le menu */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,28 +87,125 @@
 }
 
 /* =========================
+   MENU DÉROULANT UNIVERS
+========================= */
+
+#filterUniverse {
+  position: relative; /* 🔥 clé du positionnement */
+  z-index: 20;
+}
+
+#universe-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  list-style: none;
+  margin-top: 0.4rem;
+  padding: 0.3rem 0;
+
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 8px;
+
+  min-width: 90px;
+  z-index: 9999; /* 🔥 au-dessus des cards */
+
+  box-shadow: 3px 3px 0 #000;
+  font-family: 'Anime Ace 2.0 BB', sans-serif;
+}
+
+#universe-menu li {
+  font-size: 0.7rem;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  color: #000;
+  border-bottom: 1px solid #000;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#universe-menu li:last-child {
+  border-bottom: none;
+}
+
+#universe-menu li:hover {
+  background: #1A75CF;
+  color: #FFF4DD;
+}
+
+#type-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  list-style: none;
+  margin-top: 0.4rem;
+  padding: 0.3rem 0;
+
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 8px;
+
+  min-width: 90px;
+  z-index: 9999;
+
+  box-shadow: 3px 3px 0 #000;
+  font-family: 'Anime Ace 2.0 BB', sans-serif;
+}
+
+#type-menu li {
+  font-size: 0.7rem;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  color: #000;
+  border-bottom: 1px solid #000;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#type-menu li:last-child {
+  border-bottom: none;
+}
+
+#type-menu li:hover {
+  background: #E31E1E;
+  color: #FFF4DD;
+}
+
+/* =========================
+   LAYOUT PAGE
+========================= */
+
+.characters-main {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* =========================
    GRID PERSONNAGES
 ========================= */
 
 .characters-grid {
+  position: relative;
+  z-index: 0; /* reste sous le menu */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  column-gap: 2.5rem; /* espace horizontal */
-  row-gap: 7rem;    /* 🔥 espace vertical propre */
+  column-gap: 2.5rem;
+  row-gap: 7rem;
   margin-top: 8rem;
   justify-items: center;
-  
 }
-
 
 /* =========================
    CARTE PERSONNAGE
 ========================= */
+
 .character-card {
   position: relative;
-  width: 80%;  
-  height: 100%;    /* 🔒 largeur fixe */
-  
+  z-index: 1; /* sous le dropdown */
+  width: 80%;
   background: #fff;
   border: 2px solid #000;
   border-radius: 10px;
@@ -115,22 +217,54 @@
   align-items: center;
 
   box-shadow: 4px 4px 0 #000;
-
   perspective: 800px;
   transform-style: preserve-3d;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   will-change: transform;
 }
-.character-card::after { content: ""; position: absolute; top: -120%; left: -60%; width: 70%; height: 320%; background: linear-gradient( 120deg, transparent 0%, rgba(255,255,255,0.35) 42%, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.35) 58%, transparent 100% ); transform: rotate(25deg); opacity: 0; pointer-events: none; } .character-card.flash::after { animation: card-flash 0.35s ease-out forwards; } @keyframes card-flash { 0% { opacity: 0; transform: translateX(-120%) rotate(25deg); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateX(220%) rotate(25deg); } }
 
 .character-card:hover {
   transform: translateY(-6px) scale(1.04);
   box-shadow: 10px 10px 20px rgba(0,0,0,0.35);
 }
 
+/* Effet flash */
 
+.character-card::after {
+  content: "";
+  position: absolute;
+  top: -120%;
+  left: -60%;
+  width: 70%;
+  height: 320%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.35) 42%,
+    rgba(255,255,255,0.95) 50%,
+    rgba(255,255,255,0.35) 58%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  opacity: 0;
+  pointer-events: none;
+}
 
+.character-card.flash::after {
+  animation: card-flash 0.35s ease-out forwards;
+}
 
+@keyframes card-flash {
+  0% {
+    opacity: 0;
+    transform: translateX(-120%) rotate(25deg);
+  }
+  30% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translateX(220%) rotate(25deg);
+  }
+}
 
 /* =========================
    IMAGE
@@ -142,8 +276,6 @@
   overflow: hidden;
   border-radius: 10px;
   border: 1px solid #000;
-
-  
 }
 
 .character-img-wrapper img {
@@ -154,104 +286,25 @@
 }
 
 /* =========================
-   NOM
+   TEXTE
 ========================= */
 
 .character-name {
   font-family: 'Badaboom BB', sans-serif;
   font-size: 1.4rem;
-  color: #000000;
-
+  color: #000;
   height: 2.2rem;
   line-height: 2.2rem;
-
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-
-
-
-
 .badge {
   font-family: 'Anime Ace 2.0 BB', sans-serif;
   font-size: 0.65rem;
   padding: 0.3rem 0.7rem;
-  color: #000000;
-font-weight: 900;
-}
-
-  .characters-main {
-  max-width: 1600px;   /* largeur max du contenu */
-  margin: 0 auto;      /* centre la page */
-  padding: 0 2rem;     /* 🔥 espace à gauche et à droite */
-}
-
-
-/* =========================
-   BOUTONS D'UNIVERS (VERTICAUX)
-========================= */
-/* =========================
-   MENU DEROULE UNIVERSES
-========================= */
-
-/* Le conteneur du bouton doit être position: relative pour que le dropdown s'affiche juste en dessous */
-/* Container relatif pour dropdown */
-/* =========================
-   BOUTONS D'UNIVERS (VERTICAUX)
-========================= */
-
-/* Conteneur relatif pour dropdown */
-.filters-popup {
-  display: none;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start; /* pour que le dropdown s'aligne correctement */
-  gap: 2rem;
-  margin: 1.5rem 0 2.5rem;
-  position: relative; /* 🔥 essentiel pour dropdown */
-}
-
-/* Menu déroulant univers */
-#universe-menu {
-  list-style: none;
-  margin: 0;
-  padding: 0.3rem 0;  /* réduit l'espacement vertical */
-  background: #fff;
-  border: 2px solid #000;
-  border-radius: 8px;
-  position: absolute; /* pour dropdown */
-  left: 0;
-  z-index: 100;
-  min-width: 130px;   /* plus compact */
-  box-shadow: 3px 3px 0 #000;
-  font-family: 'Anime Ace 2.0 BB', sans-serif;
-}
-
-/* Chaque item du menu */
-#universe-menu li {
-  padding: 0.5rem 1rem;  /* plus compact */
-  cursor: pointer;
   color: #000;
-  border-bottom: 1px solid #000;
-  font-size: 0.9rem;    /* un peu plus petit */
-  transition: background 0.2s ease, color 0.2s ease;
+  font-weight: 900;
 }
 
-/* Dernier item sans bord */
-#universe-menu li:last-child {
-  border-bottom: none;
-}
-
-/* Hover style comics */
-#universe-menu li:hover {
-  background: #1A75CF;
-  color: #FFF4DD;
-}
-
-/* S'assure que le menu ne dépasse pas du bouton */
-.filters-popup button.filter-option {
-  position: relative;
-  z-index: 101;
-}
