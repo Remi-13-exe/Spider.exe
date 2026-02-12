@@ -56,58 +56,86 @@ function displayCharacters(characters) {
     grid.appendChild(card);
   });
 
-  initCardEffects(); // applique les effets sur toutes les cartes
+  initCardEffects();
 }
 
 // ============================
-// MENU DÉROULANT UNIVERS (API)
+// FONCTION UTILITAIRE MENU
 // ============================
-filterUniverseBtn.addEventListener("click", (e) => {
-  e.stopPropagation(); // empêche la fermeture immédiate
+function closeDropdown() {
+  const existing = document.querySelector(".dropdown-menu");
+  if (existing) existing.remove();
+}
 
-  // Supprime ancien menu si existant
-  const existing = document.getElementById("universe-menu");
-  if (existing) {
-    existing.remove();
-    return;
-  }
+function createDropdown(items, filterCallback, parentButton) {
+  closeDropdown();
 
-  // Crée menu ul
   const ul = document.createElement("ul");
-  ul.id = "universe-menu";
+  ul.className = "dropdown-menu";
 
-  // Item "Tous"
-  const liAll = document.createElement("li");
-  liAll.textContent = "Tous";
-  liAll.addEventListener("click", () => {
-    displayCharacters(allCharacters);
-    ul.remove();
-  });
-  ul.appendChild(liAll);
-
-  // Univers uniques depuis API
-  const universList = [...new Set(allCharacters.map(c => c.universe))];
-  universList.forEach(univ => {
+  items.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = univ;
+    li.textContent = item;
+
     li.addEventListener("click", () => {
-      const filtered = allCharacters.filter(c => c.universe === univ);
-      displayCharacters(filtered);
+      filterCallback(item);
       ul.remove();
     });
+
     ul.appendChild(li);
   });
 
-  // Affiche le menu sous le bouton
-  filterUniverseBtn.appendChild(ul);
+  parentButton.appendChild(ul);
+}
+
+// ============================
+// MENU DÉROULANT UNIVERS
+// ============================
+filterUniverseBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+
+  const universList = [
+    "Tous",
+    ...new Set(allCharacters.map(c => c.universe))
+  ];
+
+  createDropdown(universList, (selected) => {
+    if (selected === "Tous") {
+      displayCharacters(allCharacters);
+    } else {
+      const filtered = allCharacters.filter(c => c.universe === selected);
+      displayCharacters(filtered);
+    }
+  }, filterUniverseBtn);
 });
 
-// Ferme le menu si clic ailleurs
+// ============================
+// MENU DÉROULANT APPARTENANCE
+// ============================
+filterTypeBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+
+  const typeList = [
+    "Tous",
+    ...new Set(allCharacters.map(c => c.type).filter(Boolean))
+  ];
+
+  createDropdown(typeList, (selected) => {
+    if (selected === "Tous") {
+      displayCharacters(allCharacters);
+    } else {
+      const filtered = allCharacters.filter(c => c.type === selected);
+      displayCharacters(filtered);
+    }
+  }, filterTypeBtn);
+});
+
+// ============================
+// FERME MENU SI CLIC AILLEURS
+// ============================
 document.addEventListener("click", () => {
-  const menu = document.getElementById("universe-menu");
-  if (menu) menu.remove();
+  closeDropdown();
 });
-
 
 // ============================
 // EFFETS CARTES (Marvel Rivals)
@@ -152,45 +180,13 @@ function initCardEffects() {
     });
   });
 }
-  
-// ============================
-// MENU DÉROULANT APPARTENANCE
-// ============================
 
-filterTypeBtn.addEventListener("click", () => {
+const badge = document.querySelector('.title-badge');
 
-  // Supprime ancien menu si existe
-  const existing = document.getElementById("type-menu");
-  if (existing) {
-    existing.remove();
-    return;
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 10) {
+    badge.classList.add('scrolled');
+  } else {
+    badge.classList.remove('scrolled');
   }
-
-  const ul = document.createElement("ul");
-  ul.id = "type-menu";
-
-  // Bouton Tous
-  const liAll = document.createElement("li");
-  liAll.textContent = "Tous";
-  liAll.addEventListener("click", () => {
-    displayCharacters(allCharacters);
-    ul.remove();
-  });
-  ul.appendChild(liAll);
-
-  // Types uniques
-  const typeList = [...new Set(allCharacters.map(c => c.type))];
-
-  typeList.forEach(type => {
-    const li = document.createElement("li");
-    li.textContent = type;
-    li.addEventListener("click", () => {
-      const filtered = allCharacters.filter(c => c.type === type);
-      displayCharacters(filtered);
-      ul.remove();
-    });
-    ul.appendChild(li);
-  });
-
-  filterTypeBtn.appendChild(ul);
 });
