@@ -53,6 +53,15 @@ function displayCharacters(characters) {
       </div>
     `;
 
+    // 🔥 Clic sur la carte pour détails
+    card.addEventListener('click', () => {
+      if (char.name === "Peter Parker" && char.universe === "Earth-616") {
+        window.location.href = `character-detail.html?id=${char.id}`;
+      } else {
+        alert("Page en cours de travaux ⚡");
+      }
+    });
+
     grid.appendChild(card);
   });
 
@@ -181,6 +190,9 @@ function initCardEffects() {
   });
 }
 
+// ============================
+// EFFET SCROLL SUR TITLE BADGE
+// ============================
 const badge = document.querySelector('.title-badge');
 
 window.addEventListener('scroll', () => {
