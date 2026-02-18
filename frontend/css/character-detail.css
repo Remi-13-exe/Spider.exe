@@ -3,11 +3,8 @@
 ========================= */
 
 .detail-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
   font-family: 'Anime Ace 2.0 BB', sans-serif;
-  color: #111;
+  color: #000;
 }
 
 .character-detail {
@@ -23,14 +20,14 @@
 .character-header {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 5rem;
   align-items: flex-start;
   padding: 1.5rem;
   border-radius: 12px;
 }
 
 .character-header img {
-  width: 300px;
+  width: 600px;
   max-width: 100%;
   height: auto;
   border: 3px solid #000;
@@ -43,20 +40,16 @@
 }
 
 .character-info h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: 4rem;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 3px;
-  text-shadow: 2px 2px 0 #000;
 }
 
 .character-info h2 {
-  font-size: 1.5rem;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
   color: #000000;
-  text-shadow: 1px 1px 0 #000;
 }
 
 .badge {
@@ -78,9 +71,72 @@
 ========================= */
 
 .biography, .powers, .appearances {
-  background: #f7f9fc;
-  border: 3px solid #000;
+  
+font-weight: 900;
   border-radius: 10px;
   padding: 1rem 1.5rem;
-  box-shadow: 4px 4px 0 #000;
+}
+
+.powers ul,
+.appearances ul {
+  font-size: 0.95rem;
+  list-style: none;      /* enlève les puces */
+  padding-left: 0;       /* enlève le décalage */
+  margin: 0;
+}
+
+.powers li,
+.appearances li {
+  padding-left: 0;
+}
+
+/* =========================
+   TITRES SECTIONS (H3)
+========================= */
+
+.biography h3,
+.powers h3,
+.appearances h3 {
+  font-size: 2.2rem;          /* taille augmentée */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.8rem;
+}
+
+/* Biographie : alignée à gauche */
+.biography h3 {
+  text-align: left;
+}
+
+/* Pouvoirs & Apparitions : centrés */
+.powers h3,
+.appearances h3 {
+  text-align: center;
+}
+
+/* =========================
+   INFOS PERSONNAGE (LABEL + VALEUR)
+========================= */
+
+.info-row {
+  
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  
+  gap: 1rem;
+}
+
+.character-info .info-row h2 {
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0;
+}
+
+
+.character-info .info-row p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 900;
 }
