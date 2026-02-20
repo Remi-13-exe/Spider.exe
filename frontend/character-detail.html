@@ -10,37 +10,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  
   <header class="navbar">
     <div class="logo">Spiderexe</div>
+
     <nav>
       <a href="index.html">Accueil</a>
       <a href="characters.html">Personnages</a>
       <a href="#">Contact</a>
       <a href="#">À propos</a>
+
+      <div class="search-box">
+        <input 
+          type="search" 
+          id="site-search"
+          placeholder="Rechercher un personnage..."
+          aria-label="Recherche"
+        >
+        <img src="assets/icons/search.png" alt="Rechercher" class="search-icon">
+      </div>
     </nav>
-    <div class="burger"><span></span><span></span><span></span></div>
+
+    <div class="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </header>
+  <div class="main-content">
+
 
   <main class="detail-main">
+
     <section class="character-detail" id="character-detail">
       <!-- Contenu dynamique injecté par JS -->
       <p class="loading">Chargement du personnage...</p>
     </section>
   </main>
 
-  <footer class="footer">
+ <footer class="footer">
     <div class="footer__container">
+
       <div class="footer__brand">
         <div class="logo">Spiderexe</div>
       </div>
+
+      <div class="footer__socials">
+        <a href="https://github.com/TON_GITHUB" target="_blank">GitHub</a>
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+        <a href="https://tiktok.com" target="_blank">TikTok</a>
+        <a href="https://remi-13-exe.github.io" target="_blank">portfolio</a>
+      </div>
+
     </div>
+
     <div class="footer__legal">
       <p>Site hébergé par GitHub. Tous les designs et contenus sont originaux ou issus de recherches Internet.</p>
       <p>Ce site non-commercial et non-officiel n’est pas associé à Marvel.</p>
       <p>Projet réalisé dans le cadre du TP Développeur Web et Web Mobile.</p>
     </div>
   </footer>
-
+  
  <script src="js/character-detail.js"></script>
 </body>
 </html>

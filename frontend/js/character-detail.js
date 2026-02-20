@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         </ul>
       </div>
 
-      <button onclick="window.history.back()" class="back-btn">← Revenir aux personnages</button>
+<button class="back-btn" onclick="window.history.back()"> Revenir</button>
     `;
   } catch (err) {
     container.innerHTML = `<p>Impossible de charger le personnage ⚡</p>`;
