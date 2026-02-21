@@ -1,0 +1,168 @@
+/* =========================
+   HERO CONTACT
+========================= */
+.contact-hero {
+  position: relative;
+  background-image: url('../assets/images/peter-parker-contact.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4); /* sombre mais laisse passer l'image */
+  z-index: 1;
+}
+.contact-overlay {
+  background: rgba(0, 0, 0, 0.5); /* fondu noir pour lisibilité */
+  color: #FFF8E1;
+  text-align: center;
+  padding: 2rem;
+  border: 3px solid #000;
+  border-radius: 12px;
+    position: relative;
+  z-index: 2; /* texte au-dessus de l'overlay */
+}
+
+.contact-title {
+  font-family: 'Badaboom BB', cursive;
+  font-size: 4.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000;
+  max-width: 1000px;
+}
+
+.contact-title span {
+  display: block;          /* chaque ligne sur sa propre ligne */
+}
+
+.contact-title .subtitle {
+  margin-top: 2rem;        /* espace vertical entre les deux lignes */
+  
+}
+
+
+/* =========================
+   FORMULAIRE
+========================= */
+.contact-form-section {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding:2rem 9rem 5rem 1.5rem;
+  border: 3px solid #000;
+  border-radius: 12px;
+  background: #00000096;
+}
+
+.contact-form label {
+  display: block;
+  margin-top: 1.5rem;
+  font-family: 'Badaboom BB', cursive;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 0.5rem;
+  border: 2px solid #000;
+  border-radius: 8px;
+  font-family: 'Anime Ace 2.0 BB', sans-serif;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+}
+
+.contact-btn {
+  display: block;
+  margin: 2rem auto 0 auto;
+  font-family: 'Badaboom BB', cursive;
+  font-size: 1.6rem;
+  padding: 18px 40px;
+  background: #E31E1E;
+  color: #F5E6CB;
+  border: 3px solid #000;
+  border-radius: 12px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 6px 6px 0 #000;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media screen and (max-width: 1024px) {
+  .contact-title {
+    font-size: 2.2rem;
+  }
+  .contact-subtitle {
+    font-size: 1rem;
+  }
+  .contact-btn {
+    font-size: 1.4rem;
+    padding: 16px 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contact-hero {
+    height: 300px;
+  }
+  .contact-title {
+    font-size: 1.8rem;
+  }
+  .contact-subtitle {
+    font-size: 0.9rem;
+  }
+  .contact-btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.3rem;
+  }
+}
+
+/* =========================
+   LABELS CONTACT
+========================= */
+.contact-form label {
+  display: inline-block;
+  color: #F5E6CB;              /* texte beige */
+  font-family: 'Badaboom BB', cursive;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 1.5rem;
+
+  /* contour noir propre façon comics */
+text-shadow:
+    -1.5px -1.5px 0 #000,
+     0   -1.5px 0 #000,
+     1.5px -1.5px 0 #000,
+    -1.5px  0   0 #000,
+     1.5px  0   0 #000,
+    -1.5px  1.5px 0 #000,
+     0    1.5px 0 #000,
+     1.5px  1.5px 0 #000;
+     
+}

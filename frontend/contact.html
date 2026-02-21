@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Spider.exe</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/footer.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">Spiderexe</div>
+
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="characters.html">Personnages</a>
+      <a href="contact.html">Contact</a>
+      <a href="about.html">À propos</a>
+
+      <div class="search-box">
+        <input
+          type="search"
+          id="site-search"
+          placeholder="Rechercher un personnage..."
+          aria-label="Recherche"
+        >
+        <img src="assets/icons/search.png" alt="Rechercher" class="search-icon">
+      </div>
+    </nav>
+
+    <div class="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+<main class="contact-page">
+
+  <!-- BANDEAU IMAGE + PROVERBE -->
+  <section class="contact-hero">
+  <div class="contact-overlay">
+<h1 class="contact-title">
+  <span>Une question, une suggestion ou un retour sur le projet ?</span>
+  <span class="subtitle">N'hEsitez pas A me contacter via le formulaire ci-dessous.</span>
+</h1>
+
+
+  </div>
+</section>
+
+<section class="contact-form-section">
+  <form class="contact-form" id="contactForm">
+    
+    <!-- Nom -->
+    <label for="name">Nom :</label>
+    <input type="text" id="name" name="name" placeholder="Votre nom" required />
+
+    <!-- Email -->
+    <label for="email">Email :</label>
+    <input type="email" id="email" name="email" placeholder="Votre email" required />
+
+    <!-- Confirmation Email -->
+    <label for="emailConfirm">Confirmation Email :</label>
+    <input type="email" id="emailConfirm" name="emailConfirm" placeholder="Confirmez votre email" required />
+
+    <!-- Sujet -->
+    <label for="subject">Sujet :</label>
+    <select id="subject" name="subject" required>
+      <option value="">-- Sélectionnez un sujet --</option>
+      <option value="question">Question</option>
+      <option value="suggestion">Suggestion</option>
+      <option value="bug">Bug / Problème</option>
+      <option value="autre">Autre</option>
+    </select>
+
+    <!-- Message -->
+    <label for="message">Message :</label>
+    <textarea id="message" name="message" rows="6" placeholder="Votre message..." required></textarea>
+
+    <!-- Bouton -->
+    <button type="submit" class="contact-btn">Envoyer</button>
+  </form>
+</section>
+
+
+</main>
+
+
+</body>
+</html>
