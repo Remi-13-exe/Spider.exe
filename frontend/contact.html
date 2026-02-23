@@ -8,7 +8,6 @@
 
   <link rel="stylesheet" href="css/general.css">
   <link rel="stylesheet" href="css/navbar.css">
-  <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/contact.css">
   <link rel="stylesheet" href="css/footer.css">
 </head>
@@ -44,57 +43,98 @@
   </header>
 
   <!-- MAIN -->
-<main class="contact-page">
+  <div class="main-content">
 
-  <!-- BANDEAU IMAGE + PROVERBE -->
-  <section class="contact-hero">
+
+    <main class="contact-page">
+
+      <!-- HERO -->
+    <section class="contact-hero">
+  <h1 class="title-badge contact-badge">Contact</h1>
+
+  <!-- BADGE EN CALQUE -->
+
   <div class="contact-overlay">
-<h1 class="contact-title">
-  <span>Une question, une suggestion ou un retour sur le projet ?</span>
-  <span class="subtitle">N'hEsitez pas A me contacter via le formulaire ci-dessous.</span>
-</h1>
-
-
+    <h1 class="contact-title">
+      <span>Une question, une suggestion ou un retour sur le projet ?</span>
+      <span class="subtitle">
+        N'hésitez pas à me contacter via le formulaire ci-dessous.
+      </span>
+    </h1>
   </div>
-</section>
 
-<section class="contact-form-section">
-  <form class="contact-form" id="contactForm">
-    
-    <!-- Nom -->
-    <label for="name">Nom :</label>
-    <input type="text" id="name" name="name" placeholder="Votre nom" required />
-
-    <!-- Email -->
-    <label for="email">Email :</label>
-    <input type="email" id="email" name="email" placeholder="Votre email" required />
-
-    <!-- Confirmation Email -->
-    <label for="emailConfirm">Confirmation Email :</label>
-    <input type="email" id="emailConfirm" name="emailConfirm" placeholder="Confirmez votre email" required />
-
-    <!-- Sujet -->
-    <label for="subject">Sujet :</label>
-    <select id="subject" name="subject" required>
-      <option value="">-- Sélectionnez un sujet --</option>
-      <option value="question">Question</option>
-      <option value="suggestion">Suggestion</option>
-      <option value="bug">Bug / Problème</option>
-      <option value="autre">Autre</option>
-    </select>
-
-    <!-- Message -->
-    <label for="message">Message :</label>
-    <textarea id="message" name="message" rows="6" placeholder="Votre message..." required></textarea>
-
-    <!-- Bouton -->
-    <button type="submit" class="contact-btn">Envoyer</button>
-  </form>
 </section>
 
 
-</main>
+      <!-- FORMULAIRE -->
+      <section class="contact-form-section">
 
+        <form class="contact-form" id="contactForm">
+
+          <label for="name">Nom :</label>
+          <input type="text" id="name" name="name" placeholder="Entrez votre nom" required>
+
+          <label for="email">Email :</label>
+          <input type="email" id="email" name="email" placeholder="Entrez votre email" required>
+
+          <label for="emailConfirm">Confirmation Email :</label>
+          <input type="email" id="emailConfirm" name="emailConfirm" placeholder="Confirmez votre email" required>
+
+          <label for="subject">Sujet :</label>
+          <select id="subject" name="subject" required>
+            <option value="">-- Sélectionnez un sujet --</option>
+            <option value="Question">Question</option>
+            <option value="Suggestion">Suggestion</option>
+            <option value="Bug">Bug / Problème</option>
+            <option value="Autre">Autre</option>
+          </select>
+
+          <label for="message">Message :</label>
+          <textarea id="message" name="message" rows="6" placeholder="Entrez votre message..." required></textarea>
+
+          <button type="submit" class="contact-btn">Envoyer</button>
+        </form>
+
+        <!-- MESSAGE DE SUCCÈS -->
+        <div class="contact-success hidden" id="contactSuccess">
+          <h2>Message envoye avec succes !</h2>
+          <p>
+            Merci pour votre message <br>
+            Je vous répondrai des que possible.
+          </p>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer__container">
+
+        <div class="footer__brand">
+          <div class="logo">Spiderexe</div>
+        </div>
+
+        <div class="footer__socials">
+          <a href="https://github.com/TON_GITHUB" target="_blank">GitHub</a>
+          <a href="https://instagram.com" target="_blank">Instagram</a>
+          <a href="https://tiktok.com" target="_blank">TikTok</a>
+          <a href="https://remi-13-exe.github.io" target="_blank">Portfolio</a>
+        </div>
+
+      </div>
+
+      <div class="footer__legal">
+        <p>Site hébergé par GitHub. Tous les designs et contenus sont originaux ou issus de recherches Internet.</p>
+        <p>Ce site non-commercial et non-officiel n’est pas associé à Marvel.</p>
+        <p>Projet réalisé dans le cadre du TP Développeur Web et Web Mobile.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="js/contact.js"></script>
 
 </body>
 </html>
