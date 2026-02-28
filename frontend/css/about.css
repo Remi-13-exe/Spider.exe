@@ -1,0 +1,152 @@
+/* =========================
+   ABOUT – STRUCTURE GÉNÉRALE
+========================= */
+
+/* Conteneur principal de la section About */
+.about-main {
+  max-width: 1200px;      /* largeur maximale pour grands écrans */
+  margin: 0 auto;         /* centré horizontalement */
+  padding: 4rem 2rem;     /* espace interne haut/bas et côtés */
+  text-align: center;     /* texte centré */
+}
+
+/* Sections internes */
+.about-section {
+  margin: 4rem auto;      /* espace vertical entre sections */
+}
+
+/* Titres H2 de chaque section */
+.about-section h2 {
+  font-family: 'Badaboom BB', cursive; /* typo comics impactante */
+  font-size: 3rem;
+  margin-bottom: 4rem;                 /* espace sous le titre */
+  text-transform: uppercase;           /* lettres majuscules */
+}
+
+/* Paragraphes */
+.about-section p {
+  max-width: 900px;                     /* limite largeur texte pour lisibilité */
+  margin: 1.5rem auto;
+  font-family: 'Anime Ace 2.0 BB', sans-serif; /* typo lisible pour paragraphes */
+  font-size: 1.1rem;
+  line-height: 1.7;                     /* interligne confortable */
+}
+
+/* =========================
+   LISTES (SANS PUCES)
+========================= */
+
+/* Supprime les puces et centralise les listes */
+.about-list,
+.about-tech ul {
+  list-style: none;        /* supprime puces */
+  padding: 0;
+  margin: 2rem auto;       /* centrage vertical et horizontal */
+}
+
+/* Items des listes centrés et stylisés */
+.about-list li,
+.about-tech li {
+  font-family: 'Anime Ace 2.0 BB', sans-serif;
+  font-size: 1.1rem;
+  margin: 0.8rem 0;        /* espace entre les items */
+}
+
+/* =========================
+   BLOCS TECHNOLOGIES
+========================= */
+
+/* Container général des technologies (empilé verticalement) */
+.about-tech {
+  display: flex;
+  flex-direction: column;   /* empilement vertical */
+  align-items: center;      /* centre horizontalement */
+  gap: 3rem;                /* espace entre chaque bloc */
+  margin-top: 3rem;
+}
+
+/* Bloc individuel de technologie */
+.about-tech-block {
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Titres des blocs (H3) */
+.about-tech-block h3 {
+  font-family: 'Badaboom BB', cursive; /* typo comics */
+  font-size: 2.2rem;
+  margin-bottom: 2rem; /* espace avant la liste */
+}
+
+/* Listes à l'intérieur des blocs */
+.about-tech-block ul {
+  list-style: none;  /* supprime les puces */
+  padding: 0;
+  margin: 0;
+}
+
+.about-tech-block li {
+  font-family: 'Anime Ace 2.0 BB', sans-serif;
+  font-size: 1.1rem;
+  margin: 0.6rem 0;   /* espace entre items */
+}
+
+/* Items généraux en gras */
+li {
+  font-weight: 900;
+}
+
+/* =========================
+   ABOUT – LISTE OBJECTIFS
+========================= */
+
+/* Liste d’objectifs centrée et espacée */
+.about-list {
+  list-style: none;          /* supprime les puces */
+  padding: 0;
+  margin: 2.5rem auto 0;     /* plus d’espace au-dessus */
+  max-width: 900px;
+  text-align: center;
+}
+
+.about-list li {
+  font-family: 'Anime Ace 2.0 BB', sans-serif;
+  line-height: 1.8;          /* espace vertical dans la ligne */
+  margin-bottom: 1.4rem;     /* espace entre items */
+}
+
+/* =========================
+   BADGE TITRE
+========================= */
+
+/* Badge stylisé pour titres ou mots-clés */
+.title-badge {
+  display: inline-block;
+  position: relative;
+  font-size: clamp(2.5rem, 5vw, 4rem); /* adaptatif selon écran */
+  text-transform: uppercase;
+  letter-spacing: 4px;        /* espacement lettres */
+  padding: 0.6rem 2.2rem;
+
+  background-color: #4DA6FF;  /* bleu Spider-Man clair */
+  color: #fff;
+
+  border: 4px solid #000;     /* contour noir comics */
+  border-radius: 12px;
+
+  box-shadow: 4px 4px 0 #000; /* effet comic old-school */
+  text-shadow: 2px 2px 0 #000; /* texte style comics */
+
+  margin: 2rem 0;
+  cursor: default;
+
+  /* Animation légère au hover */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Animation badge au survol */
+.title-badge:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 6px 6px 0 #000, 0 0 10px #035074; /* glow léger */
+}

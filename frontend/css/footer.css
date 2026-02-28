@@ -1,48 +1,51 @@
-
-
-
-
+/* =========================
+   FOOTER PRINCIPAL
+========================= */
 .footer {
-  background: #E31E1E;
-  color: #000;
-  border: 3px solid #000;
-  margin-top: 4rem;
+  background: #E31E1E;           /* rouge Spider-Man */
+  color: #000;                    /* texte noir par défaut */
+  border: 3px solid #000;         /* contour comics */
+  margin-top: 4rem;               /* espace au-dessus du footer */
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column;         /* empile les éléments verticalement */
+  align-items: center;            /* centre horizontalement */
   text-align: center;
 }
 
+/* =========================
+   LOGO FOOTER
+========================= */
 .logo {
- font-family: 'Comeback Home', sans-serif;
+  font-family: 'Comeback Home', sans-serif; /* police style comics */
   font-size: 4.4rem;
-  color: var(--text-main);
-  text-shadow:
+  color: var(--text-main);                   /* couleur principale du texte */
+  text-shadow: /* contour comics autour du texte */
     -1px -1px 0 var(--text-outline),
      1px -1px 0 var(--text-outline),
     -1px  1px 0 var(--text-outline),
      1px  1px 0 var(--text-outline);
   line-height: 1;
-  padding-top: 1rem;
+  padding-top: 1rem;         /* espace au-dessus */
 }
 
-
+/* =========================
+   RESEAUX SOCIAUX
+========================= */
 .footer__socials {
-  
   display: flex;
-  gap: 2.5rem;               /* espace entre les liens */
-  justify-content: center;
+  gap: 2.5rem;               /* espace entre chaque lien */
+  justify-content: center;    /* centre horizontalement */
   align-items: center;
   margin: 2rem;
 }
 
 .footer__socials a {
-  text-decoration: none;     /* enlève le soulignement */
+  text-decoration: none;      /* enlève le soulignement */
   font-family: 'Anime Ace 2.0 BB', sans-serif;
   font-weight: 900;
   font-size: 0.9rem;
   color: var(--text-main);
-  text-shadow:
+  text-shadow: /* contour style comics */
     -0.7px -0.7px 0 var(--text-outline),
      0.7px -0.7px 0 var(--text-outline),
     -0.7px  0.7px 0 var(--text-outline),
@@ -51,10 +54,13 @@
 }
 
 .footer__socials a:hover {
-  color: #fff;
-  transform: translateY(-2px);
+  color: #fff;                 /* changement couleur au hover */
+  transform: translateY(-2px); /* léger mouvement vertical */
 }
 
+/* =========================
+   TEXTE LEGAL / COPYRIGHT
+========================= */
 .footer__legal {
   max-width: 900px;
   margin: 2rem auto 3rem;
@@ -64,61 +70,62 @@
 .footer__legal p {
   font-family: 'Anime Ace 2.0 BB', sans-serif;
   font-weight: 900;
-
   color: var(--text-main);
-  text-shadow:
+  text-shadow: /* contour comics */
     -0.7px -0.7px 0 var(--text-outline),
      0.7px -0.7px 0 var(--text-outline),
     -0.7px  0.7px 0 var(--text-outline),
      0.7px  0.7px 0 var(--text-outline);
- 
   margin-bottom: 1rem;
 }
 
+/* =========================
+   MEDIA QUERIES – TABLETTE
+========================= */
 @media (max-width: 1024px) {
-
   .logo {
-    font-size: 3.6rem;
+    font-size: 3.6rem;      /* logo réduit */
   }
 
   .footer__socials {
-    gap: 2rem;
+    gap: 2rem;              /* moins d'espace horizontal */
   }
 
   .footer__legal p {
-    font-size: 0.7rem;
+    font-size: 0.7rem;      /* texte plus petit */
   }
 }
 
-
+/* =========================
+   MEDIA QUERIES – MOBILE
+========================= */
 @media (max-width: 600px) {
-
   .logo {
-    font-size: 3rem;
-    padding-top: 2rem;        /* + espace au-dessus */
-    margin-bottom: 1rem;      /* respiration sous le logo */
+    font-size: 3rem;        /* logo réduit pour mobile */
+    padding-top: 2rem;      /* plus d'espace au-dessus */
+    margin-bottom: 1rem;    /* respiration sous le logo */
   }
 
   .footer__socials {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem 2.5rem;         /* + espace vertical */
-    margin: 2.5rem 0;         /* + espace global */
+    display: grid;                     /* passer en grille pour mobile */
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+    gap: 2rem 2.5rem;                  /* espace horizontal + vertical */
+    margin: 2.5rem 0;                  /* espace global */
   }
 
   .footer__socials a {
-    font-size: 0.7rem;
-    padding: 0.5rem 0;        /* zone tactile plus confortable */
+    font-size: 0.7rem;     /* texte plus petit */
+    padding: 0.5rem 0;     /* zone tactile plus confortable */
   }
 
   .footer__legal {
-    padding: 0 1.5rem;
-    margin-top: 2.5rem;       /* séparation claire */
+    padding: 0 1.5rem;     /* espace latéral */
+    margin-top: 2.5rem;    /* séparation claire du contenu */
   }
 
   .footer__legal p {
-    font-size: 0.45rem;
-    line-height: 1.8;         /* lecture plus fluide */
+    font-size: 0.45rem;    /* texte très petit pour mobile */
+    line-height: 1.8;      /* lisibilité */
     margin-bottom: 1.2rem;
   }
 }

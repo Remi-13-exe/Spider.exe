@@ -1,15 +1,16 @@
 /* =========================
-   FONTS
+   FONTS – IMPORTATION DES POLICES
 ========================= */
-
 @font-face {
   font-family: 'Comeback Home';
   src: url('../assets/fonts/comback-home-font/CombackHomeRegular-jEMd9.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Badaboom BB';
+  font-family: 'Badaboom';
   src: url('../assets/fonts/badaboom_bb/BadaboomBB.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
@@ -18,31 +19,22 @@
 }
 
 /* =========================
-   VARIABLES
+   VARIABLES & ROOT
+========================= */
+:root {
+  --bg-main: #F5E6CB;        /* couleur de fond principale */
+  --text-main: #000000;      /* couleur texte principale */
+  --text-outline: #F5E6CB;   /* contour texte style comics */
+}
+
+/* =========================
+   BASE – STRUCTURE & TYPOGRAPHIE
 ========================= */
 html, body {
-  overflow: hidden; /* plus de scroll global */
+  overflow: hidden;           /* empêche le scroll global */
   height: 100%;
 }
 
-.main-content {
-  position: relative;
-  overflow-y: scroll; /* scrollbar toujours visible */
-  max-height: calc(100vh - 60px);
-}
-
-/* =========================
-   COULEURS & ROOT
-========================= */
-:root {
-  --bg-main: #F5E6CB;
-  --text-main: #000000;
-  --text-outline: #F5E6CB;
-}
-
-/* =========================
-   BASE
-========================= */
 body {
   background-color: var(--bg-main);
   margin: 0;
@@ -50,7 +42,7 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: 'Badaboom BB', cursive;
+  font-family: 'Badaboom BB', cursive;  /* titres style comics */
   letter-spacing: 0.03em;
 }
 
@@ -64,31 +56,38 @@ p, .news article, .about-text p {
 }
 
 /* =========================
-   SCROLLBAR MAIN-CONTENT
+   MAIN CONTENT SCROLLBAR
 ========================= */
+.main-content {
+  position: relative;
+  overflow-y: scroll;                  /* scrollbar verticale */
+  max-height: calc(100vh - 60px);      /* ajuste la hauteur */
+}
+
+/* Scrollbar Chrome / Edge / Safari */
 .main-content::-webkit-scrollbar {
   width: 12px;
 }
 
 .main-content::-webkit-scrollbar-track {
-  background: #000; /* fond noir */
+  background: #000;                    /* fond noir du track */
   border-radius: 10px;
 }
 
 .main-content::-webkit-scrollbar-thumb {
-  background: #E31E1E; /* rouge Spider-Man */
+  background: #E31E1E;                 /* rouge Spider-Man pour le pouce */
   border-radius: 10px;
-  border: 2px solid #000; /* contour noir */
+  border: 2px solid #000;              /* contour noir */
 }
 
 .main-content::-webkit-scrollbar-thumb:hover {
-  background: #FF2D2D; /* rouge clair au hover */
+  background: #FF2D2D;                 /* rouge clair au hover */
 }
 
-/* Firefox */
+/* Scrollbar Firefox */
 .main-content {
   scrollbar-width: thin;
-  scrollbar-color: #E31E1E #000; /* thumb / track */
+  scrollbar-color: #E31E1E #000;       /* thumb / track */
 }
 
 /* Smooth scrolling global */
@@ -97,7 +96,7 @@ html {
 }
 
 /* =========================
-   HIDE SCROLLBAR - RESPONSIVE
+   HIDE SCROLLBAR – TABLETTE
 ========================= */
 @media (max-width: 1024px) {
   .main-content::-webkit-scrollbar {
@@ -106,7 +105,7 @@ html {
   }
 
   .main-content {
-    scrollbar-width: none;      /* Firefox */
-    -ms-overflow-style: none;   /* IE / old Edge */
+    scrollbar-width: none;             /* Firefox */
+    -ms-overflow-style: none;          /* IE / Edge anciens */
   }
 }

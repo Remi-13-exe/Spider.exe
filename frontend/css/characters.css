@@ -1,17 +1,17 @@
 /* =========================
-   FILTRES
+   FILTRES – CONTENEUR PRINCIPAL
 ========================= */
-
 .filters-container {
   display: flex;
-  justify-content: center;
-  margin: 2rem 0;
+  justify-content: center; /* centre le bouton principal */
+  margin: 2rem 0;          /* espace vertical */
 }
 
+/* BOUTON FILTRE PRINCIPAL */
 #filterBtn {
   font-family: 'Badaboom BB', sans-serif;
   font-size: 2.2rem;
-  padding: 2rem 5rem 2rem 1rem;
+  padding: 2rem 5rem 2rem 1rem; /* haut/droite/bas/gauche */
   background: #E31E1E;
   color: #FFF4DD;
   border: 3px solid #000;
@@ -27,30 +27,28 @@
 }
 
 #filterBtn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px);       /* petit mouvement */
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 /* =========================
-   POPUP FILTRES
+   POPUP FILTRES (menu déroulant)
 ========================= */
-
 .filters-popup {
-  display: none;
+  display: none;                     /* caché par défaut */
   justify-content: center;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 2rem;                         /* espace entre options */
   margin: 1.5rem 0 2.5rem;
-  position: relative; /* base du dropdown */
+  position: relative;                /* référence pour dropdown */
   z-index: 10;
 }
 
 /* =========================
-   BOUTONS FILTRES
+   BOUTONS FILTRES INDIVIDUELS
 ========================= */
-
 .filter-option {
-  position: relative; /* référence pour le menu */
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,6 +73,7 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Flèche indiquant dropdown */
 .filter-option::after {
   content: "▼";
   margin-top: 0.3rem;
@@ -87,19 +86,18 @@
 }
 
 /* =========================
-   MENU DÉROULANT UNIVERS
+   DROPDOWN UNIVERSE
 ========================= */
-
 #filterUniverse {
-  position: relative; /* 🔥 clé du positionnement */
+  position: relative; /* référence pour menu absolu */
   z-index: 20;
 }
 
 .dropdown-menu {
   position: absolute;
-  top: 100%;
+  top: 100%;          /* juste sous le bouton */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); /* centré horizontalement */
 
   list-style: none;
   margin-top: 0.4rem;
@@ -125,9 +123,7 @@
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-.dropdown-menu li:last-child {
-  border-bottom: none;
-}
+.dropdown-menu li:last-child { border-bottom: none; }
 
 .dropdown-menu li:hover {
   background: #1A75CF;
@@ -135,22 +131,20 @@
 }
 
 /* =========================
-   LAYOUT PAGE
+   LAYOUT PAGE PRINCIPAL
 ========================= */
-
 .characters-main {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 2rem;   /* espace horizontal */
 }
 
 /* =========================
    GRID PERSONNAGES
 ========================= */
-
 .characters-grid {
   position: relative;
-  z-index: 0; /* reste sous le menu */
+  z-index: 0; /* reste sous le menu dropdown */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   column-gap: 2.5rem;
@@ -162,10 +156,9 @@
 /* =========================
    CARTE PERSONNAGE
 ========================= */
-
 .character-card {
   position: relative;
-  z-index: 1; /* sous le dropdown */
+  z-index: 1; /* au-dessus du fond mais sous le dropdown */
   width: 80%;
   background: #fff;
   border: 2px solid #000;
@@ -189,8 +182,7 @@
   box-shadow: 10px 10px 20px rgba(0,0,0,0.35);
 }
 
-/* Effet flash */
-
+/* Effet flash comics */
 .character-card::after {
   content: "";
   position: absolute;
@@ -216,21 +208,14 @@
 }
 
 @keyframes card-flash {
-  0% {
-    opacity: 0;
-    transform: translateX(-120%) rotate(25deg);
-  }
+  0% { opacity: 0; transform: translateX(-120%) rotate(25deg); }
   30% { opacity: 1; }
-  100% {
-    opacity: 0;
-    transform: translateX(220%) rotate(25deg);
-  }
+  100% { opacity: 0; transform: translateX(220%) rotate(25deg); }
 }
 
 /* =========================
-   IMAGE
+   IMAGE CARTE
 ========================= */
-
 .character-img-wrapper {
   width: 100%;
   height: 230px;
@@ -247,9 +232,8 @@
 }
 
 /* =========================
-   TEXTE
+   TEXTE CARTE
 ========================= */
-
 .character-name {
   font-family: 'Badaboom BB', sans-serif;
   font-size: 1.4rem;
@@ -258,9 +242,10 @@
   line-height: 2.2rem;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; /* tronque texte trop long */
 }
 
+/* BADGES & TITRES */
 .badge {
   font-family: 'Anime Ace 2.0 BB', sans-serif;
   font-size: 0.65rem;
@@ -268,31 +253,30 @@
   color: #000;
   font-weight: 900;
 }
+
 .title-badge {
   display: inline-block;
   position: relative;
   font-size: clamp(2.5rem, 5vw, 4rem);
   text-transform: uppercase;
-  letter-spacing: 4px; /* plus d’espace entre les lettres */
+  letter-spacing: 4px;
   padding: 0.6rem 2.2rem;
 
-  background-color: #4DA6FF; /* Bleu Spider-Man clair */
+  background-color: #4DA6FF;
   color: #fff;
 
-  border: 4px solid #000; /* contour noir bien visible */
+  border: 4px solid #000;
   border-radius: 12px;
 
-  box-shadow: 4px 4px 0 #000; /* effet comics */
-  text-shadow: 2px 2px 0 #000; /* texte style comics */
+  box-shadow: 4px 4px 0 #000;
+  text-shadow: 2px 2px 0 #000;
 
   margin: 2rem 0;
   cursor: default;
-
-  /* Animation légère */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .title-badge:hover {
   transform: scale(1.05) rotate(-2deg);
-  box-shadow: 6px 6px 0 #000, 0 0 10px #035074; /* petit glow rouge Spider-Man */
+  box-shadow: 6px 6px 0 #000, 0 0 10px #035074;
 }

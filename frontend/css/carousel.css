@@ -1,34 +1,38 @@
 /* ------------------------------------------------------ */
-/* CARROUSEL */
+/* CARROUSEL – CONTENEUR PRINCIPAL */
 .characters-carousel {
   width: 100%;
-  padding: 100px 0 100px 0; /* plus d'espace top/bottom pour l'oscillation */
-  overflow: visible; /* 🔥 visible pour osciller librement */
+  padding: 100px 0;       /* espace top/bottom pour l’oscillation */
+  overflow: visible;      /* laisse dépasser les slides animés */
 }
+
+/* Wrapper pour cacher scrollbar */
 .carousel-wrapper {
   width: 100%;
-  overflow: hidden; /* 👈 empêche scrollbar */
+  overflow: hidden;       /* empêche scrollbar horizontale */
   position: relative;
 }
 
+/* Carrousel lui-même : slides en ligne */
 .carousel {
-  display: inline-flex;
-  gap: 20px;
-  white-space: nowrap;
-  will-change: transform;
+  display: inline-flex;   /* slides alignés horizontalement */
+  gap: 20px;              /* espace entre chaque slide */
+  white-space: nowrap;    /* empêche le retour à la ligne */
+  will-change: transform; /* optimisation animation */
   transform: translateZ(0);
   transform-style: preserve-3d;
-  padding-top: 50px;   /* espace supplémentaire */
-  padding-bottom: 50px;/* espace supplémentaire */
+  padding: 50px 0;        /* espace supplémentaire top/bottom */
 }
 
-/* SLIDE */
+/* ------------------------------ */
+/* SLIDE INDIVIDUEL */
 .carousel-slide {
-  flex: 0 0 auto;
+  flex: 0 0 auto;         /* taille fixe par slide */
   width: 200px;
   cursor: pointer;
 }
 
+/* Wrapper 3D pour effet rotation / perspective */
 .slide-3d-wrapper {
   position: relative;
   background: #fff;
@@ -37,15 +41,15 @@
   padding: 10px;
   box-shadow: 4px 4px 0 #000;
 
-  perspective: 800px;
+  perspective: 800px;           /* profondeur 3D */
   transform-style: preserve-3d;
   transition: transform 0.2s ease;
   will-change: transform;
-
-  overflow: visible; /* 🔥 laisse passer rotations */
+  overflow: visible;            /* laisse passer rotations */
 }
 
-/* FLASH EFFECT */
+/* ------------------------------ */
+/* FLASH EFFECT – effet lumineux style comics */
 .slide-3d-wrapper::after {
   content: "";
   position: absolute;
@@ -70,17 +74,20 @@
   animation: card-flash 0.35s ease-out forwards;
 }
 
+/* Animation flash */
 @keyframes card-flash {
   0% { opacity: 0; transform: translateX(-120%) rotate(25deg); }
   30% { opacity: 1; }
   100% { opacity: 0; transform: translateX(220%) rotate(25deg); }
 }
 
-/* CONTENU */
+/* ------------------------------ */
+/* CONTENU INTERNE DU SLIDE */
 .slide-inner {
   transform-style: preserve-3d;
 }
 
+/* IMAGE DU SLIDE */
 .carousel-img {
   width: 100%;
   height: 250px;
@@ -89,6 +96,7 @@
   border-radius: 6px;
 }
 
+/* NOM ET UNIVERSE DU PERSONNAGE */
 .carousel-name, .carousel-universe {
   text-align: center;
   white-space: nowrap;
@@ -96,139 +104,71 @@
   text-overflow: ellipsis;
 }
 
+/* Effet hover sur le slide */
 .carousel-slide:hover .slide-3d-wrapper {
   box-shadow: 12px 12px 20px rgba(0,0,0,0.35);
   z-index: 999;
   transition: transform 0.1s ease;
 }
 
-
-
-
-/* ------------------------------ */
-/* TABLETTE (max-width: 1024px)  */
-/* ------------------------------ */
+/* ========================= */
+/* MEDIA QUERIES – TABLETTE */
 @media (max-width: 1024px) {
 
   /* HERO */
-  .hero {
-    height: 70vh;
-  }
-  .hero-overlay {
-    padding: 30px 40px;
-  }
-  .hero-overlay h1 {
-    font-size: 2.5rem;
-  }
-  #discoverBtn {
-    font-size: 1.2rem;
-    padding: 20px 15px;
-  }
+  .hero { height: 70vh; }
+  .hero-overlay { padding: 30px 40px; }
+  .hero-overlay h1 { font-size: 2.5rem; }
+  #discoverBtn { font-size: 1.2rem; padding: 20px 15px; }
 
   /* ABOUT */
-  .about {
-    flex-direction: column; /* empile image et texte */
-    gap: 40px;
-    padding: 30px;
-  }
-  .about-text {
-    margin-top: 0;
-    max-width: 90%;
-  }
-  .about-text p {
-    max-width: 100%;
-  }
-  .about-image img {
-    width: 280px;
-    transform: rotate(6deg);
-  }
+  .about { flex-direction: column; gap: 40px; padding: 30px; }
+  .about-text { margin-top: 0; max-width: 90%; }
+  .about-text p { max-width: 100%; }
+  .about-image img { width: 280px; transform: rotate(6deg); }
 
   /* NEWS BAR */
-  .comic-bar {
-    margin: 10px 0 150px 0;
-  }
+  .comic-bar { margin: 10px 0 150px 0; }
 
   /* CAROUSEL */
-  .characters-carousel {
-    padding: 80px 0;
-  }
-  .carousel-slide {
-    width: 160px;
-  }
-  .carousel-img {
-    height: 200px;
-  }
+  .characters-carousel { padding: 80px 0; }
+  .carousel-slide { width: 160px; }
+  .carousel-img { height: 200px; }
 }
 
-/* ------------------------------ */
-/* MOBILE (max-width: 768px)      */
-/* ------------------------------ */
+/* ========================= */
+/* MEDIA QUERIES – MOBILE */
 @media (max-width: 768px) {
 
   /* HERO */
-  .hero {
-    height: 60vh;
-  }
-  .hero-overlay {
-    padding: 20px 25px;
-  }
-  .hero-overlay h1 {
-    font-size: 2rem;
-  }
-  #discoverBtn {
-    font-size: 1rem;
-    padding: 15px 12px;
-  }
+  .hero { height: 60vh; }
+  .hero-overlay { padding: 20px 25px; }
+  .hero-overlay h1 { font-size: 2rem; }
+  #discoverBtn { font-size: 1rem; padding: 15px 12px; }
 
   /* ABOUT */
-  .about {
-    flex-direction: column;
-    gap: 30px;
-    padding: 20px;
-  }
-  .about-text h2 {
-    font-size: 2rem;
-  }
-  .about-text p {
-    max-width: 100%;
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-  .about-image img {
-    width: 220px;
-    transform: rotate(6deg);
-  }
+  .about { flex-direction: column; gap: 30px; padding: 20px; }
+  .about-text h2 { font-size: 2rem; }
+  .about-text p { max-width: 100%; font-size: 0.95rem; line-height: 1.5; }
+  .about-image img { width: 220px; transform: rotate(6deg); }
 
   /* NEWS BAR */
-  .comic-bar {
-    margin: 10px 0 100px 0;
-  }
+  .comic-bar { margin: 10px 0 100px 0; }
 
   /* CAROUSEL */
-  .characters-carousel {
-    padding: 60px 0;
-  }
-  .carousel-slide {
-    width: 140px;
-  }
-  .carousel-img {
-    height: 160px;
-  }
+  .characters-carousel { padding: 60px 0; }
+  .carousel-slide { width: 140px; }
+  .carousel-img { height: 160px; }
 
-  /* Texte carousel */
-  .carousel-name {
-    font-size: 0.9rem;
-  }
-  .carousel-universe {
-    font-size: 0.8rem;
-  }
+  /* TEXTE DU CAROUSEL */
+  .carousel-name { font-size: 0.9rem; }
+  .carousel-universe { font-size: 0.8rem; }
 }
 
-/* =========================
-   MENU DEROULANT UNIVERS
-========================= */
+/* ========================= */
+/* MENU DEROULANT UNIVERS */
 .universe-menu {
-  position: absolute; /* flottant sous le bouton */
+  position: absolute;          /* flottant sous le bouton */
   background: #fff;
   border: 2px solid #000;
   border-radius: 8px;
@@ -241,6 +181,7 @@
   overflow: hidden;
 }
 
+/* BOUTONS DU MENU */
 .universe-btn {
   font-family: 'Anime Ace 2.0 BB', sans-serif;
   font-size: 1rem;
@@ -253,7 +194,8 @@
   transition: background 0.2s ease;
 }
 
+/* Hover sur boutons */
 .universe-btn:hover {
-  background: #1A75CF;
-  color: #FFF4DD;
+  background: #1A75CF;  /* bleu univers */
+  color: #FFF4DD;       /* texte clair */
 }

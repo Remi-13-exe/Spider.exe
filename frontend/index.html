@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Spider.exe</title>
+  <link rel="icon" type="image/png" href="assets/icons/spider-icons-removebg-preview.png">
+
   <link rel="stylesheet" href="css/general.css">
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/home.css">
@@ -14,32 +16,34 @@
 <body>
 
   <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo">Spiderexe</div>
+<header class="navbar">
+  <a href="index.html" class="logo">Spiderexe</a>
 
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="characters.html">Personnages</a>
-      <a href="contact.html">Contact</a>
-      <a href="about.html">À propos</a>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="characters.html">Personnages</a>
+    <a href="contact.html">Contact</a>
+    <a href="about.html">À propos</a>
 
-      <div class="search-box">
-        <input 
-          type="search" 
-          id="site-search"
-          placeholder="Rechercher un personnage..."
-          aria-label="Recherche"
-        >
-        <img src="assets/icons/search.png" alt="Rechercher" class="search-icon">
-      </div>
-    </nav>
-
-    <div class="burger">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="search-box">
+      <input 
+        type="search" 
+        id="site-search"
+        placeholder="Rechercher un personnage..."
+        aria-label="Recherche"
+      >
+      <img src="assets/icons/search.png" alt="Rechercher" class="search-icon">
+      <ul id="search-results" class="search-results"></ul>
     </div>
-  </header>
+  </nav>
+
+  <div class="burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div> 
+</header>
+
 
   <!-- CONTENU PRINCIPAL (scrollable) -->
   <div class="main-content">
@@ -185,24 +189,24 @@
 
     <!-- Identité du site -->
     <div class="footer__brand">
-      <div class="logo">Spiderexe</div>
+  <a href="index.html" class="logo">Spiderexe</a>
 
     <!-- Navigation secondaire -->
 
 
     <!-- Réseaux sociaux -->
     <div class="footer__socials">
-      <a href="https://github.com/TON_GITHUB" target="_blank" aria-label="GitHub">
+      <a href="https://github.com/Remi-13-exe" target="_blank" aria-label="GitHub">
         GitHub
       </a>
-      <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+      <a href="https://www.instagram.com/remi.m13/" target="_blank" aria-label="Instagram">
         Instagram
       </a>
-      <a href="https://tiktok.com" target="_blank" aria-label="TikTok">
+      <a href="https://www.tiktok.com/@lebavarois23" target="_blank" aria-label="TikTok">
         TikTok
       </a>
 
-        <a href="https://remi-13-exe.github.io" target="_blank" aria-label="Portfolio">
+        <a href="https://remi-13-exe.github.io/Mon-port-folio-react-vite/" target="_blank" aria-label="Portfolio">
         portfolio
       </a>
     </div>
@@ -254,7 +258,7 @@
   <script src="js/news.js"></script>
   <script src="js/carousel.js"></script>
   <script src="js/main.js"></script>
-
+<script src="js/navbar.js"></script>
 </body>
 
 

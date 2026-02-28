@@ -2,7 +2,10 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Spider.exe — Personnages</title>
+  <title>Spider.exe Personnages</title>
+  <link rel="icon" type="image/png" href="assets/icons/spider-icons-removebg-preview.png">
+
+
   <link rel="stylesheet" href="css/general.css">
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/characters.css">
@@ -13,8 +16,8 @@
 <!-- 🔥 SCROLLBAR SUR TOUTE LA PAGE -->
 
   <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo">Spiderexe</div>
+<header class="navbar">
+    <a href="index.html" class="logo">Spiderexe</a>
 
     <nav>
       <a href="index.html">Accueil</a>
@@ -30,6 +33,9 @@
           aria-label="Recherche"
         >
         <img src="assets/icons/search.png" alt="Rechercher" class="search-icon">
+
+          <ul id="search-results" class="search-results"></ul>
+
       </div>
     </nav>
 
@@ -78,32 +84,60 @@
 
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer__container">
+  
+<footer class="footer">
+  <div class="footer__container">
 
-      <div class="footer__brand">
-        <div class="logo">Spiderexe</div>
-      </div>
+    <!-- Identité du site -->
+    <div class="footer__brand">
+  <a href="index.html" class="logo">Spiderexe</a>
 
-      <div class="footer__socials">
-        <a href="https://github.com/TON_GITHUB" target="_blank">GitHub</a>
-        <a href="https://instagram.com" target="_blank">Instagram</a>
-        <a href="https://tiktok.com" target="_blank">TikTok</a>
-        <a href="https://remi-13-exe.github.io" target="_blank">portfolio</a>
-      </div>
+    <!-- Navigation secondaire -->
 
+
+    <!-- Réseaux sociaux -->
+    <div class="footer__socials">
+      <a href="https://github.com/Remi-13-exe" target="_blank" aria-label="GitHub">
+        GitHub
+      </a>
+      <a href="https://www.instagram.com/remi.m13/" target="_blank" aria-label="Instagram">
+        Instagram
+      </a>
+      <a href="https://www.tiktok.com/@lebavarois23" target="_blank" aria-label="TikTok">
+        TikTok
+      </a>
+
+        <a href="https://remi-13-exe.github.io/Mon-port-folio-react-vite/" target="_blank" aria-label="Portfolio">
+        portfolio
+      </a>
     </div>
 
-    <div class="footer__legal">
-      <p>Site hébergé par GitHub. Tous les designs et contenus sont originaux ou issus de recherches Internet.</p>
-      <p>Ce site non-commercial et non-officiel n’est pas associé à Marvel.</p>
-      <p>Projet réalisé dans le cadre du TP Développeur Web et Web Mobile.</p>
-    </div>
-  </footer>
+  </div>
+
+  <!-- Mentions légales -->
+  <div class="footer__legal">
+    <p>
+      Site hébergé par GitHub. Tous les designs et contenus sont originaux ou issus de recherches Internet.
+    </p>
+
+    <p>
+      Ce site non-commercial et non-officiel n’est pas associé à Marvel.
+      Il utilise du contenu protégé par copyright de Marvel et d’autres parties,
+      sans permission, à des fins strictement pédagogiques.
+    </p>
+
+    <p>
+      Ce projet a été réalisé dans le cadre de l’examen du
+      Titre Professionnel Développeur Web et Web Mobile.
+    </p>
+  </div>
+   </div>
+</footer>
+
 
   <!-- SCRIPTS -->
-  <script src="js/main.js"></script>
   <script src="js/characters.js"></script>
+<script src="js/navbar.js"></script>
 
 </body>
 </html>

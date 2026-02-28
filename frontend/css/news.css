@@ -1,42 +1,41 @@
 /* ------------------------------------------------------ */
-/* BASE                                                   */
+/* BASE — structure générale du flipbook                  */
 /* ------------------------------------------------------ */
 
 .news,
 .news * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* évite que padding/border agrandissent les éléments */
 }
 
 .book {
   position: relative;
   display: flex;
-  bottom: 80px;            /* décale le flipbook vers le bas pour éviter le rectangle */
-  margin: 0 auto;        /* centrage horizontal seulement */
-  width: 65cqmin;
-  pointer-events: none;
-  transform-style: preserve-3d;
-  transition: translate 1s;
-  translate: calc(min(var(--c), 1) * 50%) 0%;
-  rotate: 1 0 0 30deg;
+  bottom: 80px;            /* décale le flipbook vers le bas pour éviter le rectangle du haut */
+  margin: 0 auto;          /* centre horizontalement */
+  width: 65cqmin;          /* largeur responsive basée sur la taille du conteneur */
+  pointer-events: none;    /* empêche les clics sauf sur les pages */
+  transform-style: preserve-3d; /* active la 3D */
+  transition: translate 1s;     /* animation du déplacement */
+  translate: calc(min(var(--c), 1) * 50%) 0%; /* décalage selon la page courante */
+  rotate: 1 0 0 30deg;     /* légère rotation 3D */
 }
 
-
 .page {
-  --thickness: 4;
+  --thickness: 4;          /* épaisseur virtuelle des pages */
   flex: none;
   display: flex;
   width: 100%;
-  font-size: 2cqmin;
-  pointer-events: all;
-  user-select: none;
+  font-size: 2cqmin;       /* taille du texte responsive */
+  pointer-events: all;     /* clics activés sur les pages */
+  user-select: none;       /* empêche la sélection de texte */
   transform-style: preserve-3d;
-  transform-origin: left center;
+  transform-origin: left center; /* pivot des pages */
   transition:
     transform 1s,
     rotate 1s ease-in calc((min(var(--i), var(--c)) - max(var(--i), var(--c))) * 50ms);
-  translate: calc(var(--i) * -100%) 0px 0px;
+  translate: calc(var(--i) * -100%) 0px 0px; /* position horizontale des pages */
   transform: translateZ(calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * .23cqmin)));
-  rotate: 0 1 0 calc(clamp(0, var(--c) - var(--i), 1) * -180deg);
+  rotate: 0 1 0 calc(clamp(0, var(--c) - var(--i), 1) * -180deg); /* effet de page qui tourne */
 }
 
 .front,
@@ -44,23 +43,23 @@
   position: relative;
   flex: none;
   width: 100%;
-  backface-visibility: hidden;
+  backface-visibility: hidden; /* cache l’arrière quand la page tourne */
   overflow: hidden;
   background-color: #fff;
   translate: 0px;
   display: flex;
   flex-direction: column;
-  padding: 2em;
-  border: 1px solid #0002;
+  padding: 2em;            /* marges internes */
+  border: 1px solid #0002; /* bordure légère */
 }
 
 .back {
-  translate: -100% 0;
-  rotate: 0 1 0 180deg;
+  translate: -100% 0;      /* place le verso derrière le recto */
+  rotate: 0 1 0 180deg;    /* retourne le verso */
 }
 
 /* ------------------------------------------------------ */
-/* COUVERTURE                                             */
+/* COUVERTURE — image + style                             */
 /* ------------------------------------------------------ */
 
 .cover {
@@ -70,7 +69,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* centre verticalement */
   text-align: center;
   color: #fff;
 }
@@ -78,43 +77,40 @@
 .cover::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 0; /* couvre toute la zone */
   background:
     #11110d
     url("../assets/images/Couverture Daily Bugle Spider-Man.png")
-    center / auto 89% no-repeat;
-  z-index: 0;
+    center / auto 89% no-repeat; /* image centrée, hauteur 89% */
+  z-index: 0; /* passe derrière le texte */
 }
 
 .cover-black {
-  background: #11110d;
-  color: #11110d;
+  background: #11110d; /* couverture noire pour la fin */
+  color: #11110d;      /* texte invisible (car remplacé par autre contenu) */
 }
 
 .cover-black::before {
-  display: none;
+  display: none; /* enlève l’image de couverture */
 }
 
 /* ------------------------------------------------------ */
-/* IMAGES DES ACTUALITÉS                                 */
+/* IMAGES DES ACTUALITÉS — taille uniforme                */
 /* ------------------------------------------------------ */
 
 .book .page .front .news-img,
 .book .page .back .news-img {
-  width: 75%;
-  height: 360px;
-  object-fit: cover;
+  width: 100%;            /* prend toute la largeur disponible */
+  aspect-ratio: 4/3;      /* ratio fixe pour uniformiser toutes les images */
+  object-fit: cover;      /* coupe proprement si nécessaire */
   object-position: center;
-
   display: block;
-  margin: 40px auto 40px; /* espace au-dessus et en dessous */
+  margin: 20px auto;      /* espace autour + centrage */
   border-radius: 6px;
-
-  flex-shrink: 0;
 }
 
 /* ------------------------------------------------------ */
-/* TITRES                                                 */
+/* TITRES — centrés et espacés                            */
 /* ------------------------------------------------------ */
 
 .book .page .front h2,
@@ -122,11 +118,11 @@
   font-size: 2rem;
   margin-top: 40px;
   margin-bottom: 10px;
-  text-align: center;
+  text-align: center; /* centré */
 }
 
 /* ------------------------------------------------------ */
-/* PARAGRAPHES                                            */
+/* PARAGRAPHES — lisibilité                               */
 /* ------------------------------------------------------ */
 
 .book .page p {
@@ -135,32 +131,30 @@
   font-size: 1.2cqmin;
   line-height: 1.6cqmin;
   max-width: 90%;
-  flex-shrink: 0;
+  flex-shrink: 0; /* empêche le texte d’être compressé */
 }
 
-/* Style de la source */
+/* Style de la source (em) */
 .book .page p em {
-  font-family: 'Badaboom BB', cursive;
+  font-family: 'Badaboom BB', cursive; /* police comics */
   font-style: normal;
   letter-spacing: 1.5px;
   display: inline-block;
-    margin-top: 30px;
+  margin-top: 30px; /* espace au-dessus */
 }
 
-
-/* Le dernier paragraphe (la source) collé en bas de la page */
+/* Force le dernier paragraphe (la source) à descendre en bas */
 .book .page .front p:last-of-type,
 .book .page .back p:last-of-type {
-  margin-top: auto;
+  margin-top: auto; /* pousse vers le bas */
 }
 
+/* ------------------------------------------------------ */
+/* PAGE DE FIN — texte + GIF                              */
+/* ------------------------------------------------------ */
 
-
-
-
-/* TITRE PLUS GRAND, SANS MARGE */
 .back.cover-black .end-message h2 {
-  font-size: 3rem;   /* vraiment grand */
+  font-size: 3rem;   /* très grand titre */
   font-weight: 800;
   margin-bottom: 40px;
   color: #fff;
@@ -168,62 +162,66 @@
 }
 
 .back.cover-black .end-message p {
-  font-size: 0.3  rem; /* paragraphe agrandi */
+  font-size: 0.3rem; /* texte agrandi (attention à l’espace dans "0.3  rem") */
   margin: 0;
   color: #fff;
   text-align: center;
 }
 
-/* GIF */
+/* GIF de fin */
 .end-gif {
   width: 40%;
   margin-right: 40px;
   max-width: 300px;
   border-radius: 6px;
-  object-fit: cover;}
+  object-fit: cover;
+}
 
+/* ------------------------------------------------------ */
+/* RESPONSIVE TABLETTE (max-width: 1024px)                */
+/* ------------------------------------------------------ */
 
-/* ------------------------------ */
-/* TABLETTE (max-width: 1024px)  */
-/* ------------------------------ */
 @media (max-width: 1024px) {
   .book {
-    width: 50cqmin;
+    width: 50cqmin; /* flipbook plus petit */
     bottom: 60px;
   }
 
   .book .page .front h2,
   .book .page .back h2 {
-    font-size: 2.4rem;  /* beaucoup plus gros */
-    margin-top: 40px;    /* plus d’espace au dessus */
-    margin-bottom: 15px; /* plus d’espace sous le titre */
+    font-size: 2.4rem;  /* titres plus grands */
+    margin-top: 40px;
+    margin-bottom: 15px;
   }
 
   .book .page p {
-    font-size: 1.6cqmin;   /* paragraphe plus gros */
-    line-height: 1.8cqmin; /* plus de hauteur pour lire */
-    margin: 20px 25px;     /* marges plus grandes */
+    font-size: 1.6cqmin;   /* texte plus grand */
+    line-height: 1.8cqmin;
+    margin: 20px 25px;
   }
 
-  /* Images des actualités */
   .book .page .front .news-img,
   .book .page .back .news-img {
     width: 80%;
     height: auto;
-    margin: 50px auto;   /* plus d’espace autour de l’image */
+    margin: 50px auto;
   }
 
-  /* Couverture */
-   .cover::before {
-    background-size: 85% auto;
+  .cover::before {
+    background-size: 85% auto; /* image un peu plus petite */
     background-position: center;
+  }
+
+  .book .page .front h2,
+  .book .page .back h2 {
+    min-height: 5em; /* espace réservé pour éviter les sauts */
   }
 }
 
+/* ------------------------------------------------------ */
+/* RESPONSIVE MOBILE (max-width: 768px)                   */
+/* ------------------------------------------------------ */
 
-/* ------------------------------ */
-/* MOBILE (max-width: 768px)      */
-/* ------------------------------ */
 @media (max-width: 768px) {
   .book {
     width: 45cqmin;
@@ -232,18 +230,18 @@
 
   .book .page .front h2,
   .book .page .back h2 {
-    font-size: 2rem;     /* titre plus grand */
+    font-size: 2rem;
     margin-top: 35px;
     margin-bottom: 12px;
+    min-height: 5.2em; /* encore plus d’espace réservé */
   }
 
   .book .page p {
-    font-size: 1.4cqmin;  /* paragraphe plus gros */
+    font-size: 1.4cqmin;
     line-height: 1.6cqmin;
     margin: 15px 20px;
   }
 
-  /* Images des actualités */
   .book .page .front .news-img,
   .book .page .back .news-img {
     width: 90%;
@@ -251,38 +249,8 @@
     margin: 40px auto;
   }
 
-  /* Couverture */
   .cover::before {
     background-size: 85% auto;
     background-position: center;
-  }
-}
-/* CONTENEUR FIXE POUR CHAQUE IMAGE */
-.book .page .front .news-img,
-.book .page .back .news-img {
-  width: 100%;
-  aspect-ratio: 4/3;      /* force toutes les images à avoir le même ratio */
-  object-fit: cover;      /* coupe si nécessaire, mais garde le centre */
-  object-position: center;
-  display: block;
-  margin: 20px auto;      /* centrage vertical et horizontal */
-  border-radius: 6px;
-}
-
-
-@media (max-width: 1024px) {
-  .book .page .front h2,
-  .book .page .back h2 {
-    font-size: 2.4rem;
-    min-height: 5em; /* un peu plus haut */
-  }
-}
-
-
-@media (max-width: 768px) {
-  .book .page .front h2,
-  .book .page .back h2 {
-    font-size: 2rem;
-    min-height: 5.2em; /* encore un peu plus */
   }
 }

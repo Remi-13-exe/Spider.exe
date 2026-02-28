@@ -2,44 +2,31 @@
 /* ANIMATIONS GLOBALES                                   */
 /* ------------------------------------------------------ */
 
+/* Fade vers le haut */
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Fade depuis la gauche */
 @keyframes fadeLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
+/* Fade depuis la droite */
 @keyframes fadeRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
+/* Pulse – agrandissement/retrécissement pour effet vivant */
 @keyframes pulse {
   0% { transform: scale(1); }
   100% { transform: scale(1.05); }
 }
 
+/* Float – oscillation verticale type “léger flottement” */
 @keyframes float {
   0% { transform: translateY(0); }
   100% { transform: translateY(-15px); }
@@ -57,20 +44,20 @@
   background-repeat: no-repeat;
 
   display: flex;
-  align-items: flex-end;
+  align-items: flex-end;      /* alignement du texte en bas */
   justify-content: center;
   position: relative;
   overflow: hidden;
 }
 
 .hero-overlay {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5); /* fond semi-transparent */
   padding: 30px 40px;
   border-radius: 10px;
   text-align: center;
   max-width: 800px;
 
-  animation: fadeUp 1s ease forwards;
+  animation: fadeUp 1s ease forwards; /* apparition depuis le bas */
 }
 
 .hero-overlay h1 {
@@ -80,6 +67,7 @@
   letter-spacing: 2px;
   margin-bottom: 25px;
 
+  /* contour style comics */
   text-shadow:
     -1.5px -1.5px 0 #000,
      0   -1.5px 0 #000,
@@ -91,8 +79,7 @@
      1.5px  1.5px 0 #000;
 }
 
-/* BOUTON HERO */
-
+/* BOUTON HERO – style comics + animation pulse */
 #discoverBtn {
   font-family: 'Badaboom BB', cursive;
   font-size: 1.4rem;
@@ -105,7 +92,7 @@
 
   text-shadow: 1px 1px 0 #000, -1px -1px 0 #000;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  animation: pulse 2s ease-in-out infinite alternate;
+  animation: pulse 2s ease-in-out infinite alternate; /* pulsation continue */
 }
 
 #discoverBtn:hover {
@@ -113,8 +100,7 @@
   box-shadow: 6px 6px 0 #000;
 }
 
-/* IMAGE / GIF HERO */
-
+/* IMAGE / GIF HERO – flottement vertical */
 .hero-sub-img img {
   width: 250px;
   display: block;
@@ -123,11 +109,11 @@
 }
 
 /* ------------------------------------------------------ */
-/* ACTUALITÉS                                           */
+/* ACTUALITÉS (NEWS)                                     */
 /* ------------------------------------------------------ */
 
 .news {
-  animation: fadeUp 1s ease forwards;
+  animation: fadeUp 1s ease forwards; /* apparition du bloc news */
 }
 
 .news h2 {
@@ -136,6 +122,7 @@
   margin-bottom: 20px;
 }
 
+/* Barre rouge comics style Spider-Man */
 .comic-bar {
   width: 100vw;
   height: 6px;
@@ -144,7 +131,7 @@
   margin: 20px 0 40px 0;
   box-sizing: border-box;
 
-  animation: fadeLeft 1s ease forwards;
+  animation: fadeLeft 1s ease forwards; /* apparition depuis la gauche */
 }
 
 /* ------------------------------------------------------ */
@@ -167,7 +154,7 @@
   justify-content: flex-start;
   margin-top: -30px;
 
-  animation: fadeLeft 1s ease forwards;
+  animation: fadeLeft 1s ease forwards; /* texte apparition depuis gauche */
 }
 
 .about-text h2 {
@@ -185,22 +172,18 @@
 }
 
 .about-image {
-  animation: fadeRight 1s ease forwards;
+  animation: fadeRight 1s ease forwards; /* image apparition depuis droite */
 }
 
 .about-image img {
   width: 320px;
-  transform: rotate(6deg);
+  transform: rotate(6deg); /* léger effet comics */
   border-radius: 10px;
   border: 3px solid #000;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .about-image img:hover {
-  transform: rotate(0deg) scale(1.05);
-  box-shadow: 10px 10px 0 #000;
+  transform: rotate(0deg) scale(1.05); /* rotation + zoom au hover */
+  box-shadow: 10px 10px 0 #000;        /* contour style comics */
 }
-
-/* ------------------------------------------------------ */
-/* MICRO-INTERACTIONS GLOBALES                           */
-/* ------------------------------------------------------ */

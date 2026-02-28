@@ -1,60 +1,39 @@
+// Sélection de l’input de recherche dans la navbar
 const searchInput = document.getElementById('site-search');
 
-searchInput.addEventListener('input', async (e) => {
-  const query = e.target.value.toLowerCase();
+// Vérifie que l’input existe sur la page
+if (searchInput) {
 
-  if (query.length < 2) return;
+  // Déclenche la recherche à chaque frappe dans l’input
+  searchInput.addEventListener('input', async (e) => {
 
-  const res = await fetch('http://localhost:3000/api/characters');
-  const characters = await res.json();
+    // Récupère la valeur tapée, en minuscule et sans espaces inutiles
+    const query = e.target.value.toLowerCase().trim();
 
-  const filtered = characters.filter(c =>
-    c.name.toLowerCase().includes(query) ||
-    c.alias?.toLowerCase().includes(query)
-  );
+    // Si moins de 2 caractères → on ne lance pas la recherche
+    if (query.length < 2) return;
 
-  console.log(filtered); // prêt à afficher plus tard
-});
+    try {
+      // Récupère tous les personnages depuis l’API
+      const res = await fetch('http://localhost:3000/api/characters');
+      const characters = await res.json();
 
-// Sélectionner les éléments
-const burger = document.querySelector('.burger');
-const nav = document.querySelector('.navbar nav');
+      // Filtre les personnages selon :
+      // - leur nom
+      // - leur alias (si présent)
+      // - leur univers
+      const filtered = characters.filter(c =>
+        c.name.toLowerCase().includes(query) ||
+        c.alias?.toLowerCase().includes(query) ||
+        c.universe?.toLowerCase().includes(query)
+      );
 
-// Toggle le menu au clic
-burger.addEventListener('click', () => {
-  burger.classList.toggle('active');
-  nav.classList.toggle('active');
-});
+      // Affiche les résultats dans la console (prêt à être affiché dans un menu)
+      console.log(filtered);
 
-// Fermer le menu si on clique sur un lien
-const navLinks = document.querySelectorAll('.navbar nav a');
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    burger.classList.remove('active');
-    nav.classList.remove('active');
+    } catch (err) {
+      // Gestion des erreurs réseau ou API
+      console.error("Erreur recherche personnages", err);
+    }
   });
-});
-
-// Fermer le menu si on clique en dehors
-document.addEventListener('click', (e) => {
-  if (!burger.contains(e.target) && !nav.contains(e.target)) {
-    burger.classList.remove('active');
-    nav.classList.remove('active');
-  }
-});
-
-const input = document.getElementById('site-search');
-const placeholderText = "Rechercher un personnage... ";
-let i = 0;
-
-function animatePlaceholder() {
-  if (!input.value) { // seulement si l'utilisateur n'a rien écrit
-    input.placeholder = placeholderText.slice(i) + placeholderText.slice(0, i);
-    i = (i + 1) % placeholderText.length;
-  }
-  setTimeout(animatePlaceholder, 100); // 🔥 vitesse plus rapide et fluide
 }
-
-animatePlaceholder();
-
-
