@@ -10,10 +10,12 @@ import {
 
 const router = express.Router();
 
-router.get('/', findAllPowers);
-router.get('/:id', findPowerById);
+// Routes GET spécifiques en premier
 router.get('/characters/:id', getPowersByCharacter);
+router.get('/:id', findPowerById);
+router.get('/', findAllPowers);
 
+// ✅ CRUD
 router.post('/', createNewPower);
 router.put('/:id', updatePowerById);
 router.delete('/:id', deletePowerById);

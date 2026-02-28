@@ -10,9 +10,10 @@ import {
 
 const router = express.Router();
 
-router.get('/', findAllCharacters);
-router.get('/:id', findCharacterById);
+// Routes GET spécifiques d'abord
 router.get('/:id/details', getCharacterDetails);
+router.get('/:id', findCharacterById);
+router.get('/', findAllCharacters);
 
 // ✅ CRUD
 router.post('/', createNewCharacter);

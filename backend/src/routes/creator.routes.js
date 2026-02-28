@@ -10,10 +10,12 @@ import {
 
 const router = express.Router();
 
-router.get('/', findAllCreators);
-router.get('/:id', findCreatorById);
+// Routes GET spécifiques en premier
 router.get('/characters/:id', getCreatorsByCharacter);
+router.get('/:id', findCreatorById);
+router.get('/', findAllCreators);
 
+// ✅ CRUD
 router.post('/', createNewCreator);
 router.put('/:id', updateCreatorById);
 router.delete('/:id', deleteCreatorById);

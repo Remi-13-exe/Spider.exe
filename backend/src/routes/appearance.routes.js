@@ -10,9 +10,10 @@ import {
 
 const router = express.Router();
 
+// Routes spécifiques en premier
+router.get('/characters/:id', getAppearancesByCharacter);
 router.get('/', findAllAppearances);
 router.get('/:id', findAppearanceById);
-router.get('/characters/:id', getAppearancesByCharacter);
 
 router.post('/', createNewAppearance);
 router.put('/:id', updateAppearanceById);
