@@ -242,8 +242,8 @@
 .search-thumb { width: 42px; height: 42px; object-fit: cover; border-radius: 6px; border: 2px solid #000; }
 .search-text { display: flex; flex-direction: column; }
 .result-name { font-family: 'Badaboom BB', cursive; font-size: 1.1rem; line-height: 1; }
-.result-universe { font-family: 'Anime Ace 2.0 BB', sans-serif; font-size: 0.75rem; opacity: 0.7; }
-.result-alias { font-size: 0.7rem; margin: 0.2rem 0; color: #008cff; }
+.result-universe { font-family: 'Anime Ace 2.0 BB', sans-serif; font-size: 0.75rem; opacity: 0.7;  color: #ca0d0d;font-weight: 900;}
+.result-alias { font-family: 'Anime Ace 2.0 BB', sans-serif; font-size: 0.7rem; margin: 0.2rem 0; color: #008cff;font-weight: 900;}
 
 /* Aucun résultat */
 .no-result { text-align: center; font-family: 'Anime Ace 2.0 BB', sans-serif; padding: 0.7rem; opacity: 0.7; cursor: default; }

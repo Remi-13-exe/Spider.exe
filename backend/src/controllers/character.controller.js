@@ -3,123 +3,115 @@ import * as powerModel from '../models/power.model.js';
 import * as creatorModel from '../models/creator.model.js';
 import * as appearanceModel from '../models/appearance.model.js';
 
-// Liste de tous les personnages
+// 🔹 Liste de tous les personnages
 export const findAllCharacters = async (req, res) => {
   try {
     const characters = await characterModel.getAllCharacters();
     res.status(200).json(characters);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erreur serveur' });
+    console.error('[ERROR] findAllCharacters:', error.message);
+    res.status(500).json({ error: 'Erreur serveur lors de la récupération des personnages' });
   }
 };
 
-// Détails d’un personnage par ID
+// 🔹 Détails d’un personnage par ID
 export const findCharacterById = async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
-    if (isNaN(id)) {
-      return res.status(400).json({ message: 'ID invalide' });
-    }
+    const id = parseInt(req.params.id, 10);
+    if (isNaN(id)) return res.status(400).json({ error: 'ID invalide' });
 
     const character = await characterModel.getCharacterById(id);
-    if (!character) {
-      return res.status(404).json({ message: 'Personnage non trouvé' });
-    }
+    if (!character) return res.status(404).json({ message: 'Personnage non trouvé' });
 
     res.status(200).json(character);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erreur serveur' });
+    console.error('[ERROR] findCharacterById:', error.message);
+    res.status(500).json({ error: 'Erreur serveur lors de la récupération du personnage' });
   }
 };
 
-// Endpoint complet "details"
+// 🔹 Endpoint complet "details" (personnage + pouvoirs + créateurs + apparitions)
 export const getCharacterDetails = async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
-    if (isNaN(id)) {
-      return res.status(400).json({ message: 'ID invalide' });
-    }
+    const id = parseInt(req.params.id, 10);
+    if (isNaN(id)) return res.status(400).json({ error: 'ID invalide' });
 
     const character = await characterModel.getCharacterById(id);
-    if (!character) {
-      return res.status(404).json({ message: 'Personnage non trouvé' });
-    }
+    if (!character) return res.status(404).json({ message: 'Personnage non trouvé' });
 
-    // Exécution parallèle (optimisé)
+    // Récupération simultanée pour performance
     const [powers, creators, appearances] = await Promise.all([
       powerModel.getPowersByCharacterId(id),
       creatorModel.getCreatorsByCharacterId(id),
       appearanceModel.getAppearancesByCharacterId(id)
     ]);
 
-    res.status(200).json({
-      character,
-      powers,
-      creators,
-      appearances
-    });
-
+    res.status(200).json({ ...character, powers, creators, appearances });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erreur serveur' });
+    console.error('[ERROR] getCharacterDetails:', error.message);
+    res.status(500).json({ error: 'Erreur serveur lors de la récupération des détails du personnage' });
   }
 };
 
-// CREATE
+// 🔹 CREATE
 export const createNewCharacter = async (req, res) => {
   try {
-    const id = await characterModel.createCharacter(req.body);
+    const data = req.body;
+    if (!data || Object.keys(data).length === 0) {
+      return res.status(400).json({ error: 'Données manquantes pour créer le personnage' });
+    }
+
+    const id = await characterModel.createCharacter(data);
     res.status(201).json({ message: 'Personnage créé', id });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erreur serveur' });
+    console.error('[ERROR] createNewCharacter:', error.message);
+    res.status(500).json({ error: 'Erreur serveur lors de la création du personnage' });
   }
 };
 
-// UPDATE
+// 🔹 UPDATE
 export const updateCharacterById = async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
-    if (isNaN(id)) {
-      return res.status(400).json({ message: 'ID invalide' });
-    }
+    const id = parseInt(req.params.id, 10);
+    if (isNaN(id)) return res.status(400).json({ error: 'ID invalide' });
 
     const character = await characterModel.getCharacterById(id);
-    if (!character) {
-      return res.status(404).json({ message: 'Personnage non trouvé' });
+    if (!character) return res.status(404).json({ message: 'Personnage non trouvé' });
+
+    const data = req.body;
+    if (!data || Object.keys(data).length === 0) {
+      return res.status(400).json({ error: 'Données manquantes pour mettre à jour le personnage' });
     }
 
-    await characterModel.updateCharacter(id, req.body);
+    const updated = await characterModel.updateCharacter(id, data);
+    if (updated.affectedRows === 0) {
+      return res.status(404).json({ message: 'Personnage non trouvé pour mise à jour' });
+    }
 
     res.status(200).json({ message: 'Personnage mis à jour' });
-
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erreur serveur' });
+    console.error('[ERROR] updateCharacterById:', error.message);
+    res.status(500).json({ error: 'Erreur serveur lors de la mise à jour du personnage' });
   }
 };
 
-// DELETE
+// 🔹 DELETE
 export const deleteCharacterById = async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
-    if (isNaN(id)) {
-      return res.status(400).json({ message: 'ID invalide' });
-    }
+    const id = parseInt(req.params.id, 10);
+    if (isNaN(id)) return res.status(400).json({ error: 'ID invalide' });
 
     const character = await characterModel.getCharacterById(id);
-    if (!character) {
-      return res.status(404).json({ message: 'Personnage non trouvé' });
+    if (!character) return res.status(404).json({ message: 'Personnage non trouvé' });
+
+    const deleted = await characterModel.deleteCharacter(id);
+    if (deleted.affectedRows === 0) {
+      return res.status(404).json({ message: 'Personnage non trouvé pour suppression' });
     }
 
-    await characterModel.deleteCharacter(id);
-
     res.status(200).json({ message: 'Personnage supprimé' });
-
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erreur serveur' });
+    console.error('[ERROR] deleteCharacterById:', error.message);
+    res.status(500).json({ error: 'Erreur serveur lors de la suppression du personnage' });
   }
 };

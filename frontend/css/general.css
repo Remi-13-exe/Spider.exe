@@ -7,10 +7,8 @@
 }
 
 @font-face {
-  font-family: 'Badaboom';
+  font-family: 'Badaboom BB';
   src: url('../assets/fonts/badaboom_bb/BadaboomBB.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 
 @font-face {
@@ -22,31 +20,45 @@
    VARIABLES & ROOT
 ========================= */
 :root {
-  --bg-main: #F5E6CB;        /* couleur de fond principale */
-  --text-main: #000000;      /* couleur texte principale */
-  --text-outline: #F5E6CB;   /* contour texte style comics */
+  --bg-main: #F5E6CB;
+  --text-main: #000000;
+  --text-outline: #F5E6CB;
 }
 
 /* =========================
    BASE – STRUCTURE & TYPOGRAPHIE
 ========================= */
-html, body {
-  overflow: hidden;           /* empêche le scroll global */
-  height: 100%;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-main);
   margin: 0;
+  background-color: var(--bg-main);
   color: var(--text-main);
+
+  /* Structure pour footer en bas */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+/* Le contenu principal prend l'espace restant */
+.main-content {
+  flex: 1;
+}
+
+/* =========================
+   TYPOGRAPHIE
+========================= */
 h1, h2, h3 {
-  font-family: 'Badaboom BB', cursive;  /* titres style comics */
+  font-family: 'Badaboom BB', cursive;
   letter-spacing: 0.03em;
 }
 
-p, .news article, .about-text p {
+p,
+.news article,
+.about-text p {
   font-family: 'Anime Ace 2.0 BB', sans-serif;
   font-size: 0.7rem;
   font-weight: 900;
@@ -56,56 +68,49 @@ p, .news article, .about-text p {
 }
 
 /* =========================
-   MAIN CONTENT SCROLLBAR
+   SCROLLBAR PERSONNALISÉE (PAGE ENTIÈRE)
 ========================= */
-.main-content {
-  position: relative;
-  overflow-y: scroll;                  /* scrollbar verticale */
-  max-height: calc(100vh - 60px);      /* ajuste la hauteur */
-}
 
-/* Scrollbar Chrome / Edge / Safari */
-.main-content::-webkit-scrollbar {
+/* Chrome / Edge / Safari */
+::-webkit-scrollbar {
   width: 12px;
 }
 
-.main-content::-webkit-scrollbar-track {
-  background: #000;                    /* fond noir du track */
+::-webkit-scrollbar-track {
+  background: #000;
   border-radius: 10px;
 }
 
-.main-content::-webkit-scrollbar-thumb {
-  background: #E31E1E;                 /* rouge Spider-Man pour le pouce */
+::-webkit-scrollbar-thumb {
+  background: #E31E1E;
   border-radius: 10px;
-  border: 2px solid #000;              /* contour noir */
+  border: 2px solid #000;
 }
 
-.main-content::-webkit-scrollbar-thumb:hover {
-  background: #FF2D2D;                 /* rouge clair au hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #FF2D2D;
 }
 
-/* Scrollbar Firefox */
-.main-content {
-  scrollbar-width: thin;
-  scrollbar-color: #E31E1E #000;       /* thumb / track */
-}
-
-/* Smooth scrolling global */
+/* Firefox */
 html {
-  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #E31E1E #000;
 }
 
 /* =========================
    HIDE SCROLLBAR – TABLETTE
 ========================= */
 @media (max-width: 1024px) {
-  .main-content::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 0;
     height: 0;
   }
 
-  .main-content {
-    scrollbar-width: none;             /* Firefox */
-    -ms-overflow-style: none;          /* IE / Edge anciens */
+  html {
+    scrollbar-width: none;
   }
+}
+
+html, body {
+  overflow-x: hidden; /* bloque uniquement le scroll horizontal */
 }

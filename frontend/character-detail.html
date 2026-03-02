@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Spider.exe  Détail Personnage</title>
-    <link rel="icon" type="image/png" href="assets/icons/spider-icons-removebg-preview.png">
+  <title>Spider.exe Détail Personnage</title>
+  <link rel="icon" type="image/png" href="assets/icons/spider-icons-removebg-preview.png">
 
   <link rel="stylesheet" href="css/general.css">
   <link rel="stylesheet" href="css/navbar.css">
@@ -16,95 +16,73 @@
 <header class="navbar">
   <a href="index.html" class="logo">Spiderexe</a>
 
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="characters.html">Personnages</a>
-      <a href="contact.html">Contact</a>
-      <a href="about.html">À propos</a>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="characters.html">Personnages</a>
+    <a href="contact.html">Contact</a>
+    <a href="about.html">À propos</a>
 
-      <div class="search-box">
-        <input 
-          type="search" 
-          id="site-search"
-          placeholder="Rechercher un personnage..."
-          aria-label="Recherche"
-        >
-        <img src="assets/icons/search.png" alt="Rechercher" class="search-icon">
-
-          <ul id="search-results" class="search-results"></ul>
-
-      </div>
-    </nav>
-
-    <div class="burger">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="search-box">
+      <input 
+        type="search" 
+        id="site-search"
+        placeholder="Rechercher un personnage..."
+        aria-label="Recherche"
+      >
+      <img src="assets/icons/search.png" alt="Rechercher" class="search-icon">
+      <ul id="search-results" class="search-results"></ul>
     </div>
-  </header>
-  <div class="main-content">
+  </nav>
 
+  <div class="burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<div class="main-content">
 
   <main class="detail-main">
 
+    <!-- Section personnage avec titre pour W3C -->
     <section class="character-detail" id="character-detail">
-      <!-- Contenu dynamique injecté par JS -->
+      <h2 class="sr-only">Détail du personnage</h2> <!-- titre invisible pour W3C -->
       <p class="loading">Chargement du personnage...</p>
     </section>
+
   </main>
 
+</div> <!-- Fermeture main-content -->
 
 <footer class="footer">
   <div class="footer__container">
 
     <!-- Identité du site -->
     <div class="footer__brand">
-  <a href="index.html" class="logo">Spiderexe</a>
+      <a href="index.html" class="logo">Spiderexe</a>
 
-    <!-- Navigation secondaire -->
+      <!-- Réseaux sociaux -->
+      <div class="footer__socials">
+        <a href="https://github.com/Remi-13-exe" target="_blank" aria-label="GitHub">GitHub</a>
+        <a href="https://www.instagram.com/remi.m13/" target="_blank" aria-label="Instagram">Instagram</a>
+        <a href="https://www.tiktok.com/@lebavarois23" target="_blank" aria-label="TikTok">TikTok</a>
+        <a href="https://remi-13-exe.github.io/Mon-port-folio-react-vite/" target="_blank" aria-label="Portfolio">Portfolio</a>
+      </div>
+    </div>
 
-
-    <!-- Réseaux sociaux -->
-    <div class="footer__socials">
-      <a href="https://github.com/Remi-13-exe" target="_blank" aria-label="GitHub">
-        GitHub
-      </a>
-      <a href="https://www.instagram.com/remi.m13/" target="_blank" aria-label="Instagram">
-        Instagram
-      </a>
-      <a href="https://www.tiktok.com/@lebavarois23" target="_blank" aria-label="TikTok">
-        TikTok
-      </a>
-
-        <a href="https://remi-13-exe.github.io/Mon-port-folio-react-vite/" target="_blank" aria-label="Portfolio">
-        portfolio
-      </a>
+    <!-- Mentions légales -->
+    <div class="footer__legal">
+      <p>Site hébergé par GitHub. Tous les designs et contenus sont originaux ou issus de recherches Internet.</p>
+      <p>Ce site non-commercial et non-officiel n’est pas associé à Marvel. Il utilise du contenu protégé par copyright de Marvel et d’autres parties, sans permission, à des fins strictement pédagogiques.</p>
+      <p>Ce projet a été réalisé dans le cadre de l’examen du Titre Professionnel Développeur Web et Web Mobile.</p>
     </div>
 
   </div>
-
-  <!-- Mentions légales -->
-  <div class="footer__legal">
-    <p>
-      Site hébergé par GitHub. Tous les designs et contenus sont originaux ou issus de recherches Internet.
-    </p>
-
-    <p>
-      Ce site non-commercial et non-officiel n’est pas associé à Marvel.
-      Il utilise du contenu protégé par copyright de Marvel et d’autres parties,
-      sans permission, à des fins strictement pédagogiques.
-    </p>
-
-    <p>
-      Ce projet a été réalisé dans le cadre de l’examen du
-      Titre Professionnel Développeur Web et Web Mobile.
-    </p>
-  </div>
-   </div>
 </footer>
 
- <script src="js/character-detail.js"></script>
- <script src="js/navbar.js"></script>
+<script src="js/character-detail.js"></script>
+<script src="js/navbar.js"></script>
 
 </body>
 </html>

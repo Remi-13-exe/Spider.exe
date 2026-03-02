@@ -5,18 +5,18 @@
   <title>Spider.exe Personnages</title>
   <link rel="icon" type="image/png" href="assets/icons/spider-icons-removebg-preview.png">
 
-
   <link rel="stylesheet" href="css/general.css">
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/characters.css">
   <link rel="stylesheet" href="css/footer.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
 
-<!-- 🔥 SCROLLBAR SUR TOUTE LA PAGE -->
+
+</head>
+<body>
 
   <!-- NAVBAR -->
-<header class="navbar">
+  <header class="navbar">
     <a href="index.html" class="logo">Spiderexe</a>
 
     <nav>
@@ -33,9 +33,7 @@
           aria-label="Recherche"
         >
         <img src="assets/icons/search.png" alt="Rechercher" class="search-icon">
-
-          <ul id="search-results" class="search-results"></ul>
-
+        <ul id="search-results" class="search-results"></ul>
       </div>
     </nav>
 
@@ -48,96 +46,66 @@
 
   <div class="main-content">
 
-  <!-- MAIN CONTENT -->
- 
-<h1 class="title-badge">Personnages</h1>
-      <main class="characters-main">
-    <section class="characters-section">
-    <div class="filters-container">
-  <!-- Bouton filtres principal -->
-  <button id="filterBtn">Filtres</button>
-</div>
+    <!-- MAIN CONTENT -->
+    <h1 class="title-badge">Personnages</h1>
+    <main class="characters-main">
 
-<!-- Popup filtres -->
-<div class="filters-popup" id="filtersPopup">
-  
-  <!-- Bouton Appartenance -->
-  <button class="filter-option" id="filterType">
-    Appartenance
-   
-  </button>
+      <section class="characters-section">
 
-  <!-- Bouton Univers -->
-  <button class="filter-option" id="filterUniverse">
-    Univers
-  </button>
+        <div class="filters-container">
+          <!-- Bouton filtres principal -->
+          <button id="filterBtn" type="button">Filtres</button>
+        </div>
 
-</div>
+        <!-- Popup filtres -->
+        <div class="filters-popup" id="filtersPopup">
+          <!-- Bouton Appartenance -->
+          <button class="filter-option" id="filterType" type="button">Appartenance</button>
+          <!-- Bouton Univers -->
+          <button class="filter-option" id="filterUniverse" type="button">Univers</button>
+        </div>
 
-      <!-- Grille des personnages -->
-      <div class="characters-grid" id="characters-grid">
-        <!-- Cartes injectées par characters.js -->
-      </div>
+        <!-- Grille des personnages -->
+        <div class="characters-grid" id="characters-grid">
+          <!-- Cartes injectées par characters.js -->
+        </div>
 
-    </section>
-  </main>
+      </section>
 
+    </main>
+
+  </div> <!-- fin main-content -->
 
   <!-- FOOTER -->
-  
-<footer class="footer">
-  <div class="footer__container">
+  <footer class="footer">
+    <div class="footer__container">
 
-    <!-- Identité du site -->
-    <div class="footer__brand">
-  <a href="index.html" class="logo">Spiderexe</a>
+      <!-- Identité du site -->
+      <div class="footer__brand">
+        <a href="index.html" class="logo">Spiderexe</a>
+      </div>
 
-    <!-- Navigation secondaire -->
+      <!-- Réseaux sociaux -->
+      <div class="footer__socials">
+        <a href="https://github.com/Remi-13-exe" target="_blank" aria-label="GitHub">GitHub</a>
+        <a href="https://www.instagram.com/remi.m13/" target="_blank" aria-label="Instagram">Instagram</a>
+        <a href="https://www.tiktok.com/@lebavarois23" target="_blank" aria-label="TikTok">TikTok</a>
+        <a href="https://remi-13-exe.github.io/Mon-port-folio-react-vite/" target="_blank" aria-label="Portfolio">Portfolio</a>
+      </div>
 
+      <!-- Mentions légales -->
+      <div class="footer__legal">
+        <p>Site hébergé par GitHub. Tous les designs et contenus sont originaux ou issus de recherches Internet.</p>
+        <p>Ce site non-commercial et non-officiel n’est pas associé à Marvel. Il utilise du contenu protégé par copyright de Marvel et d’autres parties, sans permission, à des fins strictement pédagogiques.</p>
+        <p>Ce projet a été réalisé dans le cadre de l’examen du Titre Professionnel Développeur Web et Web Mobile.</p>
+      </div>
 
-    <!-- Réseaux sociaux -->
-    <div class="footer__socials">
-      <a href="https://github.com/Remi-13-exe" target="_blank" aria-label="GitHub">
-        GitHub
-      </a>
-      <a href="https://www.instagram.com/remi.m13/" target="_blank" aria-label="Instagram">
-        Instagram
-      </a>
-      <a href="https://www.tiktok.com/@lebavarois23" target="_blank" aria-label="TikTok">
-        TikTok
-      </a>
-
-        <a href="https://remi-13-exe.github.io/Mon-port-folio-react-vite/" target="_blank" aria-label="Portfolio">
-        portfolio
-      </a>
     </div>
-
-  </div>
-
-  <!-- Mentions légales -->
-  <div class="footer__legal">
-    <p>
-      Site hébergé par GitHub. Tous les designs et contenus sont originaux ou issus de recherches Internet.
-    </p>
-
-    <p>
-      Ce site non-commercial et non-officiel n’est pas associé à Marvel.
-      Il utilise du contenu protégé par copyright de Marvel et d’autres parties,
-      sans permission, à des fins strictement pédagogiques.
-    </p>
-
-    <p>
-      Ce projet a été réalisé dans le cadre de l’examen du
-      Titre Professionnel Développeur Web et Web Mobile.
-    </p>
-  </div>
-   </div>
-</footer>
-
+  </footer>
 
   <!-- SCRIPTS -->
   <script src="js/characters.js"></script>
-<script src="js/navbar.js"></script>
+  <script src="js/navbar.js"></script>
 
 </body>
 </html>

@@ -1,4 +1,5 @@
 import express from 'express';
+import { param, validationResult } from 'express-validator';
 import {
   findAllPowers,
   findPowerById,
@@ -10,14 +11,31 @@ import {
 
 const router = express.Router();
 
-// Routes GET spécifiques en premier
-router.get('/characters/:id', getPowersByCharacter);
-router.get('/:id', findPowerById);
+// Middleware de validation des IDs
+const validateId = param('id').isInt({ gt: 0 }).withMessage('ID invalide');
+
+const handleValidation = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+  next();
+};
+
+// 🔹 GET /api/powers/characters/:id
+router.get('/characters/:id', validateId, handleValidation, getPowersByCharacter);
+
+// 🔹 GET /api/powers/:id
+router.get('/:id', validateId, handleValidation, findPowerById);
+
+// 🔹 GET /api/powers
 router.get('/', findAllPowers);
 
-// ✅ CRUD
+// 🔹 POST /api/powers
 router.post('/', createNewPower);
-router.put('/:id', updatePowerById);
-router.delete('/:id', deletePowerById);
+
+// 🔹 PUT /api/powers/:id
+router.put('/:id', validateId, handleValidation, updatePowerById);
+
+// 🔹 DELETE /api/powers/:id
+router.delete('/:id', validateId, handleValidation, deletePowerById);
 
 export default router;

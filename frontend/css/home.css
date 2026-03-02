@@ -81,6 +81,7 @@
 
 /* BOUTON HERO – style comics + animation pulse */
 #discoverBtn {
+  display: inline-block;       /* obligatoire pour que width, padding et animation fonctionnent correctement */
   font-family: 'Badaboom BB', cursive;
   font-size: 1.4rem;
   color: #F5E6CB;
@@ -89,6 +90,8 @@
   padding: 20px 25px;
   cursor: pointer;
   letter-spacing: 0.5px;
+  text-decoration: none;       /* supprime le soulignement */
+  text-align: center;          /* centrer le texte si besoin */
 
   text-shadow: 1px 1px 0 #000, -1px -1px 0 #000;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -99,7 +102,6 @@
   transform: translateY(-4px) scale(1.05);
   box-shadow: 6px 6px 0 #000;
 }
-
 /* IMAGE / GIF HERO – flottement vertical */
 .hero-sub-img img {
   width: 250px;

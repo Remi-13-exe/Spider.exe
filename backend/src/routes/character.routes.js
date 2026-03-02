@@ -1,4 +1,5 @@
 import express from 'express';
+import { param, validationResult } from 'express-validator';
 import {
   findAllCharacters,
   findCharacterById,
@@ -10,14 +11,31 @@ import {
 
 const router = express.Router();
 
-// Routes GET spécifiques d'abord
-router.get('/:id/details', getCharacterDetails);
-router.get('/:id', findCharacterById);
+// Middleware de validation des IDs
+const validateId = param('id').isInt({ gt: 0 }).withMessage('ID invalide');
+
+const handleValidation = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+  next();
+};
+
+// 🔹 GET /api/characters/:id/details
+router.get('/:id/details', validateId, handleValidation, getCharacterDetails);
+
+// 🔹 GET /api/characters/:id
+router.get('/:id', validateId, handleValidation, findCharacterById);
+
+// 🔹 GET /api/characters
 router.get('/', findAllCharacters);
 
-// ✅ CRUD
+// 🔹 POST /api/characters
 router.post('/', createNewCharacter);
-router.put('/:id', updateCharacterById);
-router.delete('/:id', deleteCharacterById);
+
+// 🔹 PUT /api/characters/:id
+router.put('/:id', validateId, handleValidation, updateCharacterById);
+
+// 🔹 DELETE /api/characters/:id
+router.delete('/:id', validateId, handleValidation, deleteCharacterById);
 
 export default router;

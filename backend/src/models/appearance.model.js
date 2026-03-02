@@ -1,69 +1,98 @@
 import pool from '../config/database.js';
 
-// READ ALL
+// 🔹 READ ALL
 export const getAllAppearances = async () => {
-  const [rows] = await pool.query(
-    'SELECT id, character_id, title, type, year, description FROM appearances'
-  );
-  return rows;
+  try {
+    const [rows] = await pool.query('SELECT * FROM appearances');
+    return rows;
+  } catch (error) {
+    console.error('[ERROR] getAllAppearances:', error.message);
+    throw new Error('Impossible de récupérer les apparitions');
+  }
 };
 
-// READ BY ID
+// 🔹 READ BY ID
 export const getAppearanceById = async (id) => {
-  const [rows] = await pool.query(
-    'SELECT id, character_id, title, type, year, description FROM appearances WHERE id = ?',
-    [id]
-  );
-  return rows[0];
+  const parsedId = parseInt(id, 10);
+  if (isNaN(parsedId)) throw new Error('ID invalide');
+
+  try {
+    const [rows] = await pool.query('SELECT * FROM appearances WHERE id = ?', [parsedId]);
+    return rows[0];
+  } catch (error) {
+    console.error('[ERROR] getAppearanceById:', error.message);
+    throw new Error('Impossible de récupérer l’apparition');
+  }
 };
 
-// READ BY CHARACTER (avec jointure)
+// 🔹 READ BY CHARACTER
 export const getAppearancesByCharacterId = async (characterId) => {
-  const [rows] = await pool.query(
-    `SELECT a.id, a.title, a.type, a.year, a.description,
-            c.name AS character_name
-     FROM appearances a
-     JOIN characters c ON a.character_id = c.id
-     WHERE a.character_id = ?`,
-    [characterId]
-  );
-  return rows;
+  const parsedId = parseInt(characterId, 10);
+  if (isNaN(parsedId)) throw new Error('ID de personnage invalide');
+
+  try {
+    const [rows] = await pool.query(
+      'SELECT * FROM appearances WHERE character_id = ?',
+      [parsedId]
+    );
+    return rows;
+  } catch (error) {
+    console.error('[ERROR] getAppearancesByCharacterId:', error.message);
+    throw new Error('Impossible de récupérer les apparitions du personnage');
+  }
 };
 
-// CREATE
+// 🔹 CREATE
 export const createAppearance = async (data) => {
   const { character_id, title, type, year, description } = data;
+  if (!character_id || !title || !type || !year) {
+    throw new Error('Données manquantes pour créer l’apparition');
+  }
 
-  const [result] = await pool.query(
-    `INSERT INTO appearances 
-     (character_id, title, type, year, description) 
-     VALUES (?, ?, ?, ?, ?)`,
-    [character_id, title, type, year, description]
-  );
-
-  return result.insertId;
+  try {
+    const [result] = await pool.query(
+      'INSERT INTO appearances (character_id, title, type, year, description) VALUES (?, ?, ?, ?, ?)',
+      [character_id, title, type, year, description || null]
+    );
+    return result.insertId;
+  } catch (error) {
+    console.error('[ERROR] createAppearance:', error.message);
+    throw new Error('Impossible de créer l’apparition');
+  }
 };
 
-// UPDATE
+// 🔹 UPDATE
 export const updateAppearance = async (id, data) => {
+  const parsedId = parseInt(id, 10);
+  if (isNaN(parsedId)) throw new Error('ID invalide');
+
   const { character_id, title, type, year, description } = data;
+  if (!character_id || !title || !type || !year) {
+    throw new Error('Données manquantes pour mettre à jour l’apparition');
+  }
 
-  const [result] = await pool.query(
-    `UPDATE appearances 
-     SET character_id = ?, title = ?, type = ?, year = ?, description = ?
-     WHERE id = ?`,
-    [character_id, title, type, year, description, id]
-  );
-
-  return result.affectedRows;
+  try {
+    const [result] = await pool.query(
+      'UPDATE appearances SET character_id = ?, title = ?, type = ?, year = ?, description = ? WHERE id = ?',
+      [character_id, title, type, year, description || null, parsedId]
+    );
+    return result;
+  } catch (error) {
+    console.error('[ERROR] updateAppearance:', error.message);
+    throw new Error('Impossible de mettre à jour l’apparition');
+  }
 };
 
-// DELETE
+// 🔹 DELETE
 export const deleteAppearance = async (id) => {
-  const [result] = await pool.query(
-    'DELETE FROM appearances WHERE id = ?',
-    [id]
-  );
+  const parsedId = parseInt(id, 10);
+  if (isNaN(parsedId)) throw new Error('ID invalide');
 
-  return result.affectedRows;
+  try {
+    const [result] = await pool.query('DELETE FROM appearances WHERE id = ?', [parsedId]);
+    return result;
+  } catch (error) {
+    console.error('[ERROR] deleteAppearance:', error.message);
+    throw new Error('Impossible de supprimer l’apparition');
+  }
 };
