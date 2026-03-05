@@ -1,22 +1,28 @@
-import app from './app.js';   // Import de l'application Express configurée
-import dotenv from 'dotenv';  // Pour charger les variables d'environnement depuis .env
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
 
-// Chargement des variables d'environnement
-dotenv.config({ path: path.resolve(process.cwd(), '.env') });
+import characterRoutes from './routes/character.routes.js';
+import appearanceRoutes from './routes/appearance.routes.js';
 
-// Vérification des variables obligatoires
-const requiredEnv = ['PORT', 'JWT_SECRET'];
-requiredEnv.forEach((envVar) => {
-  if (!process.env[envVar]) {
-    console.error(`❌ Variable d'environnement manquante : ${envVar}`);
-    process.exit(1);
-  }
+dotenv.config();
+
+const app = express();
+
+// Middlewares
+app.use(cors());
+app.use(express.json());
+
+// Routes test
+app.get('/', (req, res) => {
+  res.send('API Spider.exe fonctionne ✅');
 });
 
-// Définition du port
-const PORT = process.env.PORT;
+app.use('/api/characters', characterRoutes);
+app.use('/api/appearances', appearanceRoutes);
 
-// Démarrage du serveur
+// Lancer le serveur
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🕷️ Server running on http://localhost:${PORT}`);
+  console.log(`Serveur lancé sur http://localhost:${PORT}`);
 });
