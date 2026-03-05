@@ -354,4 +354,29 @@
     overflow-wrap: break-word;
   }
 
+    .info-row {
+    flex-direction: column;   /* label au-dessus, valeur en dessous */
+    align-items: center;      /* centre tout proprement */
+    gap: 0.3rem;              /* espace propre et serré */
+    text-align: center;       /* cohérent avec l'empilement */
+  }
+
+  .info-row h2 {
+    font-size: 1.4rem;        /* taille adaptée mobile */
+  }
+
+  .info-row p {
+    font-size: 0.95rem;
+  }
+
+  /* Centre les apparitions proprement */
+  .appearances ul {
+    justify-content: center;  /* centre horizontalement */
+    text-align: center;       /* évite les décalages */
+  }
+
+  .appearances li {
+    margin: 0 auto;           /* chaque badge centré */
+  }
+
 }

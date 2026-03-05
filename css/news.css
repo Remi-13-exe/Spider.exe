@@ -212,6 +212,25 @@
   .book .page .back h2 {
     min-height: 5em;
   }
+.back.cover-black .end-message h2 {
+    font-size: 2.4rem;
+    margin-bottom: 30px;
+  }
+
+  .back.cover-black .end-message p {
+    font-size: 0.75rem;
+    max-width: 80%;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .end-gif {
+    width: 45%;
+    max-width: 260px;
+    margin-right: 20px;
+  }
+
+
 }
 
 /* ------------------------------------------------------ */
@@ -248,5 +267,23 @@
   .cover::before {
     background-size: 85% auto;
     background-position: center;
+  }
+    .back.cover-black .end-message h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+  }
+
+  .back.cover-black .end-message p {
+    font-size: 0.8rem;
+    max-width: 90%;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .end-gif {
+    width: 55%;
+    max-width: 220px;
+    margin: 0 auto 10px auto;
+    display: block;
   }
 }
