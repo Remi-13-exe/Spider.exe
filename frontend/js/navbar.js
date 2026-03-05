@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     // Récupère tous les personnages une seule fois
-    const res = await fetch("http://localhost:3000/api/characters");
+    const res = await fetch("https://spider-exe.onrender.com/api/characters");
     allCharacters = await res.json();
   } catch (err) {
     console.error("Erreur chargement personnages", err);

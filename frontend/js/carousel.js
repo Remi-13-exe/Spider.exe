@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let isPaused = false;        // pause lors du hover
 
   // 🔹 Récupération des personnages depuis l'API
-  fetch("http://localhost:3000/api/characters")
+  fetch("https://spider-exe.onrender.com/api/characters")
     .then(res => res.json())
     .then(data => {
 
