@@ -15,7 +15,7 @@ if (searchInput) {
 
     try {
       // Récupère tous les personnages depuis l’API
-      const res = await fetch('http://localhost:3000/api/characters');
+      const res = await fetch('https://spider-exe.onrender.com/api/characters');
       const characters = await res.json();
 
       // Filtre les personnages selon :

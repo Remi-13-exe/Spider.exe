@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     /* ------------------------------------------------------ */
     /* REQUÊTE API POUR RÉCUPÉRER LES DÉTAILS DU PERSONNAGE   */
     /* ------------------------------------------------------ */
-    const res = await fetch(`http://localhost:3000/api/characters/${id}/details`);
+    const res = await fetch(`https://spider-exe.onrender.com/api/characters/${id}/details`);
     if (!res.ok) throw new Error("Erreur API"); // si erreur HTTP
 
     const char = await res.json(); // données complètes du personnage
