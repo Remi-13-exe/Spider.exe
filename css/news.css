@@ -178,6 +178,7 @@
 /* ------------------------------------------------------ */
 
 @media (max-width: 1024px) {
+
   .book {
     width: 50vmin;
     bottom: 60px;
@@ -191,9 +192,9 @@
   }
 
   .book .page p {
-    font-size: 1.6vmin;
-    line-height: 1.8vmin;
-    margin: 20px 25px;
+    font-size: 1.8vmin;       /* + lisible */
+    line-height: 2vmin;       /* + aéré */
+    margin: 22px 28px;
   }
 
   .book .page .front .news-img,
@@ -212,16 +213,18 @@
   .book .page .back h2 {
     min-height: 5em;
   }
-.back.cover-black .end-message h2 {
+
+  /* PAGE DE FIN */
+  .back.cover-black .end-message h2 {
     font-size: 2.4rem;
     margin-bottom: 30px;
   }
 
   .back.cover-black .end-message p {
-    font-size: 0.75rem;
-    max-width: 80%;
+    font-size: 0.9rem;        /* + lisible */
+    max-width: 85%;
     margin: 0 auto;
-    line-height: 1.5;
+    line-height: 1.6;         /* + aéré */
   }
 
   .end-gif {
@@ -229,15 +232,15 @@
     max-width: 260px;
     margin-right: 20px;
   }
-
-
 }
+
 
 /* ------------------------------------------------------ */
 /* RESPONSIVE MOBILE                                      */
 /* ------------------------------------------------------ */
 
 @media (max-width: 768px) {
+
   .book {
     width: 45vmin;
     bottom: 20px;
@@ -252,9 +255,9 @@
   }
 
   .book .page p {
-    font-size: 1.4vmin;
-    line-height: 1.6vmin;
-    margin: 15px 20px;
+    font-size: 1.7vmin;       /* + lisible */
+    line-height: 2vmin;       /* + aéré */
+    margin: 18px 22px;
   }
 
   .book .page .front .news-img,
@@ -268,16 +271,18 @@
     background-size: 85% auto;
     background-position: center;
   }
-    .back.cover-black .end-message h2 {
+
+  /* PAGE DE FIN */
+  .back.cover-black .end-message h2 {
     font-size: 2rem;
     margin-bottom: 25px;
   }
 
   .back.cover-black .end-message p {
-    font-size: 0.8rem;
+    font-size: 1rem;          /* + lisible */
     max-width: 90%;
     margin: 0 auto;
-    line-height: 1.5;
+    line-height: 1.65;        /* + aéré */
   }
 
   .end-gif {
