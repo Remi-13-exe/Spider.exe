@@ -189,3 +189,178 @@
   transform: rotate(0deg) scale(1.05); /* rotation + zoom au hover */
   box-shadow: 10px 10px 0 #000;        /* contour style comics */
 }
+
+/* =========================
+   RESPONSIVE ≤ 1024px
+========================= */
+@media screen and (max-width: 1024px) {
+
+  /* HERO */
+  .hero {
+    min-height: 65vh;
+    background-position: center;
+  }
+
+  .hero-overlay {
+    max-width: 600px;
+    padding: 25px 30px;
+  }
+
+  .hero-overlay h1 {
+    font-size: 2.4rem;
+  }
+
+  #discoverBtn {
+    font-size: 1.2rem;
+    padding: 16px 22px;
+  }
+
+  .hero-sub-img img {
+    width: 200px;
+    margin-top: -30px;
+  }
+
+  /* ABOUT */
+  .about {
+    gap: 30px;
+    padding: 20px 20px;
+  }
+
+  .about-text h2 {
+    font-size: 2.4rem;
+  }
+
+  .about-text p {
+    max-width: 260px;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+
+  }
+
+  .about-image img {
+    width: 260px;
+  }
+
+  /* NEWS */
+  .news h2 {
+    font-size: 42px;
+  }
+}
+
+/* =========================
+   RESPONSIVE ≤ 768px
+========================= */
+@media screen and (max-width: 768px) {
+
+  /* HERO */
+  .hero {
+    min-height: 60vh;
+    padding: 20px;
+  }
+
+  .hero-overlay {
+    max-width: 90%;
+    padding: 20px 25px;
+  }
+
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+
+  #discoverBtn {
+    font-size: 1.1rem;
+    padding: 14px 20px;
+  }
+
+  .hero-sub-img img {
+    width: 180px;
+    margin-top: -20px;
+  }
+
+  /* ABOUT */
+  .about {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 25px;
+  }
+
+  .about-text {
+    margin-top: 0;
+  }
+
+  .about-text h2 {
+    text-align: center;
+    font-size: 2.2rem;
+  }
+
+  .about-text p {
+    max-width: 90%;
+    margin-bottom: 1rem;
+  }
+
+  .about-image img {
+    width: 240px;
+  }
+
+  /* NEWS */
+  .news h2 {
+    font-size: 36px;
+  }
+}
+
+/* =========================
+   RESPONSIVE ≤ 480px
+========================= */
+@media screen and (max-width: 480px) {
+
+  /* HERO */
+  .hero {
+    min-height: 55vh;
+    padding: 15px;
+  }
+
+  .hero-overlay {
+    padding: 18px 20px;
+  }
+
+  .hero-overlay h1 {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+  }
+
+  #discoverBtn {
+    font-size: 1rem;
+    padding: 12px 18px;
+  }
+
+  .hero-sub-img img {
+    width: 150px;
+  }
+
+  /* ABOUT */
+  .about-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-text p {
+    max-width: 100%;
+    font-size: 0.9rem;
+    line-height: 1.55;
+        margin-bottom: 1rem;
+
+  }
+
+  .about-image img {
+    width: 200px;
+  }
+
+  /* NEWS */
+  .news h2 {
+    font-size: 30px;
+  }
+
+  .comic-bar {
+    height: 5px;
+  }
+}

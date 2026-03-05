@@ -340,3 +340,18 @@
     margin-top: 2rem;
   }
 }
+@media screen and (max-width: 480px) {
+
+  .biography p {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 1.6;
+
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    overflow-wrap: break-word;
+  }
+
+}
