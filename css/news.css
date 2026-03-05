@@ -297,21 +297,21 @@
 
   /* LIVRE */
   .book {
-    width: 55vmin;          /* un peu plus large pour compenser la petite hauteur */
+    width: 55vmin;
     bottom: 20px;
   }
 
   .book .page .front h2,
   .book .page .back h2 {
-    font-size: 1.8rem;      /* taille adaptée mobile */
+    font-size: 1.8rem;
     margin-top: 30px;
     margin-bottom: 10px;
-    min-height: 4.8em;      /* évite les sauts de mise en page */
+    min-height: 4.8em;
   }
 
   .book .page p {
-    font-size: 2vmin;       /* lisible sur iPhone mini */
-    line-height: 2.3vmin;   /* aération */
+    font-size: 2vmin;
+    line-height: 2.3vmin;
     margin: 15px 18px;
   }
 
@@ -327,23 +327,28 @@
     background-position: center;
   }
 
-  /* PAGE DE FIN */
+  /* PAGE DE FIN — VERSION COMPACTE */
+  .back.cover-black .end-message {
+    padding: 0 10px;              /* évite que le texte touche les bords */
+  }
+
   .back.cover-black .end-message h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+    font-size: 1.7rem;            /* compact mais lisible */
+    margin-bottom: 15px;
   }
 
   .back.cover-black .end-message p {
-    font-size: 1.05rem;     /* lisible mais pas trop gros */
-    max-width: 95%;
+    font-size: 0.95rem;           /* compact */
+    max-width: 90%;               /* empêche tout débordement */
     margin: 0 auto;
-    line-height: 1.7;
+    line-height: 1.55;            /* lisible sans prendre trop de place */
+    word-break: break-word;       /* sécurité anti-débordement */
   }
 
   .end-gif {
-    width: 60%;
-    max-width: 200px;
-    margin: 0 auto 15px auto;
+    width: 55%;
+    max-width: 180px;
+    margin: 10px auto 10px auto;
     display: block;
   }
 }
