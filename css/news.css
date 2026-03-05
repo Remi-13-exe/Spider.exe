@@ -280,7 +280,7 @@
 
   .back.cover-black .end-message p {
     font-size: 1rem;          /* + lisible */
-    max-width: 90%;
+    max-width: 100%;
     margin: 0 auto;
     line-height: 1.65;        /* + aéré */
   }
