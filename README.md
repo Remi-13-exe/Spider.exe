@@ -1,4 +1,4 @@
-résentation
+Présentation
 
 Spider.exe est une plateforme web encyclopédique dédiée à l’univers de Spider-Man.
 Le projet a été réalisé dans le cadre du Titre Professionnel Développeur Web et Web Mobile (DWWM).
