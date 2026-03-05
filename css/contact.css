@@ -174,46 +174,102 @@
   100% { transform: scale(1) rotate(0); opacity: 1; }
 }
 
+
 /* =========================
-   RESPONSIVE
+   RESPONSIVE — max-width 1024px
+   Objectif : adapter la mise en page
+   pour tablettes larges et laptops intermédiaires
 ========================= */
-@media screen and (max-width: 1024px) {
-  .contact-hero { height: 700px; }
-  .contact-title { font-size: 3.2rem; max-width: 90%; }
-  .contact-form-section { max-width: 90%; padding: 2rem 3rem 4rem 3rem; }
-  .contact-form label { font-size: 1.8rem; }
-  .contact-btn { font-size: 1.4rem; padding: 16px 32px; }
-  .contact-success h2 { font-size: 2.5rem; }
+@media (max-width: 1024px) {
+
+  /* Section HERO */
+  .contact-hero {
+    height: 900px;               /* hauteur réduite pour éviter le scroll excessif */
+    background-position: top;    /* remonte l’image pour garder le sujet visible */
+  }
+
+  /* Bloc overlay (titre + sous-titre) */
+  .contact-overlay {
+    padding: 1.5rem;             /* padding plus compact */
+    max-width: 85%;              /* largeur réduite pour éviter l’étirement */
+  }
+
+  /* Titre principal */
+  .contact-title {
+    font-size: 3.8rem;           /* taille réduite mais encore imposante */
+    max-width: 900px;            /* limite la largeur pour éviter les débordements */
+  }
+
+  /* Formulaire */
+  .contact-form-section {
+    max-width: 700px;            /* largeur adaptée aux écrans 1024px */
+    padding: 2rem 4rem 4rem 2rem; /* padding équilibré pour garder la structure */
+  }
+
+  .contact-form label {
+    font-size: 1.8rem;           /* taille légèrement réduite */
+  }
+
+  /* Bouton d’envoi */
+  .contact-btn {
+    font-size: 1.4rem;           /* taille adaptée */
+    padding: 14px 32px;          /* bouton plus compact */
+  }
 }
 
-@media screen and (max-width: 768px) {
-  .contact-hero { height: 500px; padding: 1rem; }
-  .contact-overlay { padding: 1.5rem; }
-  .contact-title { font-size: 2.4rem; letter-spacing: 2px; }
-  .contact-title .subtitle { font-size: 1.2rem; margin-top: 1.5rem; }
-  .contact-form-section { margin: 2rem auto; padding: 2rem; }
-  .contact-form label { font-size: 1.6rem; }
+/* =========================
+   RESPONSIVE — max-width 768px
+========================= */
+@media (max-width: 768px) {
+
+  .contact-hero {
+    height: 850px;
+    background-position: center;
+  }
+
+  .contact-overlay {
+    margin-top: 60px;
+    padding: 1.2rem;
+    max-width: 100%;
+    margin-bottom: 60px;
+  }
+
+  .contact-title {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    max-width: 100%;
+  }
+
+  .contact-form-section {
+    max-width: 90%;
+    padding: 1.5rem 2rem 3rem 2rem;
+  }
+
+  .contact-form label {
+    font-size: 1.6rem;
+  }
+
   .contact-form input,
   .contact-form select,
-  .contact-form textarea { font-size: 0.95rem; }
-  .contact-btn { width: 100%; font-size: 1.3rem; padding: 16px; }
-  .contact-success { padding: 3rem 1.5rem; }
-  .contact-success h2 { font-size: 2.2rem; }
-}
+  .contact-form textarea {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
 
-/* Quand l'utilisateur clique dans le champ */
-.contact-form input:focus,
-.contact-form select:focus,
-.contact-form textarea:focus {
-  outline: 1px solid #E31E1E;  /* contour rouge Spider-Man à la place du bleu */
-  background-color: #F5E6CB;   /* reste beige */
-  color: #000;                  /* texte noir */
-}
+  .contact-btn {
+    font-size: 1.3rem;
+    padding: 12px 28px;
+  }
 
-/* Pour le remplissage automatique du navigateur (Chrome, Edge) */
-.contact-form input:-webkit-autofill,
-.contact-form select:-webkit-autofill,
-.contact-form textarea:-webkit-autofill {
-  box-shadow: 0 0 0px 1000px #F5E6CB inset !important; /* remplace le bleu par ton beige */
-  -webkit-text-fill-color: #000 !important;            /* texte noir */
+  .contact-success {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .contact-success h2 {
+    font-size: 2.2rem;
+  }
+
+  .contact-success p {
+    font-size: 1rem;
+  }
 }

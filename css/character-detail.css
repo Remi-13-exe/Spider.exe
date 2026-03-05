@@ -210,23 +210,133 @@
 ========================= */
 @media screen and (max-width: 1024px) {
 
-  .detail-main { padding-left: 2rem; padding-right: 2rem; }
+  /* Conteneur principal */
+  .detail-main {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 
-  .character-header { gap: 3rem; }
+  /* Header personnage */
+  .character-header {
+    gap: 3rem;                 /* espace réduit entre image et infos */
+    padding: 1rem;
+  }
 
-  .character-header img { width: 420px; }
+  .character-header img {
+    width: 420px;              /* image plus petite mais encore large */
+    max-width: 100%;
+  }
 
-  .character-info h1 { font-size: 3rem; }
+  /* Titres */
+  .character-info h1 {
+    font-size: 3rem;           /* titre principal réduit */
+  }
 
-  .character-info .info-row h2 { font-size: 1.8rem; }
-  .character-info .info-row p { font-size: 1rem; }
+  .character-info .info-row h2 {
+    font-size: 1.8rem;         /* sous-titres */
+  }
 
+  .character-info .info-row p {
+    font-size: 1rem;           /* valeurs */
+  }
+
+  /* Titres sections */
   .biography h3,
   .powers h3,
-  .appearances h3 { font-size: 1.9rem; }
+  .appearances h3 {
+    font-size: 1.9rem;         /* titres sections */
+  }
 
+  /* Listes */
   .powers ul,
-  .appearances ul { gap: 1rem; }
+  .appearances ul {
+    gap: 1rem;                 /* espace entre badges */
+  }
 
-  .back-btn { font-size: 1.2rem; padding: 16px 20px; }
+  /* Bouton retour */
+.back-btn {
+    font-size: 2.2rem;
+    padding: 18px 40px;
+    max-width: 12rem;
+    margin-top: 2rem;
+  }
+}
+
+/* =========================
+   RESPONSIVE TABLETTE (≤ 768px)
+========================= */
+@media screen and (max-width: 768px) {
+
+  /* Conteneur principal */
+  .detail-main {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Header personnage */
+  .character-header {
+    gap: 2rem;                 /* espace réduit */
+    padding: 1rem;
+    flex-direction: column;    /* image au-dessus, texte en dessous */
+    align-items: center;       /* centre tout */
+  }
+
+  .character-header img {
+    width: 320px;              /* image plus petite */
+    max-width: 90%;
+  }
+
+  /* Titres */
+  .character-info h1 {
+    font-size: 2.4rem;         /* taille réduite */
+    text-align: center;
+  }
+
+  .character-info .info-row h2 {
+    font-size: 1.6rem;
+  }
+
+  .character-info .info-row p {
+    font-size: 0.95rem;
+  }
+
+  /* Badge */
+  .badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  /* Sections titres */
+  .biography h3,
+  .powers h3,
+  .appearances h3 {
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Biographie */
+  .biography p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  /* Listes pouvoirs / apparitions */
+  .powers ul,
+  .appearances ul {
+    gap: 0.8rem;
+  }
+
+  .powers li {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  /* Bouton retour */
+  .back-btn {
+    font-size: 1.8rem;
+    padding: 18px 40px;
+    max-width: 12rem;
+    margin-top: 2rem;
+  }
 }

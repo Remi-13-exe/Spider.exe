@@ -146,6 +146,8 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
+
+
 /* =========================
    RESPONSIVE NAVBAR TABLETTE
 ========================= */
@@ -154,7 +156,7 @@
 
   .navbar nav {
     position: absolute;
-    top: 40px;
+    top: 70px;
     right: 0;
     width: 150px;
     background-color: #E31E1E;
@@ -184,14 +186,14 @@
   .search-icon { left: 110px; }
 }
 
-/* Mobile (≤600px) */
-@media (max-width: 600px) {
+/* Mobile (≤768px) */
+@media (max-width: 768px) {
   .search-box input[type="search"] { width: 100px; height: 32px; font-size: 0.45rem; }
   .navbar nav a { font-size: 0.65rem; }
 
   .navbar nav {
     position: absolute;
-    top: 40px;
+    top: 70px;
     right: 0;
     width: 120px;
     background-color: #E31E1E;
@@ -202,7 +204,10 @@
     z-index: 200;
     display: none;
     animation: menu-drop 0.3s ease forwards;
+
   }
+
+  .search-icon { left: 90px; }
 }
 
 /* =========================
