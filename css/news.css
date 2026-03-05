@@ -221,7 +221,7 @@
   }
 
   .back.cover-black .end-message p {
-    font-size: 0.9rem;        /* + lisible */
+    font-size: 1rem;        /* + lisible */
     max-width: 85%;
     margin: 0 auto;
     line-height: 1.6;         /* + aéré */
@@ -286,9 +286,64 @@
   }
 
   .end-gif {
-    width: 55%;
+    width: 45%;
     max-width: 220px;
     margin: 0 auto 10px auto;
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+
+  /* LIVRE */
+  .book {
+    width: 55vmin;          /* un peu plus large pour compenser la petite hauteur */
+    bottom: 20px;
+  }
+
+  .book .page .front h2,
+  .book .page .back h2 {
+    font-size: 1.8rem;      /* taille adaptée mobile */
+    margin-top: 30px;
+    margin-bottom: 10px;
+    min-height: 4.8em;      /* évite les sauts de mise en page */
+  }
+
+  .book .page p {
+    font-size: 2vmin;       /* lisible sur iPhone mini */
+    line-height: 2.3vmin;   /* aération */
+    margin: 15px 18px;
+  }
+
+  .book .page .front .news-img,
+  .book .page .back .news-img {
+    width: 95%;
+    height: auto;
+    margin: 30px auto;
+  }
+
+  .cover::before {
+    background-size: 90% auto;
+    background-position: center;
+  }
+
+  /* PAGE DE FIN */
+  .back.cover-black .end-message h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .back.cover-black .end-message p {
+    font-size: 1.05rem;     /* lisible mais pas trop gros */
+    max-width: 95%;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .end-gif {
+    width: 60%;
+    max-width: 200px;
+    margin: 0 auto 15px auto;
     display: block;
   }
 }
