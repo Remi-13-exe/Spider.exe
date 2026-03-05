@@ -1,213 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Spider.exe</title>
-  <link rel="icon" type="image/png" href="assets/icons/spider-icons-removebg-preview.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spider.exe – Chargement</title>
 
-  <link rel="stylesheet" href="css/general.css">
-  <link rel="stylesheet" href="css/navbar.css">
-  <link rel="stylesheet" href="css/home.css">
-  <link rel="stylesheet" href="css/carousel.css">
-  <link rel="stylesheet" href="css/news.css">
-  <link rel="stylesheet" href="css/footer.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CSS général -->
+<link rel="stylesheet" href="css/general.css">
+<!-- CSS loader -->
+<link rel="stylesheet" href="css/loader.css">
 </head>
 <body>
 
-  <!-- NAVBAR -->
-<header class="navbar">
-  <a href="index.html" class="logo">Spiderexe</a>
+<div class="loader-container">
+  <h1>Bienvenue sur Spider.exe</h1>
+  <p>Le site prend un peu de temps à charger toutes les images…</p>
+  <p>Veuillez patienter avant de découvrir le multivers de Spider-Man !</p>
 
-  <nav>
-    <a href="index.html">Accueil</a>
-    <a href="characters.html">Personnages</a>
-    <a href="contact.html">Contact</a>
-    <a href="about.html">À propos</a>
-
-    <div class="search-box">
-      <input 
-        type="search" 
-        id="site-search"
-        placeholder="Rechercher un personnage..."
-        aria-label="Recherche"
-      >
-      <img src="assets/icons/search.png" alt="Rechercher" class="search-icon" loading="lazy">
-      <ul id="search-results" class="search-results"></ul>
-    </div>
-  </nav>
-
-  <div class="burger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div> 
-</header>
-
-<!-- CONTENU PRINCIPAL (scrollable) -->
-<div class="main-content">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-overlay">
-      <h1>Connaissez chaque heros, chaque masque, chaque legende.</h1>
-      <a href="characters.html" id="discoverBtn" class="btn-link">
-        Decouvrir les personnages
-      </a>
-    </div>
-  </section>
-
-  <!-- ACTUALITÉS -->
-  <section class="news">
-    <h2>Actualites</h2>
-    <div class="comic-bar"></div>
-
-    <div class="book">
-
-      <!-- PAGE 1 — Couverture -->
-      <div class="page">
-        <div class="front cover"></div>
-        <div class="back">
-          <h2 class="news-title">Spider-Man 4 : la date de sortie enfin devoilee</h2>
-          <img src="assets/images/brand-new-day-image.jpg" class="news-img" alt="Image promotionnelle Spider-Man 4" loading="lazy">
-          <p>Marvel et Sony ont officiellement confirme la preparation de Spider-Man 4 avec Tom Holland. 
-            Le film sera realise par Destin Daniel Cretton, connu pour Shang-Chi, ce qui laisse penser a une approche plus serieuse et plus mature pour ce nouvel episode.
-          </p>
-          <p>Ce quatrieme film devrait jouer un role important dans la reconstruction du MCU, actuellement en pleine transition. 
-            Spider-Man y occuperait une place centrale, servant de personnage pivot entre plusieurs futurs projets Marvel. 
-            L'histoire suivrait un Peter Parker plus adulte, isole apres No Way Home, confronte a des enjeux plus realistes et urbains.
-          </p>
-          <p><em>Source : EcranLarge</em></p>
-        </div>
-      </div>
-
-      <!-- PAGE 2 -->
-      <div class="page">
-        <div class="front">
-          <h2 class="news-title">La serie Spider-Man Noir avance : Nicolas Cage officiellement confirme</h2>
-          <img src="assets/images/spiderman%20Noir.jpg" class="news-img" alt="Spider-Man Noir" loading="lazy">
-          <p>La future serie Spider-Man Noir, produite par Amazon et Sony, continue de se preciser. 
-            L'information la plus marquante est la confirmation officielle de Nicolas Cage dans le role principal. 
-            Il incarnera une version live-action du personnage qu'il avait deja double dans Spider-Man: Into the Spider-Verse.
-          </p>
-          <p>L'histoire se deroulera dans un New York des annees 1930, sombre et inspire du style polar. 
-            Elle suivra un Spider-Man plus age et desabuse, evoluant dans une ambiance tres differente des productions Marvel habituelles. 
-            Le ton annonce est plus mature, avec une esthetique proche du film noir classique.
-          </p>
-          <p>Le projet est supervise par Oren Uziel et Steve Lightfoot, deux scenaristes habitues aux series d'action. 
-            Amazon mise beaucoup sur cette serie, qui sera l'un de ses projets phares aux cotes de The Boys et Fallout.
-          </p>
-          <p><em>Source : Variety</em></p>
-        </div>
-
-        <div class="back">
-          <h2>Mort de Danny Seagren</h2>
-          <img src="assets/images/danny%20seagren.png" class="news-img" alt="Danny Seagren" loading="lazy">
-          <p>Danny Seagren, acteur et artiste des annees 1970, est decede a l'age de 81 ans.</p>
-          <p>Il avait marque l'histoire du personnage en incarnant Spider-Man dans l'emission educative
-            <strong>Spidey Super Stories</strong> (1974–1977), diffusee dans le cadre du programme pour enfants
-            The Electric Company. Dans cette version, Spider-Man n'avait pas de dialogues : il
-            communiquait uniquement par des bulles de bande dessinee, ce qui donnait au personnage un style
-            tres particulier et immediatement reconnaissable.
-          </p>
-          <p>A une epoque ou les super-heros n'etaient presque jamais adaptes a la television, Seagren est
-            considere comme le tout premier acteur a avoir porte le costume de Spider-Man a l'ecran. Son
-            interpretation a contribue a populariser le heros aupres d'une generation d'enfants, bien avant
-            les films modernes de Sam Raimi ou du MCU.
-          </p>
-          <p><em>Source : Le Figaro</em></p>
-        </div>
-      </div>
-
-      <!-- PAGE 3 -->
-      <div class="page">
-        <div class="front">
-          <h2 class="news-title">Spider-Man 2 (PS5) : enorme mise a jour</h2>
-          <img src="assets/images/spiderman-2-png.jpg" class="news-img" alt="Spider-Man 2 PS5" loading="lazy">
-          <p>Insomniac Games a deploye une mise a jour particulierement importante pour 
-            <strong>Spider-Man 2</strong> sur PS5, destinee a enrichir l'experience de jeu plusieurs mois 
-            apres sa sortie.
-          </p>
-          <p>Cette update introduit enfin le tres attendu <strong>New Game+</strong>, permettant aux joueurs 
-            de recommencer l'aventure avec toutes leurs competences, gadgets et ameliorations deja debloquees. 
-            De nouveaux <strong>costumes</strong> ont egalement ete ajoutes pour Peter et Miles, offrant plus 
-            de variete visuelle et de personnalisation.
-          </p>
-          <p>Le patch apporte aussi des <strong>ameliorations graphiques</strong>, une optimisation generale 
-            des performances, ainsi que davantage d'options d'accessibilite pour rendre le jeu plus confortable 
-            et inclusif. L'ensemble renforce la <strong>rejouabilite</strong> et prolonge la duree de vie du titre, 
-            ce qui en fait la mise a jour la plus consequente depuis le lancement du jeu.
-          </p>
-          <p><em>Source : Actualites jeux video (20 Minutes / JV)</em></p>
-        </div>
-
-        <div class="back cover cover-black">
-          <div class="end-message">
-            <h2>Fin de cette edition</h2>
-            <p>Merci pour votre lecture. Pour suivre les prochaines actus Spider-Man, 
-              consultez le site regulierement.
-            </p>
-            <img src="assets/images/spiderman%20(2).gif" class="end-gif" alt="Animation Spider-Man" loading="lazy">
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- POURQUOI CE SITE -->
-  <div class="comic-bar"></div>
-
-  <section class="about">
-    <div class="about-text">
-      <h2 class="news-title">Pourquoi ce site ?</h2>
-      <p>
-        Ce site est une encyclopédie dédiée à l'univers de Spider-Man. Il regroupe tous les personnages emblématiques, les films, les séries, les jeux vidéo et les actualités autour du héros. À travers une navigation claire et une interface dynamique, le visiteur peut explorer le multivers de Spider-Man, découvrir chaque version du héros, ses alliés, ses ennemis et les différentes adaptations qui ont marqué l'histoire. L'objectif est d'offrir une plateforme complète, accessible et immersive pour tous les fans, qu'ils soient novices ou passionnés de longue date.
-      </p>
-    </div>
-    <div class="about-image">
-      <img src="assets/images/sky-spiderman.jpg" alt="Spider-Man" loading="lazy">
-    </div>
-  </section>
-
-  <div class="comic-bar"></div>
-
-  <!-- CARROUSEL -->
-  <section class="carousel-section">
-    <div class="carousel-wrapper">
-      <div id="carousel" class="carousel"></div>
-    </div>
-  </section>
-
-</div> <!-- FIN main-content -->
-
-<footer class="footer">
-  <div class="footer__container">
-    <div class="footer__brand">
-      <a href="index.html" class="logo">Spiderexe</a>
-    </div>
-
-    <div class="footer__socials">
-      <a href="https://github.com/Remi-13-exe" target="_blank" aria-label="GitHub">GitHub</a>
-      <a href="https://www.instagram.com/remi.m13/" target="_blank" aria-label="Instagram">Instagram</a>
-      <a href="https://www.tiktok.com/@lebavarois23" target="_blank" aria-label="TikTok">TikTok</a>
-      <a href="https://remi-13-exe.github.io/Mon-port-folio-react-vite/" target="_blank" aria-label="Portfolio">Portfolio</a>
-    </div>
-
-    <div class="footer__legal">
-      <p>Site hébergé par GitHub. Tous les designs et contenus sont originaux ou issus de recherches Internet.</p>
-      <p>Ce site non-commercial et non-officiel n'est pas associé à Marvel. Il utilise du contenu protégé par copyright de Marvel et d'autres parties, sans permission, à des fins strictement pédagogiques.</p>
-      <p>Ce projet a été réalisé dans le cadre de l'examen du Titre Professionnel Développeur Web et Web Mobile.</p>
-    </div>
+  <div class="progress-bar-wrapper">
+    <div class="progress-bar" id="progress-bar"></div>
   </div>
-</footer>
+  <p id="progress-text">0%</p>
+</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-<script src="js/news.js" defer></script>
-<script src="js/carousel.js" defer></script>
-<script src="js/main.js" defer></script>
-<script src="js/navbar.js" defer></script>
-
+<script src="js/loader.js"></script>
 </body>
 </html>
